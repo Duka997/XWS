@@ -1,0 +1,103 @@
+version: "3"
+
+services:
+    eureka:
+        image: eureka
+        container_name: eureka
+        build: 
+            context: ./eureka
+            dockerfile: Dockerfile
+        ports: 
+            - "8761:8761"
+        tty: true
+        
+    oglas-service:
+        image: oglas-service
+        container_name: oglas-service
+        build: 
+            context: ./oglas-service
+            dockerfile: Dockerfile
+        ports: 
+            - "8081:8081"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+            
+    vozilo-service:
+        image: vozilo-service
+        container_name: vozilo-service
+        build: 
+            context: ./vozilo-service
+            dockerfile: Dockerfile
+        ports: 
+            - "8082:8082"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+            
+    user-service:
+        image: user-service
+        container_name: user-service
+        build: 
+            context: ./user-service
+            dockerfile: Dockerfile
+        ports: 
+            - "8083:8083"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+            
+    poruka-service:
+        image: poruka-service
+        container_name: poruka-service
+        build: 
+            context: ./poruka-service
+            dockerfile: Dockerfile
+        ports: 
+            - "8084:8084"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+
+
+    pretraga-service:
+        image: pretraga-service
+        container_name: pretraga-service
+        build: 
+            context: ./pretraga-service
+            dockerfile: Dockerfile
+        ports: 
+            - "8085:8085"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+        
+    zuul:
+        image: zuul
+        container_name: zuul
+        build: 
+            context: ./zuul
+            dockerfile: Dockerfile
+        ports: 
+            - "8086:8086"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
+            - oglas-service
+            - vozilo-service
+            - user-service
+            - poruka-service
+            - pretraga-service
+        

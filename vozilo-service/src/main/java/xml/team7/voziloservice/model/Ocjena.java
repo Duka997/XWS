@@ -21,7 +21,7 @@ public class Ocjena {
     private Long id;
 
     @Column
-    private Double ocjena;
+    private double ocjena;
 
     @ManyToOne
     @JoinColumn(name = "vozilo_id")

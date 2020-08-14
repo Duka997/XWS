@@ -26,6 +26,6 @@ public class Izvjestaj {
     private double predjeniKilometri;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vozilo_id", nullable = false)
+    @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 }

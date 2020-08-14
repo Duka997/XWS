@@ -41,7 +41,6 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "markaAutomobila_id")
     private MarkaAutomobila markaAutomobila;

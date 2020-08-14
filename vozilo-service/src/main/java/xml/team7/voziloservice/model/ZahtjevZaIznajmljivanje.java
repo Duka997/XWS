@@ -43,13 +43,13 @@ public class ZahtjevZaIznajmljivanje {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
             @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")})
-    private DateTime Od;
+    private DateTime od;
 
     @Column
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
             @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")})
-    private DateTime Doo;
+    private DateTime doo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oglas_id")

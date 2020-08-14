@@ -41,9 +41,6 @@ public class Vozilo {
     @Column
     private double ocjena;
 
-    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
-    private Set<Komentar> komentari;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "markaAutomobila_id")
     private MarkaAutomobila markaAutomobila;
@@ -62,6 +59,9 @@ public class Vozilo {
 
     @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
     private Set<Izvjestaj> izvjestaji;
+
+    @OneToMany(mappedBy = "vozilo", fetch = FetchType.LAZY)
+    private Set<Komentar> komentari;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

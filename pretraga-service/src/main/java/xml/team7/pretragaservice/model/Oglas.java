@@ -29,14 +29,7 @@ public class Oglas {
     private String mjestoPreuzimanja;
 
     @Column
-    private Double dozvoljenaKilometraza;
-
-    @Column(name = "doo")
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
-            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
-            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
-    })
-    private DateTime doo;
+    private double dozvoljenaKilometraza;
 
     @Column(name = "od")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
@@ -44,6 +37,13 @@ public class Oglas {
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
     })
     private DateTime od;
+
+    @Column(name = "doo")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {
+            @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
+            @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
+    })
+    private DateTime doo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vozilo_id")

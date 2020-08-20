@@ -100,4 +100,3 @@ services:
             - user-service
             - poruka-service
             - pretraga-service
-        

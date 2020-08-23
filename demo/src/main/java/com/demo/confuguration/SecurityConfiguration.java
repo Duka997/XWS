@@ -90,5 +90,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(HttpMethod.POST, "/login");
         web.ignoring().antMatchers(HttpMethod.POST, "/register");
         web.ignoring().antMatchers(HttpMethod.POST, "/verify");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/marka/dodaj");
     }
 }

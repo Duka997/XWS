@@ -21,6 +21,7 @@ import { HomepageComponent } from './header/homepage/homepage.component';
 import { HomepageAdminComponent } from './header/homepage-admin/homepage-admin.component';
 import { HomepageAgentComponent } from './header/homepage-agent/homepage-agent.component';
 import { FormsModule } from '@angular/forms';
+import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAutomobila.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     HomepageComponent,
     HomepageAdminComponent,
-    HomepageAgentComponent
+    HomepageAgentComponent,
+    AddMarkaAutomobila,
   ],
   imports: [
     HttpClientModule,

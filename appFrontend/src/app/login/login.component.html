@@ -1,27 +1,27 @@
   
 <h1  style="text-align:center">Logging in</h1>
-<div >
+<div>
     <p style="text-align:center">
-        <mat-form-field appearance="outline" >
+        <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Username">
+            <input matInput type="text" placeholder="Username" [(ngModel)] = "username">
         </mat-form-field>
     </p>
     <p style="text-align:center">
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password">
+            <input matInput type="password" placeholder="Password"  [(ngModel)] = "password">
         </mat-form-field>
     </p>
 </div>
 <div  style="text-align:center" >
-  <button  mat-raised-button color="accent" >Log in</button>
+  <button  mat-raised-button color="accent" (click)="login()" >Log in</button>
   
 </div>
 <br>
 <div>
     <p style="text-align:center">If you don't have an acount:</p>
     <div style="text-align:center">
-        <button  mat-stroked-button color color="accent" > <a style="color:orange;"  [routerLink]="['signup']"> Sing up </a></button>
+        <button  mat-stroked-button color color="accent" > <a style="color:orange;"  (click) ="signup()"> Sing up </a></button>
     </div>
 </div>

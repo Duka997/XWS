@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router'
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { MatSliderModule } from '@angular/material/slider';
@@ -15,16 +16,24 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './http-interceptors/auth-interceptor';
+import { HomepageComponent } from './header/homepage/homepage.component';
+import { HomepageAdminComponent } from './header/homepage-admin/homepage-admin.component';
+import { HomepageAgentComponent } from './header/homepage-agent/homepage-agent.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
 
     AppComponent,
     LoginComponent,
-    HeaderComponent,
-    SignupComponent
+    SignupComponent,
+    HomepageComponent,
+    HomepageAdminComponent,
+    HomepageAgentComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatSliderModule,
@@ -33,9 +42,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     RouterModule,
-    BrowserAnimationsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+      resetTimeoutOnDuplicate: true,
+      progressBar: true,
+      enableHtml: true
+    }),
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

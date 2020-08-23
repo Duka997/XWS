@@ -1,0 +1,23 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['signup']">Add agent</a>
+         </li>
+       </ul>
+       <ul class="navbar-nav mr-right" style="float: right;">
+         <li class="nav-item">
+            <button
+               class="btn btn-outline-danger my-2 my-sm-0"
+               (click)="logout()"
+               type="submit"
+            >
+               Logout
+            </button>
+         </li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
+ </div>
+
+

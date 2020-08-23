@@ -1,58 +1,53 @@
-<h1  style="text-align:center">Sign up</h1>
+<h1  style="text-align:center"  *ngIf = "role != 'ROLE_ADMIN'">Sign up</h1>
+<h1  style="text-align:center"  *ngIf = "role == 'ROLE_ADMIN'">Add agent</h1>
 <div mat-dialog-content>
 
     <p style="text-align:center" >
         <mat-form-field appearance="outline" >
             <mat-label>First name</mat-label>
-            <input matInput type="text" placeholder="First name">
+            <input matInput type="text" placeholder="First name" [(ngModel)] = "user.name">
         </mat-form-field>
         <mat-form-field appearance="outline" >
             <mat-label>Last name</mat-label>
-            <input matInput type="text" placeholder="Last name">
+            <input matInput type="text" placeholder="Last name" [(ngModel)] = "user.surname">
         </mat-form-field>
     </p>
 
     <p style="text-align:center">
         <mat-form-field appearance="outline" >
             <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Username">
+            <input matInput type="text" placeholder="Username" [(ngModel)] = "user.username">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password">
+            <input matInput type="password" [(ngModel)] = "user.password">
         </mat-form-field>
     </p>
 
     <p style="text-align:center">
         <mat-form-field appearance="outline" >
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Email">
+            <input matInput type="email" placeholder="Email" [(ngModel)] = "user.email">
         </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Phone number</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
-    </p>
-
-    <p style="text-align:center">
         <mat-form-field appearance="outline" >
             <mat-label>Address</mat-label>
-            <input matInput type="text" placeholder="Address">
-        </mat-form-field>
-        <mat-form-field appearance="outline" >
-            <mat-label>City</mat-label>
-            <input matInput type="text" placeholder="City">
+            <input matInput type="text" placeholder="Address" [(ngModel)] = "user.address">
         </mat-form-field>
     </p>
 
-    <p style="text-align:center">
+    <p style="text-align:center"  *ngIf = "role == 'ROLE_ADMIN'">
         <mat-form-field appearance="outline" >
-            <mat-label>Country</mat-label>
-            <input matInput type="text" placeholder="Country">
+            <mat-label>Bussiness ID</mat-label>
+            <input matInput type="text" placeholder="Bussiness ID" [(ngModel)] = "user.poslovniID">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label>Company name</mat-label>
+            <input matInput type="text" placeholder="Company name" [(ngModel)] = "user.imeKompanije">
         </mat-form-field>
     </p>
+
 </div>
 <div  style="text-align:center" >
-  <button  mat-raised-button color="accent" >Sing up</button>
-  
+  <button  mat-raised-button color="accent"  *ngIf = "role != 'ROLE_ADMIN'" (click) = "signUp()">Sign up</button>
+  <button  mat-raised-button color="accent"  *ngIf = "role == 'ROLE_ADMIN'" (click) = "signUp()">Add</button>
 </div>

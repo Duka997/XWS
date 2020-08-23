@@ -7,6 +7,8 @@ import { HomepageAdminComponent } from './header/homepage-admin/homepage-admin.c
 import { HomepageAgentComponent } from './header/homepage-agent/homepage-agent.component';
 import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAutomobila.component';
 import { DodajKlasuAutomobila } from './components/addCarClass/addCarClass.component';
+import { DodajTipMjenjaca } from './components/addGearboxType/addGearboxType.component';
+import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'addAgent', component: SignupComponent },
       { path: 'addCarMark', component: AddMarkaAutomobila },
       { path: 'addCarClass', component: DodajKlasuAutomobila },
+      { path: 'addGearboxType', component: DodajTipMjenjaca },
+      { path: 'addFuelType', component: AddTipGoriva },
     ]
   }, 
 

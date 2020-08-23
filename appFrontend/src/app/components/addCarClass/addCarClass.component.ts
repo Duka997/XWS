@@ -23,7 +23,7 @@ export class DodajKlasuAutomobila implements OnInit {
          data=>{
           console.log('Success!', JSON.stringify(data))
           alert('New car class has been added!');
-          //this.router.navigate(['admin']);
+          this.router.navigate(['homepageAdmin']);
          } ,
           error=> console.error('Error!',error)
       )

@@ -7,9 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name="klasaautomobila")
 public class KlasaAutomobila {
@@ -20,4 +17,34 @@ public class KlasaAutomobila {
 
     @Column
     private String naziv;
+
+    @Column
+    private boolean obrisan;
+
+    public KlasaAutomobila() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public boolean isObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(boolean obrisan) {
+        this.obrisan = obrisan;
+    }
 }

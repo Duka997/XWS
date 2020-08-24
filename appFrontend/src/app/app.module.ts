@@ -25,6 +25,7 @@ import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAuto
 import { DodajKlasuAutomobila } from './components/addCarClass/addCarClass.component';
 import { DodajTipMjenjaca } from './components/addGearboxType/addGearboxType.component';
 import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
+import { AddCarComponent } from './components/addCar/addCar.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
     DodajKlasuAutomobila,
     DodajTipMjenjaca,
     AddTipGoriva,
+    AddCarComponent,
   ],
   imports: [
     HttpClientModule,

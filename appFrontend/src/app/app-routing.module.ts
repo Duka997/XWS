@@ -5,6 +5,7 @@ import {SignupComponent} from '../app/signup/signup.component'
 import { HomepageComponent } from './header/homepage/homepage.component';
 import { HomepageAdminComponent } from './header/homepage-admin/homepage-admin.component';
 import { HomepageAgentComponent } from './header/homepage-agent/homepage-agent.component';
+import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAutomobila.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'homepageAdmin', component: HomepageAdminComponent,
     children: [
       { path: 'addAgent', component: SignupComponent },
+      { path: 'addCarMark', component: AddMarkaAutomobila },
     ]
   }, 
 

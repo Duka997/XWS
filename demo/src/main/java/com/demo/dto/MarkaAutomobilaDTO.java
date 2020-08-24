@@ -1,40 +1,19 @@
-package com.demo.model;
+package com.demo.dto;
 
-
-import com.demo.dto.MarkaAutomobilaDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 
-@Entity
 @AllArgsConstructor
-@Table(name="markaautomobila")
-public class MarkaAutomobila {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MarkaAutomobilaDTO {
     private Long id;
-
-    @Column
     private String nazivMarke;
-
-    @Column
     private String model;
-
-    @Column
     private boolean obrisan;
 
-    public MarkaAutomobila() {
-    }
-
-    public MarkaAutomobila(MarkaAutomobilaDTO mDTO) {
-        this.id = mDTO.getId();
-        this.nazivMarke = mDTO.getNazivMarke();
-        this.model = mDTO.getModel();
-        this.obrisan = mDTO.isObrisan();
+    public MarkaAutomobilaDTO() {
     }
 
     public Long getId() {

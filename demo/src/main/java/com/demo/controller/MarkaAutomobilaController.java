@@ -26,7 +26,6 @@ public class MarkaAutomobilaController {
     }
 
     @GetMapping("/get")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> loadAll() throws AccessDeniedException {
         return this.markaAutomobilaService.getAll();
     }

@@ -9,6 +9,7 @@ import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAuto
 import { DodajKlasuAutomobila } from './components/addCarClass/addCarClass.component';
 import { DodajTipMjenjaca } from './components/addGearboxType/addGearboxType.component';
 import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
+import { AddCarComponent } from './components/addCar/addCar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
+      { path: 'addCar', component: AddCarComponent },
     ]
   }, 
 

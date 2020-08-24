@@ -1,0 +1,21 @@
+
+<div class="d-flex p-2 justify-content-center">
+    <div class="d-flex flex-column p-2 justify-content-center">
+      <div class="d-flex flex-row flex-wrap p-2 justify-content-center">
+        <div
+          *ngFor="let u of users"
+          class="card border-primary mb-3"
+          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+        >
+          <div class="card-body">
+            <h4 class="card-title">{{u.name}} {{u.surname}}</h4>
+            <p class="card-text">Username: {{u.username}}</p>
+            <p class="card-text">Address: {{u.address}}</p>
+            <p class="card-text">Email: {{u.email}}</p>
+            <button type="button" class="btn btn-danger" (click)="accept(u.id)">Accept</button> 
+            <button type="button" class="btn btn-success" (click)="reject(u.id)">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

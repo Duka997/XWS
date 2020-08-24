@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../model/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
 
   constructor( private authService: AuthService, 
                private router: Router,
+               private toastr: ToastrService,
               private route: ActivatedRoute,) { 
                  this.user = {
                    name : '',
@@ -24,6 +26,7 @@ export class SignupComponent implements OnInit {
                    phone: '',
                    roles: [],
                    enabled: null,
+                   deleted: null,
                    isAdmin: null,
                    id: null,
                    imeKompanije:'',
@@ -38,6 +41,11 @@ export class SignupComponent implements OnInit {
   }
 
   signUp():void{
+    if(this.user.username.trim() == "" || this.user.name.trim() == "" || this.user.surname.trim() == "" || 
+      this.user.email.trim() == "" || this.user.address.trim() == "" || this.user.password.trim() == ""){
+        this.toastr.warning('Please, fill all fields!', 'Sign up');
+        return;
+    }
     if(this.role == 'ROLE_ADMIN'){
       this.user.roles.push("ROLE_AGENT");
     }else{
@@ -46,11 +54,11 @@ export class SignupComponent implements OnInit {
     
     this.authService.register(this.user).subscribe(
       data => {
-        alert('User successfully registered!');
+        this.toastr.success('User successfully registered!', 'Sign up');
         this.router.navigate(["login"], { relativeTo: this.route.parent });
       },
       error => {
-        alert("Error during registration");
+        this.toastr.error("Error during registration", "Sign up!");
       }
     );
   }

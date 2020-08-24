@@ -42,4 +42,43 @@ public class UserController {
         log.info("Controller /verify invoked with token - " + token);
         return this.userDetailsService.verify(token);
     }
+
+
+    @DeleteMapping(value = "/{userId}")
+    public ResponseEntity<Void> delete(@PathVariable Long userId) {
+        this.userDetailsService.delete(userId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/users")
+    public ResponseEntity<?> getUsers() {
+        return this.userDetailsService.getUsers();
+    }
+
+    @GetMapping(value = "/requests")
+    public ResponseEntity<?> getRegistrationRequests() {
+        return this.userDetailsService.getRequests();
+    }
+
+    @GetMapping(value = "/enable/{userId}")
+    public ResponseEntity<Void> enable(@PathVariable Long userId) {
+        this.userDetailsService.enable(userId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/disable/{userId}")
+    public ResponseEntity<Void> disable(@PathVariable Long userId) {
+        this.userDetailsService.disable(userId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/accept/{id}")
+    public ResponseEntity<?> acceptRequest(@PathVariable Long id) {
+        return this.userDetailsService.accept(id);
+    }
+
+    @PostMapping(value = "/reject/{id}")
+    public ResponseEntity<?> rejectRequest(@PathVariable Long id) {
+        return this.userDetailsService.reject(id);
+    }
 }

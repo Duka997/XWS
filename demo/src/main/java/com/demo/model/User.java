@@ -47,8 +47,11 @@ public class User implements UserDetails {
     @Column
     private String address;
 
-    @Column(nullable = false)
+    @Column
     private boolean enabled;
+
+    @Column
+    private boolean deleted;
 
     @Column
     private boolean isAdmin;

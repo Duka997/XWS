@@ -6,6 +6,7 @@ export interface User {
     imeKompanije: string,
     isAdmin: boolean,
     enabled: boolean,
+    deleted: boolean,
     address: string,
     poslovniID: string,
     email: string,

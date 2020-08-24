@@ -106,9 +106,11 @@ public class CustomUserDetailsService implements UserDetailsService{
                 .username(userDTO.getUsername())
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
+                .phone(userDTO.getPhone())
                 .password(passwordEncoder.encode(userDTO.getPassword()))
                 .isAdmin(false)
                 .enabled(true)
+                .deleted(false)
                 .imeKompanije("")
                 .poslovniID("")
                 .lastPasswordResetDate(new Timestamp(System.currentTimeMillis()))
@@ -122,6 +124,7 @@ public class CustomUserDetailsService implements UserDetailsService{
             user.setAdmin(true);
         }else if(userDTO.getRoles().get(0).equals("ROLE_USER")){
             user.setEnabled(false);
+            user.setLastPasswordResetDate(null);
         }
 
         Role role = this.roleRepository.findByName(userDTO.getRoles().get(0));
@@ -153,18 +156,6 @@ public class CustomUserDetailsService implements UserDetailsService{
         Long id = user.getId();
 
         return ResponseEntity.ok(new UserTokenState(jwt, expiresIn, username, refresh, role, id));
-    }
-
-    public void enable(Long userId) {
-        User user = getUserById(userId);
-        user.setEnabled(true);
-        this.userRepository.save(user);
-    }
-
-    public void disable(Long userId) {
-        User user = getUserById(userId);
-        user.setEnabled(false);
-        this.userRepository.save(user);
     }
 
     private User getUserById(Long userId) {
@@ -237,5 +228,70 @@ public class CustomUserDetailsService implements UserDetailsService{
     public User getLoggedInUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return this.findByUsername(username);
+    }
+
+    public ResponseEntity<?> getUsers() {
+        List<User> users = this.userRepository.findAllByDeleted(false);
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for(User u: users){
+            if (u.getRoles().iterator().next().getName().equals("ROLE_USER") && u.getLastPasswordResetDate() != null){
+                UserDTO userDTO = modelMapper.map(u, UserDTO.class);
+                userDTO.setRoles(new ArrayList<>());
+                for(Role r: u.getRoles()){
+                    userDTO.getRoles().add(r.getName());
+                }
+                for(Privilege p: u.getPrivileges()){
+                    userDTO.getRoles().add(p.getName());
+                }
+                userDTOS.add(userDTO);
+            }
+        }
+        return new ResponseEntity<>(userDTOS, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getRequests() {
+        List<User> requests = this.userRepository.findByLastPasswordResetDate(null);
+        if (requests.size() == 0)
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        List<UserDTO> users = new ArrayList<>();
+        for (User user: requests) {
+                users.add(modelMapper.map(user, UserDTO.class));
+        }
+
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> accept(Long id) {
+        User user = this.userRepository.findById(id).orElseThrow(() -> new NotFoundException("User with given  id was not found"));
+        user.setLastPasswordResetDate(new Timestamp(System.currentTimeMillis()));
+        user.setEnabled(true);
+        this.userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> reject(Long id) {
+        User user = this.userRepository.findById(id).orElseThrow(() -> new NotFoundException("User with given  id was not found"));
+        this.userRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public void enable(Long userId) {
+        User user = getUserById(userId);
+        user.setEnabled(true);
+        this.userRepository.save(user);
+    }
+
+    public void disable(Long userId) {
+        User user = getUserById(userId);
+        user.setEnabled(false);
+        this.userRepository.save(user);
+    }
+
+    public void delete(Long userId) {
+        User user  = this.userRepository.getOne(userId);
+        user.setEnabled(false);
+        user.setDeleted(true);
+        this.userRepository.save(user);
     }
 }

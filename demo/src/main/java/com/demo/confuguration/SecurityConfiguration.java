@@ -71,7 +71,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // svim korisnicima dopusti da pristupe putanjama /auth/**, /h2-console/** i /api/foo
                 .authorizeRequests().antMatchers("/h2-console/**").permitAll().antMatchers("/register")
                 .permitAll().antMatchers("/login")
-                .permitAll().antMatchers("/search/**").permitAll()
+                .permitAll().antMatchers("/search/**")
+                .permitAll().antMatchers("/**").permitAll()
 
                 // svaki zahtev mora biti autorizovan
                 .anyRequest().authenticated().and()
@@ -90,6 +91,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(HttpMethod.POST, "/login");
         web.ignoring().antMatchers(HttpMethod.POST, "/register");
         web.ignoring().antMatchers(HttpMethod.POST, "/verify");
+
         web.ignoring().antMatchers(HttpMethod.POST, "/api/marka/dodaj");
         web.ignoring().antMatchers(HttpMethod.POST, "/api/klasa/dodaj");
         web.ignoring().antMatchers(HttpMethod.POST, "/api/tipmjenjaca/dodaj");

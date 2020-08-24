@@ -17,8 +17,10 @@ public class UserDTO {
     private String surname;
     private String username;
     private String password;
+    private String phone;
     private boolean isAdmin;
     private boolean enabled;
+    private boolean deleted;
     private String address;
     private String imeKompanije;
     private String poslovniID;

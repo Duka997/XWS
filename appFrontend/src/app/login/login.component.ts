@@ -28,6 +28,11 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
 
+    if(this.username.trim() == "" || this.password.trim() == ""){
+        this.toastr.warning('Please, enter the username and password!', 'Login');
+        return;
+    }
+
     this.authService.login(login).subscribe(
       data =>{
         localStorage.clear();
@@ -37,6 +42,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("username", data.username);
         localStorage.setItem("user-role", data.role);
         localStorage.setItem("id", data.id);
+        
 
         if(data.role == 'ROLE_ADMIN'){
           this.router.navigate(['homepageAdmin']);
@@ -47,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.toastr.success('Successfully logged in', 'Login'); //ima success, error, warning i info(tekst poruke, naslov)
       },
       error =>{
-        alert("Try again!");
+        this.toastr.error("Wrong password or username!", 'Login');
       }
 
     )

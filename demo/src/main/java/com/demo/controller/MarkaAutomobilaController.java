@@ -21,9 +21,7 @@ public class MarkaAutomobilaController {
 
     @PostMapping("/dodaj")
     public ResponseEntity add(@RequestBody MarkaAutomobilaDTO mDTO) {
-        System.out.println("Cao");
         markaAutomobilaService.save(mDTO);
-        System.out.println("Caos");
         return ResponseEntity.ok().build();
     }
 

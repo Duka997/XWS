@@ -1,0 +1,12 @@
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Add new gearbox type:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Gearbox type name:</label>
+      <input type="text"  class="form-control" id="Naziv" name="naziv"  [(ngModel)]="tip.naziv" />
+    </div>
+<br/>
+    <button type="submit" class="btn btn-primary">Add</button>
+</fieldset>       
+</form>

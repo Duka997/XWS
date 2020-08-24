@@ -22,6 +22,9 @@ import { HomepageAdminComponent } from './header/homepage-admin/homepage-admin.c
 import { HomepageAgentComponent } from './header/homepage-agent/homepage-agent.component';
 import { FormsModule } from '@angular/forms';
 import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAutomobila.component';
+import { DodajKlasuAutomobila } from './components/addCarClass/addCarClass.component';
+import { DodajTipMjenjaca } from './components/addGearboxType/addGearboxType.component';
+import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { AddMarkaAutomobila } from './components/addMarkuAutomobila/addMarkuAuto
     HomepageAdminComponent,
     HomepageAgentComponent,
     AddMarkaAutomobila,
+    DodajKlasuAutomobila,
+    DodajTipMjenjaca,
+    AddTipGoriva,
   ],
   imports: [
     HttpClientModule,

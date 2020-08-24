@@ -23,8 +23,8 @@ export class AddMarkaAutomobila implements OnInit {
      .subscribe(
          data=>{
           console.log('Success!', JSON.stringify(data))
-          alert('Nova marka dodata!');
-         // this.router.navigate(['admin']);
+          alert('New car mark has been added!');
+          this.router.navigate(['homepageAdmin']);
          } ,
           error=> console.error('Error!',error)
       )

@@ -1,27 +1,11 @@
-package com.demo.model;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+package com.demo.dto;
 
-import javax.persistence.*;
-
-@Entity
-@AllArgsConstructor
-@Table(name="klasaautomobila")
-public class KlasaAutomobila {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KlasaAutomobilaDTO {
     private Long id;
-
-    @Column
     private String naziv;
-
-    @Column
     private boolean obrisan;
 
-    public KlasaAutomobila() {
+    public KlasaAutomobilaDTO() {
     }
 
     public Long getId() {

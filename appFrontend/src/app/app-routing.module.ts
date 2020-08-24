@@ -12,6 +12,9 @@ import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { ListRequestComponent } from './components/list-request/list-request.component';
 
+import { AddCarComponent } from './components/addCar/addCar.component';
+
+
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomepageComponent,
@@ -29,8 +32,12 @@ const routes: Routes = [
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
+
       { path: 'users', component: ListUsersComponent},
-      { path: 'requests', component: ListRequestComponent}
+      { path: 'requests', component: ListRequestComponent},
+
+      { path: 'addCar', component: AddCarComponent },
+
     ]
   }, 
 

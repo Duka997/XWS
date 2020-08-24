@@ -26,7 +26,6 @@ public class TipMjenjacaContreoller {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-   // @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<TipMjenjacaDTO> loadAll() {
         return this.tipMjenjacaService.findAll();
     }

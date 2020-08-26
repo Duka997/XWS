@@ -23,20 +23,7 @@ public class VoziloDTO {
 
     public VoziloDTO() {
     }
-   /* public VoziloDTO(Vozilo v) {
-        this.id = v.getId();
-        this.cijena = v.getCijena();
-        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
-        this.kilometraza = v.getKilometraza();
-        this.agent = new UserDTO(v.getUser());
-        this.markaAutomobila = new MarkaAutomobilaDTO(v.getMarkaAutomobila());
-        this.klasaAutomobila = new KlasaAutomobilaDTO(v.getKlasaAutomobila());
-        this.tipGoriva = new TipGorivaDTO(v.getTipGoriva());
-        this.tipMjenjaca = new TipMjenjacaDTO(v.getTipMjenjaca());
-        this.mozePreciKM = v.getMozePreciKM();
-        this.imaAndroid = v.getImaAndroid();
-        this.coliisionDamageWavier = v.isColiisionDamageWavier();
-    }*/
+
 
     public Long getId() {
         return id;

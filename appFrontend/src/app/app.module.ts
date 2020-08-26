@@ -28,6 +28,7 @@ import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { ListRequestComponent } from './components/list-request/list-request.component';
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AddCarComponent } from './components/addCar/addCar.component';
     ListUsersComponent,
     ListRequestComponent,
     AddCarComponent,
+    DodajOglasComponent,
   ],
   imports: [
     HttpClientModule,

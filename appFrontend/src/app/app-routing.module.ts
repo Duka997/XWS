@@ -13,6 +13,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ListRequestComponent } from './components/list-request/list-request.component';
 
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 
 
 const routes: Routes = [
@@ -32,11 +33,10 @@ const routes: Routes = [
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
-
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
-
       { path: 'addCar', component: AddCarComponent },
+      { path: 'addAdd', component: DodajOglasComponent },
 
     ]
   }, 

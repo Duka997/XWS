@@ -26,8 +26,8 @@ public class VoziloController {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    public List<Vozilo> loadAll() {
-        return this.voziloService.findAll();
+    public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
+        return this.voziloService.findAllVozila();
     }
 
 }

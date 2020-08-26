@@ -1,5 +1,6 @@
 package com.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,17 +39,21 @@ public class Vozilo {
     @Column
     private double ocjena;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "markaAutomobila_id")
     private MarkaAutomobila markaAutomobila;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "klasaAutomobila_id")
     private KlasaAutomobila klasaAutomobila;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipGoriva_id")
     private TipGoriva tipGoriva;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipMjenjaca_id")

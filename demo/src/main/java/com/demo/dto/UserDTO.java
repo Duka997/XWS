@@ -1,5 +1,6 @@
 package com.demo.dto;
 
+import com.demo.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,8 @@ public class UserDTO {
     private Timestamp lastPasswordResetDate;
     private List<String> roles;
     private String email;
+
+    public UserDTO(User user) {
+        this.id = user.getId();
+    }
 }

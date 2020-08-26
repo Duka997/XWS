@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "zahtjev")
+@Table(name = "zahtjev_za_iznajmljivanje")
 public class ZahtjevZaIznajmljivanje {
 
     @Id
@@ -26,9 +26,6 @@ public class ZahtjevZaIznajmljivanje {
     
     @Column
     private boolean potvrdjen;
-
-    @Column
-    private  boolean bundle;
     
     @Enumerated(value = EnumType.STRING)
     private StatusZahtjeva status;
@@ -51,6 +48,9 @@ public class ZahtjevZaIznajmljivanje {
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")})
     private DateTime doo;
 
+    @Column
+    private String mjestoPreuzimanja;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oglas_id")
     private Oglas oglas;
@@ -60,7 +60,7 @@ public class ZahtjevZaIznajmljivanje {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bundle_id")
-    private BundleZahtjev bundleZahtjev;
+    @JoinColumn(name = "bundle_id", nullable = true)
+    private BundleZahtjev bundle;
 
 }

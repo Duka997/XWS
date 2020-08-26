@@ -31,4 +31,14 @@ insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (1, 'BMW'
 insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (2, 'Audi', 'model2', false);
 insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Wolsvagen', 'model3', false);
 
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 2, 1,1,1);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (2, '2', '2200', true, true, '150000', '200', '3',  1, 1,2,2);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena,  marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (3, '0', '2150', false, false, '250000', '600', '5',  3, 3,2,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena , marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (4, '1', '2250', true, true, '15000', '150', '5',  1, 3,3,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (5, '3', '1000', true, true, '15510', '121', '4',  1, 3,3,3);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (6, '1', '600', false, false, '270000', '500', '2', 2, 2,1,3 );
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id) VALUES (7, '0', '5000', false, true, '10000', '1000', '5', 3, 2,1,1);
+
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 55, 55, 55, 10, 1);
+
 

@@ -30,6 +30,7 @@ import { ListRequestComponent } from './components/list-request/list-request.com
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
+import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UserCartComponent } from './header/homepageUser/userCart/user-cart.comp
     HomepageComponent,
     HomepageAdminComponent,
     HomepageAgentComponent,
+    RentRequestsComponent,
     HomepageUserComponent,
     UserCartComponent,
     AddMarkaAutomobila,

@@ -36,7 +36,8 @@ export class HomepageUserComponent implements OnInit {
   }
 
   addToCart(oglas: Oglas) {
-    this.adsService.addAdToCart(oglas).subscribe(data => {
+    var userId = parseInt(localStorage.getItem('id'));
+    this.adsService.addAdToCart(oglas,userId).subscribe(data => {
         this.toastr.success('Ad has been added to cart');
       }, error => {
         this.toastr.error(error.error.message);

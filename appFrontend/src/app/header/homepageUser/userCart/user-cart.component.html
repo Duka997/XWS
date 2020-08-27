@@ -25,14 +25,13 @@
           <th>Vehicle ID</th>
           <th>Single request</th>
           <th>Bundle</th>
-          <th>Rent</th>
           <th>Remove</th>
         </thead>
         <tbody>
             <tr *ngFor="let oglas of ads">
               
               <td>
-                  {{ oglas.id }}
+                  {{ oglas.adId }}
               </td>
 
               <td>
@@ -45,10 +44,6 @@
 
             <td>
               <button type="button" class="btn btn-success" (click)="addToBundle(oglas)">Add to bunddle</button>
-            </td>
-  
-            <td>
-              <button type="button" class="btn btn-success" (click)="rentACar(oglas)">Rent</button>
             </td>
 
             <td>

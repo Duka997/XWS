@@ -16,12 +16,12 @@ import { ICart } from '../header/homepageUser/userCart/ICart';
         return this.http.get<any>('http://localhost:8099/api/oglas/get');
     }
 
-    addAdToCart(oglas: Oglas): Observable<any> {
-        return this.http.post('http://localhost:8099/api/oglas/dodajUKorpu', oglas);
+    addAdToCart(oglas: Oglas, userId: any): Observable<any> {
+        return this.http.post('http://localhost:8099/api/oglas/dodajUKorpu/'+userId, oglas);
     }
 
-    getAllAdsForCart(): Observable<any> {
-        return this.http.get('http://localhost:8099/api/oglas/getCartAds');
+    getAllAdsForCart(id: any): Observable<any> {
+        return this.http.get<any>('http://localhost:8099/api/oglas/getCartAds/'+id);
     }
 
     removeAdFromCart(id: number) {

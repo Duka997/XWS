@@ -3,6 +3,7 @@ package com.demo.controller;
 import com.demo.dto.KorpaDTO;
 import com.demo.dto.OglasDTO;
 import com.demo.dto.OglasUKorpiDTO;
+import com.demo.dto.PretragaDTO;
 import com.demo.model.Oglas;
 import com.demo.service.OglasService;
 import com.demo.service.ZahtjevZaIznajmljivanjeService;
@@ -58,6 +59,21 @@ public class OglasController {
     @PostMapping(value = "/request/{userId}")
     public ResponseEntity<?> newRequests(@PathVariable Long userId, @RequestBody KorpaDTO shoppingCart) {
         return this.zahtjevZaIznajmljivanjeService.newRequests(shoppingCart, userId);
+    }
+
+    @PostMapping(value = "/pretraga/{page}/{sort}")
+    public ResponseEntity<?> pretraziOglase(@RequestBody PretragaDTO pretraga, @PathVariable int page, @PathVariable String sort) {
+        return this.oglasService.pretraziOglase(pretraga,page, sort);
+    }
+
+    @GetMapping( value = "/mjesta")
+    public ResponseEntity<?> pretraziMjesta() {
+        return this.oglasService.pretraziMjesta();
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> getOneOglasById(@PathVariable Long id) {
+        return this.oglasService.getOneOglasById(id);
     }
 }
 

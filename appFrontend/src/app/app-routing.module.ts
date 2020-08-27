@@ -16,6 +16,7 @@ import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
+      { path: 'search', component: SearchComponent },
     ]
   }, 
 
@@ -45,7 +47,8 @@ const routes: Routes = [
 
   { path: 'homepageAgent', component: HomepageAgentComponent,
     children: [
-      { path: 'signup', component: SignupComponent }
+      { path: 'signup', component: SignupComponent },
+      { path: 'search', component: SearchComponent },
     ]
   },
 

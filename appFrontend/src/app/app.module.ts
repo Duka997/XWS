@@ -31,6 +31,7 @@ import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { UserCartComponent } from './header/homepageUser/userCart/user-cart.comp
     ListUsersComponent,
     ListRequestComponent,
     AddCarComponent,
+    SearchComponent,
     DodajOglasComponent,
   ],
   imports: [

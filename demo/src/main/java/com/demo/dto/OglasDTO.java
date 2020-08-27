@@ -3,10 +3,13 @@ package com.demo.dto;
 import org.joda.time.DateTime;
 
 import com.demo.model.*;
+import lombok.*;
 import org.joda.time.DateTime;
 
-import java.util.Set;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
 public class OglasDTO {
 
     private Long id;
@@ -15,6 +18,14 @@ public class OglasDTO {
     private String mestoPreuzimanja;
     private DateTime od;
     private DateTime doo;
+    private UserDTO user;
+    private Integer pages;
+    private CjenovnikDTO cjenovnik;
+    private double dozvoljenaKilometraza;
+    //private Set<ZahtjevZaIznajmljivanjeDTO> zahtjevi;
+    //private Set<KomentarDTO> komentari;
+    //private Set<OcjenaDTO> ocjene;
+    //private CjenovnikDTO cjenovnik;
     private Long userId;
     private Long cjenovnikID;
 

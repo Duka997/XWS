@@ -57,20 +57,20 @@ public class ZahtjevZaIznajmljivanjeService {
         return retVal;
     }
 
-    public ResponseEntity<?> newRequests(KorpaDTO shoppingCart) {
-        this.zahtjevZaBundleService.newBundles(shoppingCart.getBundles());
+    public ResponseEntity<?> newRequests(KorpaDTO shoppingCart, Long userId) {
+        this.zahtjevZaBundleService.newBundles(shoppingCart.getBundles(), userId);
 
         for (ZahtjevDTO request : shoppingCart.getRequests()) {
-            ZahtjevZaIznajmljivanje rentRequest = newRequest(request, null);
+            ZahtjevZaIznajmljivanje rentRequest = newRequest(request, null, userId);
             rentRequest = this.zahtjevZaIznajmljivanjeRepository.save(rentRequest);
         }
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    public ZahtjevZaIznajmljivanje newRequest(ZahtjevDTO request, BundleZahtjev bundle) {
+    public ZahtjevZaIznajmljivanje newRequest(ZahtjevDTO request, BundleZahtjev bundle, Long userId) {
         Oglas ad = this.oglasService.getAdById(request.getOglasId());
-        User user = this.userService.getUserById(2L);  // GET USER FROM AUTHENTICATION
+        User user = this.userService.getUserById(userId);
 
         ZahtjevZaIznajmljivanje rentRequest = new ZahtjevZaIznajmljivanje();
         rentRequest.setMjestoPreuzimanja(request.getMjestoPreuzimanja());

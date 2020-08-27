@@ -21,13 +21,13 @@ public class ZahtjevZaBundleService {
     @Autowired
     private ZahtjevZaBundleRepository zahtjevZaBundleRepository;
 
-    public void newBundles(List<BundleDTO> bundles) {
+    public void newBundles(List<BundleDTO> bundles, Long userId) {
         for (BundleDTO bundle : bundles) {
             BundleZahtjev rentBundle = new BundleZahtjev();
             rentBundle.setStatusZahtjeva(StatusZahtjeva.PENDING);
             rentBundle.setZahtjevi(new HashSet<>());
             for (ZahtjevDTO request : bundle.getRequests()) {
-                ZahtjevZaIznajmljivanje rentRequest = this.zahtjevZaIznajmljivanjeService.newRequest(request, rentBundle);
+                ZahtjevZaIznajmljivanje rentRequest = this.zahtjevZaIznajmljivanjeService.newRequest(request, rentBundle, userId);
                 rentBundle.getZahtjevi().add(rentRequest);
             }
             this.zahtjevZaBundleRepository.save(rentBundle);

@@ -114,7 +114,9 @@ import { IBundle } from './IBundle';
         bundles: this.bundles
       }
       console.log("gds:", cart);
-      this.adsService.rentACarRequest(cart).subscribe(() => {
+      var userId = parseInt(localStorage.getItem('id'));
+      this.adsService.rentACarRequest(cart, userId).subscribe(() => {
+        console.log("user id:", userId);
         alert("success");
         this.bundles = [];
         this.requests = [];

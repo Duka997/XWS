@@ -48,8 +48,8 @@ public class OglasController {
         return this.oglasService.removeAdFromCart(id);
     }
 
-    @PostMapping(value = "/request")
-    public ResponseEntity<?> newRequests(@RequestBody KorpaDTO shoppingCart) {
-        return this.zahtjevZaIznajmljivanjeService.newRequests(shoppingCart);
+    @PostMapping(value = "/request/{userId}")
+    public ResponseEntity<?> newRequests(@PathVariable Long userId, @RequestBody KorpaDTO shoppingCart) {
+        return this.zahtjevZaIznajmljivanjeService.newRequests(shoppingCart, userId);
     }
 }

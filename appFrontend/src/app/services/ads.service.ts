@@ -28,8 +28,8 @@ import { ICart } from '../header/homepageUser/userCart/ICart';
         return this.http.post('http://localhost:8099/api/oglas/remove/'+id, {});
     }
 
-    rentACarRequest(cart: ICart): Observable<any> {
-        return this.http.post('http://localhost:8099/api/oglas/request/', cart);
+    rentACarRequest(cart: ICart, userId: any): Observable<any> {
+        return this.http.post('http://localhost:8099/api/oglas/request/'+userId, cart);
     }
 
   }

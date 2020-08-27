@@ -43,7 +43,7 @@ const routes: Routes = [
 
   { path: 'homepageAgent', component: HomepageAgentComponent,
     children: [
-      
+      { path: 'signup', component: SignupComponent }
     ]
   }, 
 ];

@@ -8,7 +8,7 @@ import { Oglas } from 'src/app/model/add';
     providedIn: 'root'
 })
 export class DodajOglasService{
-    _url = 'http://localhost:8099/api/oglasi/dodaj';
+    _url = 'http://localhost:8099/api/oglas/dodaj';
     _url2 = 'http://localhost:8099/api/vozilo/get';
    
 

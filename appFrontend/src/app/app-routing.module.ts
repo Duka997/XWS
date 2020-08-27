@@ -13,6 +13,8 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ListRequestComponent } from './components/list-request/list-request.component';
 
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
+import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 
 
 const routes: Routes = [
@@ -45,7 +47,11 @@ const routes: Routes = [
     children: [
       { path: 'signup', component: SignupComponent }
     ]
-  }, 
+  },
+
+  { path: 'homepageUser', component: HomepageUserComponent    },
+
+  { path: 'homepageUser/userCart', component: UserCartComponent  }, 
 ];
 
 @NgModule({

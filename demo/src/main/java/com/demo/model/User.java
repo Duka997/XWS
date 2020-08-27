@@ -1,5 +1,6 @@
 package com.demo.model;
 
+import com.demo.dto.UserDTO;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -97,6 +98,11 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
     private Collection<Privilege> privileges;
+
+    public User(UserDTO user) {
+        this.id = user.getId();
+        this.name = user.getName();
+    }
 
     @Override
     public Collection<Role> getAuthorities() {

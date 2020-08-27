@@ -12,8 +12,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 
-@CrossOrigin(value = "*")
 @RestController
+@CrossOrigin
 @Slf4j
 @RequestMapping(produces = "application/json")
 public class UserController {

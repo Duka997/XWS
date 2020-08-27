@@ -13,6 +13,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ListRequestComponent } from './components/list-request/list-request.component';
 
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 
@@ -34,11 +35,10 @@ const routes: Routes = [
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
-
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
-
       { path: 'addCar', component: AddCarComponent },
+      { path: 'addAdd', component: DodajOglasComponent },
 
     ]
   }, 

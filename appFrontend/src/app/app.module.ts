@@ -29,9 +29,10 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ListRequestComponent } from './components/list-request/list-request.component';
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
+import { SearchComponent } from './components/search/search.component';
+import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
-import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { RentRequestsComponent } from './header/homepage-agent/rent-requests/ren
     ListUsersComponent,
     ListRequestComponent,
     AddCarComponent,
+    SearchComponent,
     DodajOglasComponent,
   ],
   imports: [

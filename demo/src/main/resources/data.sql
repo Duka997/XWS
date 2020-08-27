@@ -63,5 +63,7 @@ insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzima
 values (5, '2020-08-03 21:58:58', true, '200', 'Banja Luka', '2020-07-03 21:58:58', null, 4, 5);
 
 insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 55, 55, 55, 10, 1);
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (2, 55, 55, 55, 10, 1);
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (3, 55, 55, 55, 10, 1);
 
 

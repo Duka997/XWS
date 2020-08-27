@@ -21,6 +21,15 @@ public class OglasDTO {
     public OglasDTO() {
     }
 
+    public OglasDTO(Oglas o) {
+        this.dostupan = o.isDostupan();
+        this.vozilo = new VoziloDTO(o.getVozilo());
+        this.mestoPreuzimanja = o.getMjestoPreuzimanja();
+        this.od = o.getOd();
+        this.doo = o.getDoo();
+      //  this.userId = o.get
+    }
+
     public Long getId() {
         return id;
     }

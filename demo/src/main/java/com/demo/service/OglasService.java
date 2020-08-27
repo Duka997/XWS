@@ -44,6 +44,11 @@ public class OglasService {
     @Autowired
     private CjenovnikRepository cjenovnikRepository;
 
+      @Autowired
+    private OglasUKorpiRepository oglasUKorpiRepository;
+
+
+
 
 
     public Oglas findById(Long id) {
@@ -72,16 +77,16 @@ public class OglasService {
 
     public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
         Vozilo vozilo = this.voziloService.findById(oglasDTO.getVozilo().getId());
-       // Cjenovnik cjenovnik = this.cjenovnikRepository.getOne(oglasDTO.getCjenovnikID());
-        //User user = userService.getUserById(oglasDTO.getUserId());
+         Cjenovnik cjenovnik = this.cjenovnikRepository.getOne(oglasDTO.getCjenovnikID());
+        User user = userService.getUserById(oglasDTO.getUserId());
 
-     //   Agent pom = agentService.findById(oglasDTO.getUserId());
-        //if(user.getImeKompanije() == null || user.getImeKompanije().equals("")){
-            System.out.println("null - agent je");
-           // if(user.getOglasi().size()>2){
-            //    return new ResponseEntity<>(HttpStatus.valueOf("Korisnik ne moze dodati vise od 3 oglasa"));
-           // }
-       // }
+        //   Agent pom = agentService.findById(oglasDTO.getUserId());
+        if(user.getImeKompanije() == null || user.getImeKompanije().equals("")){
+        System.out.println("null - agent je");
+        if(user.getOcjene().size()>2){
+            return new ResponseEntity<>(HttpStatus.valueOf("Korisnik ne moze dodati vise od 3 oglasa"));
+         }
+         }
 
         Oglas oglas = new Oglas();
         oglas.setVozilo(vozilo);
@@ -89,23 +94,21 @@ public class OglasService {
         oglas.setOd(oglasDTO.getOd());
         oglas.setDoo(oglasDTO.getDoo());
         oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
-       // oglas.setUser(user);
-       // oglas.setCjenovnik(cjenovnik);
+         oglas.setUser(user);
+         oglas.setCjenovnik(cjenovnik);
 
-     //   log.info("Sending soap request to oglas service");
-     //   TOglas tOglas = new TOglas();
-     //   try {
-    //        PostOglasResponse response = this.oglasClient.postOglas(tOglas);
-    //        log.info("Soap request successfully finished");
-  //      } catch (Exception e) {
-   //         e.printStackTrace();
-   //     }
+        //   log.info("Sending soap request to oglas service");
+        //   TOglas tOglas = new TOglas();
+        //   try {
+        //        PostOglasResponse response = this.oglasClient.postOglas(tOglas);
+        //        log.info("Soap request successfully finished");
+        //      } catch (Exception e) {
+        //         e.printStackTrace();
+        //     }
 
         this.oglasRepository.save(oglas);
         return new ResponseEntity<>(HttpStatus.CREATED);
-    private OglasUKorpiRepository oglasUKorpiRepository;
-
-    private ModelMapper modelMapper;
+    }
 
     public ResponseEntity<?> getAds() {
         List<Oglas> oglasi = this.oglasRepository.findAll();

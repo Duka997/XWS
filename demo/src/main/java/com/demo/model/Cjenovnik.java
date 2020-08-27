@@ -35,4 +35,52 @@ public class Cjenovnik {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getCijenaPoDanu() {
+        return cijenaPoDanu;
+    }
+
+    public void setCijenaPoDanu(double cijenaPoDanu) {
+        this.cijenaPoDanu = cijenaPoDanu;
+    }
+
+    public double getCijenaPoKM() {
+        return cijenaPoKM;
+    }
+
+    public void setCijenaPoKM(double cijenaPoKM) {
+        this.cijenaPoKM = cijenaPoKM;
+    }
+
+    public double getCijenaCDW() {
+        return cijenaCDW;
+    }
+
+    public void setCijenaCDW(double cijenaCDW) {
+        this.cijenaCDW = cijenaCDW;
+    }
+
+    public double getPopust() {
+        return popust;
+    }
+
+    public void setPopust(double popust) {
+        this.popust = popust;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

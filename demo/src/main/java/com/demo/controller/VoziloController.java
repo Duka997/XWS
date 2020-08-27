@@ -14,6 +14,7 @@ import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
 import java.util.List;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/vozilo")
 public class VoziloController {

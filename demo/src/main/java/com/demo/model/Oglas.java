@@ -47,9 +47,9 @@ public class Oglas {
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
-  /*  @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user; */
+    private User user;
 
     @OneToMany(mappedBy = "oglas")
     private Set<ZahtjevZaIznajmljivanje> zahtjevi;
@@ -60,9 +60,9 @@ public class Oglas {
     @OneToMany(mappedBy = "oglas")
     private Set<Ocjena> ocjene;
 
-   // @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name = "cjenovnik_id")
-    //private Cjenovnik cjenovnik;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cjenovnik_id")
+    private Cjenovnik cjenovnik;
 
     public Oglas() {
     }
@@ -77,6 +77,22 @@ public class Oglas {
 
     public boolean isDostupan() {
         return dostupan;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Cjenovnik getCjenovnik() {
+        return cjenovnik;
+    }
+
+    public void setCjenovnik(Cjenovnik cjenovnik) {
+        this.cjenovnik = cjenovnik;
     }
 
     public void setDostupan(boolean dostupan) {

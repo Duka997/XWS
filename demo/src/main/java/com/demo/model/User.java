@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.InheritanceType.JOINED;
@@ -69,8 +70,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<Vozilo> vozila;
 
-  //  @OneToMany(mappedBy = "user")
-  //  private Set<Oglas> oglasi;
+    @OneToMany(mappedBy = "user")
+    private Set<Oglas> oglasi;
 
     @OneToMany(mappedBy = "user")
     private Set<Cjenovnik> cjenovnici;
@@ -303,5 +304,13 @@ public class User implements UserDetails {
 
     public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
+    }
+
+    public Set<Oglas> getOglasi() {
+        return oglasi;
+    }
+
+    public void setOglasi(Set<Oglas> oglasi) {
+        this.oglasi = oglasi;
     }
 }

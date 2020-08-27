@@ -28,7 +28,7 @@ export class DodajOglasComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.oglas.userId = parseInt(localStorage.getItem(USER_ID_KEY));
+    this.oglas.userId = parseInt(localStorage.getItem("id"));
 
     this._oglasService.getVozila().subscribe(
       data => {
@@ -38,7 +38,7 @@ export class DodajOglasComponent implements OnInit {
       error=> console.error('Error!', error)
     )
     
-    this.cjenovnikService.getCjenovnik(localStorage.getItem("user-username-key")).subscribe(
+    this.cjenovnikService.getCjenovnik(localStorage.getItem("id")).subscribe(
       data => {
         this.cjenovnici = data;
       },

@@ -9,7 +9,6 @@ import org.joda.time.DateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class OglasDTO {
 
@@ -19,10 +18,10 @@ public class OglasDTO {
     private String mestoPreuzimanja;
     private DateTime od;
     private DateTime doo;
-    private VoziloDTO vozilo;
     private UserDTO user;
     private Integer pages;
     private CjenovnikDTO cjenovnik;
+    private double dozvoljenaKilometraza;
     //private Set<ZahtjevZaIznajmljivanjeDTO> zahtjevi;
     //private Set<KomentarDTO> komentari;
     //private Set<OcjenaDTO> ocjene;

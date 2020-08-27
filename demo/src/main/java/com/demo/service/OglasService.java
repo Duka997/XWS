@@ -37,8 +37,6 @@ public class OglasService {
     private OglasRepository oglasRepository;
 
     @Autowired
-
-    @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
@@ -219,26 +217,12 @@ public class OglasService {
         return Sort.by(Sort.Direction.ASC, "od");
     }
 
-    public ResponseEntity<?> pretraziMjesta() {
-        List<String> mjesta = new ArrayList<>();
-        List<Oglas> oglasi = this.oglasRepository.findAll();
-
-        for(Oglas o: oglasi){
-            if(mjesta.contains(o.getMjestoPreuzimanja()))
-                continue;
-
-            mjesta.add(o.getMjestoPreuzimanja());
-        }
-
-        return new ResponseEntity<>(mjesta, HttpStatus.OK);
-    }
-
     public ResponseEntity<?> getOneOglasById(Long id) {
         Oglas oglas = this.oglasRepository.getOne(id);
         OglasDTO oglasDTO = new OglasDTO();
         oglasDTO.setOd(oglas.getOd());
         oglasDTO.setDoo(oglas.getDoo());
-        oglasDTO.setMjestoPreuzimanja(oglas.getMjestoPreuzimanja());
+        oglasDTO.setMestoPreuzimanja(oglas.getMjestoPreuzimanja());
         oglasDTO.setCjenovnik(modelMapper.map(oglas.getCjenovnik(), CjenovnikDTO.class));
         oglasDTO.setDozvoljenaKilometraza(oglas.getDozvoljenaKilometraza());
         oglasDTO.setId(oglas.getId());

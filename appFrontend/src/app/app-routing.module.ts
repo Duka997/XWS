@@ -49,9 +49,15 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'homepageUser', component: HomepageUserComponent    },
-
+  { path: 'homepageUser', component: HomepageUserComponent ,
+    children: [
+      //{ path: 'addAdd', component: DodajOglasComponent },
+      { path: 'userAd', component: DodajOglasComponent  },
+  ]
+  },
+  { path: 'homepageUser/addAdd', component:  DodajOglasComponent},
   { path: 'homepageUser/userCart', component: UserCartComponent  }, 
+  { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  }
 ];
 
 @NgModule({

@@ -22,6 +22,6 @@ public class BundleZahtjev {
     @Enumerated(value = EnumType.STRING)
     private StatusZahtjeva statusZahtjeva;
 
-    @OneToMany(mappedBy = "bundle", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bundle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<ZahtjevZaIznajmljivanje> zahtjevi;
 }

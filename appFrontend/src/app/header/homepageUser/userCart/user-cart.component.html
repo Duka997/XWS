@@ -1,0 +1,63 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+       <ul class="navbar-nav mr-auto">
+            <li> <a class="nav-link" [routerLink]="['userMessages']">Messages</a> </li>
+            <li> <a class="nav-link" [routerLink]="['userAd']">Add an ad</a> </li>
+       </ul>
+
+       <ul class="navbar-nav mr-right" style="float: right;">
+         <li class="nav-item">
+            <button
+               class="btn btn-outline-danger my-2 my-sm-0"
+               (click)="logout()"
+               type="submit"
+            >
+               Logout
+            </button>
+         </li>
+      </ul>
+    </nav>
+
+    <button type="button" class="btn btn-success" (click)="submitBunddle()">Submit bunddle</button>
+    <table class="ui celled striped table">
+        <thead>
+          <th>Ad ID</th>
+          <th>Vehicle ID</th>
+          <th>Single request</th>
+          <th>Bundle</th>
+          <th>Rent</th>
+          <th>Remove</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let oglas of ads">
+              
+              <td>
+                  {{ oglas.id }}
+              </td>
+
+              <td>
+                {{ oglas.vozilo.id }}
+            </td>
+
+            <td>
+              <button type="button" class="btn btn-success" (click)="addToRequest(oglas)">Single request</button>
+            </td>
+
+            <td>
+              <button type="button" class="btn btn-success" (click)="addToBundle(oglas)">Add to bunddle</button>
+            </td>
+  
+            <td>
+              <button type="button" class="btn btn-success" (click)="rentACar(oglas)">Rent</button>
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-danger" (click)="removeFromCart(oglas.id)">Remove</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-success" (click)="sendRequest()">Send request</button>
+
+ </div>

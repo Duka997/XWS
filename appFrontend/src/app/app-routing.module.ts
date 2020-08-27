@@ -14,6 +14,8 @@ import { ListRequestComponent } from './components/list-request/list-request.com
 
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
+import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
+import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 
 
 const routes: Routes = [
@@ -43,9 +45,13 @@ const routes: Routes = [
 
   { path: 'homepageAgent', component: HomepageAgentComponent,
     children: [
-      
+      { path: 'signup', component: SignupComponent }
     ]
-  }, 
+  },
+
+  { path: 'homepageUser', component: HomepageUserComponent    },
+
+  { path: 'homepageUser/userCart', component: UserCartComponent  }, 
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 package com.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.demo.dto.VoziloDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +39,8 @@ public class Vozilo {
     @Column
     private double ocjena;
 
+    @Column
+    private boolean bundle;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "markaAutomobila_id")
@@ -79,6 +81,26 @@ public class Vozilo {
     private Set<Slika> slike;
 
     public Vozilo() {
+    }
+
+    public Vozilo(VoziloDTO vozilo) {
+        this.id = vozilo.getId();
+        this.cijena = vozilo.getCijena();
+        this.brSjedistaZaDjecu = vozilo.getBrSjedistaZaDjecu();
+        this.bundle = vozilo.isBundle();
+        this.coliisionDamageWavier = vozilo.isColiisionDamageWavier();
+        this.imaAndroid = vozilo.getImaAndroid();
+        this.kilometraza = vozilo.getKilometraza();
+        this.mozePreciKM = vozilo.getMozePreciKM();
+        this.bundle = vozilo.isBundle();
+    }
+
+    public boolean isBundle() {
+        return bundle;
+    }
+
+    public void setBundle(boolean bundle) {
+        this.bundle = bundle;
     }
 
     public Long getId() {

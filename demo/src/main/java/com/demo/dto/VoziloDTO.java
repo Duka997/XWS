@@ -20,10 +20,34 @@ public class VoziloDTO {
     private boolean coliisionDamageWavier;
     private UserDTO agent;
     private List<String> slike;
+    private boolean bundle;
 
     public VoziloDTO() {
     }
 
+    public VoziloDTO(Vozilo v) {
+        this.id = v.getId();
+        this.cijena = v.getCijena();
+        this.brSjedistaZaDjecu = v.getBrSjedistaZaDjecu();
+        this.kilometraza = v.getKilometraza();
+        this.agent = new UserDTO(v.getUser());
+        /*this.markaAutomobila = new MarkaAutomobilaDTO(v.getMarkaAutomobila());
+        this.klasaAutomobila = new KlasaAutomobilaDTO(v.getKlasaAutomobila());
+        this.tipGoriva = new TipGorivaDTO(v.getTipGoriva());
+        this.tipMjenjaca = new TipMjenjacaDTO(v.getTipMjenjaca());*/
+        this.mozePreciKM = v.getMozePreciKM();
+        this.imaAndroid = v.isImaAndroid();
+        this.coliisionDamageWavier = v.isColiisionDamageWavier();
+        this.bundle = v.isBundle();
+    }
+
+    public boolean isBundle() {
+        return bundle;
+    }
+
+    public void setBundle(boolean bundle) {
+        this.bundle = bundle;
+    }
 
     public Long getId() {
         return id;

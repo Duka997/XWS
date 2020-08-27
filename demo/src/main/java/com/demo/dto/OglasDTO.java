@@ -2,6 +2,11 @@ package com.demo.dto;
 
 import org.joda.time.DateTime;
 
+import com.demo.model.*;
+import org.joda.time.DateTime;
+
+import java.util.Set;
+
 public class OglasDTO {
 
     private Long id;

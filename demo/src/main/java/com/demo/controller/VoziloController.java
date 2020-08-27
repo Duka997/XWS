@@ -14,6 +14,7 @@ import java.nio.file.AccessDeniedException;
 import java.sql.SQLException;
 import java.util.List;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/vozilo")
 public class VoziloController {
@@ -26,8 +27,8 @@ public class VoziloController {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")
-    public List<Vozilo> loadAll() {
-        return this.voziloService.findAll();
+    public ResponseEntity<?> findAllVozila() throws AccessDeniedException {
+        return this.voziloService.findAllVozila();
     }
 
 }

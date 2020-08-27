@@ -52,6 +52,7 @@ public class VoziloService {
             vozilaDTO.add(voziloDTO);
         }
 
+
         return new ResponseEntity<>(vozilaDTO, HttpStatus.OK);
     }
 

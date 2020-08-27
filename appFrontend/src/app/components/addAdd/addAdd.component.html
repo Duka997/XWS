@@ -1,0 +1,45 @@
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>New ad:</legend>
+
+     <div>
+      <label  class="col-form-label" for="inputDefault">Available:</label>
+      <input type="checkbox"  class="form-control" id="Dostupan" name="Dostupan"  [(ngModel)]="oglas.dostupan" />
+    </div>
+
+    <div>
+        <label  class="col-form-label" for="inputDefault">Car: </label>
+          <select class="form-control" id="vozilo"  [(ngModel)]="oglas.vozilo" name="vozilo" >
+            <option [ngValue]="null">Choose</option>
+            <option *ngFor = 'let c of vozila' name="vozilo1" [ngValue]="c">{{c.markaAutomobila.nazivMarke}} {{c.klasaAutomobila.naziv}}</option>
+          </select>
+    </div>
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Price list: </label>
+        <select class="form-control" id="cjenovnik"  [(ngModel)]="oglas.cjenovnikID" name="cjenovnik" >
+          <option [ngValue]="null">Choose</option>
+          <option *ngFor = 'let c of cjenovnici' name="cjenovnik" [ngValue]="c.id">{{c.cijenaPoDanu}}€/poDanu - {{c.cijenaPoKM}}€/poKilometru</option>
+        </select>
+  </div>
+
+    <div>
+      <label  class="col-form-label" for="inputDefault">Pick-up location:</label>
+      <input type="text" class="form-control" name="mestoPreuzimanja" id="mestoPreuzimanja" [(ngModel)]="oglas.mestoPreuzimanja"/>
+    </div>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Free from:</label>
+      <input type="datetime"  class="form-control" id="fromDate" name="fromDate" [(ngModel)]="oglas.od"/>
+    </div>
+    
+    <div>
+        <label  class="col-form-label" for="inputDefault">Free to:</label>
+        <input type="datetime"  class="form-control" id="ff" name="fff" [(ngModel)]="oglas.doo"/>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</fieldset>       
+</form>

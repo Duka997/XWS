@@ -1,5 +1,7 @@
 package com.demo.dto;
 
+import org.joda.time.DateTime;
+
 import com.demo.model.*;
 import org.joda.time.DateTime;
 
@@ -9,45 +11,24 @@ public class OglasDTO {
 
     private Long id;
     private boolean dostupan;
-    private String mjestoPreuzimanja;
-    private double dozvoljenaKilometraza;
+    private VoziloDTO vozilo;
+    private String mestoPreuzimanja;
     private DateTime od;
     private DateTime doo;
-    private VoziloDTO vozilo;
-    private UserDTO user;
-    //private Set<ZahtjevZaIznajmljivanjeDTO> zahtjevi;
-    //private Set<KomentarDTO> komentari;
-    //private Set<OcjenaDTO> ocjene;
-    //private CjenovnikDTO cjenovnik;
+    private Long userId;
+    private Long cjenovnikID;
 
-    public OglasDTO(Long id, boolean dostupan, String mjestoPreuzimanja, double dozvoljenaKilometraza, DateTime od, DateTime doo, VoziloDTO vozilo, UserDTO user/*, Set<ZahtjevZaIznajmljivanje> zahtjevi, Set<Komentar> komentari, Set<Ocjena> ocjene, Cjenovnik cjenovnik*/) {
-        this.id = id;
-        this.dostupan = dostupan;
-        this.mjestoPreuzimanja = mjestoPreuzimanja;
-        this.dozvoljenaKilometraza = dozvoljenaKilometraza;
-        this.od = od;
-        this.doo = doo;
-        this.vozilo = vozilo;
-        this.user = user;
-        /*this.zahtjevi = zahtjevi;
-        this.komentari = komentari;
-        this.ocjene = ocjene;
-        this.cjenovnik = cjenovnik;*/
+    public OglasDTO() {
     }
 
-    public OglasDTO(Oglas oglas) {
-        this.id = oglas.getId();
-        this.dostupan = oglas.isDostupan();
-        this.mjestoPreuzimanja = oglas.getMjestoPreuzimanja();
-        this.dozvoljenaKilometraza = oglas.getDozvoljenaKilometraza();
-        this.od = oglas.getOd();
-        this.doo = oglas.getDoo();
-        this.vozilo = new VoziloDTO(oglas.getVozilo());
-        this.user = new UserDTO(oglas.getUser());
-        /*this.zahtjevi = oglas.getZahtjevi();
-        this.komentari = oglas.getKomentari();
-        this.ocjene = oglas.getOcjene();
-        this.cjenovnik = oglas.getCjenovnik();*/
+    public OglasDTO(Oglas o) {
+        this.dostupan = o.isDostupan();
+        this.vozilo = new VoziloDTO(o.getVozilo());
+        this.mestoPreuzimanja = o.getMjestoPreuzimanja();
+        this.od = o.getOd();
+        this.doo = o.getDoo();
+        this.userId = o.getUser().getId();
+        this.id = o.getId();
     }
 
     public Long getId() {
@@ -66,20 +47,20 @@ public class OglasDTO {
         this.dostupan = dostupan;
     }
 
-    public String getMjestoPreuzimanja() {
-        return mjestoPreuzimanja;
+    public VoziloDTO getVozilo() {
+        return vozilo;
     }
 
-    public void setMjestoPreuzimanja(String mjestoPreuzimanja) {
-        this.mjestoPreuzimanja = mjestoPreuzimanja;
+    public void setVozilo(VoziloDTO vozilo) {
+        this.vozilo = vozilo;
     }
 
-    public double getDozvoljenaKilometraza() {
-        return dozvoljenaKilometraza;
+    public String getMestoPreuzimanja() {
+        return mestoPreuzimanja;
     }
 
-    public void setDozvoljenaKilometraza(double dozvoljenaKilometraza) {
-        this.dozvoljenaKilometraza = dozvoljenaKilometraza;
+    public void setMestoPreuzimanja(String mestoPreuzimanja) {
+        this.mestoPreuzimanja = mestoPreuzimanja;
     }
 
     public DateTime getOd() {
@@ -98,51 +79,19 @@ public class OglasDTO {
         this.doo = doo;
     }
 
-    public VoziloDTO getVozilo() {
-        return vozilo;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setVozilo(VoziloDTO vozilo) {
-        this.vozilo = vozilo;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public UserDTO getUser() {
-        return user;
+    public Long getCjenovnikID() {
+        return cjenovnikID;
     }
 
-    public void setUser(UserDTO user) {
-        this.user = user;
+    public void setCjenovnikID(Long cjenovnikID) {
+        this.cjenovnikID = cjenovnikID;
     }
-/*
-    public Set<ZahtjevZaIznajmljivanje> getZahtjevi() {
-        return zahtjevi;
-    }
-
-    public void setZahtjevi(Set<ZahtjevZaIznajmljivanje> zahtjevi) {
-        this.zahtjevi = zahtjevi;
-    }
-
-    public Set<Komentar> getKomentari() {
-        return komentari;
-    }
-
-    public void setKomentari(Set<Komentar> komentari) {
-        this.komentari = komentari;
-    }
-
-    public Set<Ocjena> getOcjene() {
-        return ocjene;
-    }
-
-    public void setOcjene(Set<Ocjena> ocjene) {
-        this.ocjene = ocjene;
-    }
-
-    public Cjenovnik getCjenovnik() {
-        return cjenovnik;
-    }
-
-    public void setCjenovnik(Cjenovnik cjenovnik) {
-        this.cjenovnik = cjenovnik;
-    }*/
 }

@@ -21,7 +21,7 @@ public class OglasUKorpiDTO {
     private DateTime od;
     private DateTime doo;
     private VoziloDTO vozilo;
-    private UserDTO user;
+    private Long userId;
     //private Set<ZahtjevZaIznajmljivanjeDTO> zahtjevi;
     //private Set<KomentarDTO> komentari;
     //private Set<OcjenaDTO> ocjene;
@@ -37,7 +37,7 @@ public class OglasUKorpiDTO {
         this.od = o.getOd();
         this.doo = o.getDoo();
         this.vozilo = new VoziloDTO(o.getVozilo());
-        this.user = new UserDTO(o.getUser());
+        this.userId = o.getUserId();
         this.userCartId = o.getUserCartId();
         this.adId = o.getAdId();
     }

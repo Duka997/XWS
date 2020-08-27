@@ -24,6 +24,7 @@ public class VoziloDTO {
 
     public VoziloDTO() {
     }
+
     public VoziloDTO(Vozilo v) {
         this.id = v.getId();
         this.cijena = v.getCijena();

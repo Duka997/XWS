@@ -28,6 +28,7 @@ import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { ListRequestComponent } from './components/list-request/list-request.component';
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
@@ -51,6 +52,7 @@ import { RentRequestsComponent } from './header/homepage-agent/rent-requests/ren
     ListUsersComponent,
     ListRequestComponent,
     AddCarComponent,
+    DodajOglasComponent,
   ],
   imports: [
     HttpClientModule,

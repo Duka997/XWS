@@ -1,40 +1,15 @@
-package com.demo.model;
+package com.demo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+public class CjenovnikDTO {
+        private Long id;
+        private double cijenaPoDanu;
+        private double cijenaPoKM;
+        private double cijenaCDW;
+        private double popust;
+        private String userUsername;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Cjenovnik {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column
-    private double cijenaPoDanu;
-
-    @Column
-    private double cijenaPoKM;
-
-    @Column
-    private double cijenaCDW;
-
-    @Column
-    private double popust;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    public CjenovnikDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -76,11 +51,11 @@ public class Cjenovnik {
         this.popust = popust;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserUsername() {
+        return userUsername;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserUsername(String userUsername) {
+        this.userUsername = userUsername;
     }
 }

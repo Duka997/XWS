@@ -38,10 +38,14 @@ values (2, null, null, null, '5', '2400', true, true, '150000', '110', '1', null
 insert into `vozilo` (id, slika, info, tip, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, vozilo_id, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
 values (3, null, null, null, '3', '1000', false, false, '220000', '100', '3', null, 1, 1, 1, 2, 3, false);
 
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 55, 55, 55, 10, 1);
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (2, 55, 55, 55, 10, 1);
+insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (3, 55, 55, 55, 10, 1);
+
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (1, '2020-05-06 21:58:58', true, '200', 'Novi Sad', '2020-05-01 21:58:58', null, 1, 1);
+values (1, '2020-09-25 21:58:58', true, '200', 'Novi Sad', '2020-09-01 21:58:58', 1, 1, 1);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (2, '2020-07-02 21:58:58', true, '200', 'Beograd', '2020-06-02 21:58:58', null, 1, 3);
+values (2, '2020-09-08 21:58:58', true, '200', 'Beograd', '2020-09-05 21:58:58', 2, 1, 3);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (3, '2020-08-03 21:58:58', true, '200', 'Banja Luka', '2020-07-03 21:58:58', null, 1, 2);
+values (3, '2020-09-10 21:58:58', true, '200', 'Banja Luka', '2020-09-06 21:58:58', 3, 1, 2);
 

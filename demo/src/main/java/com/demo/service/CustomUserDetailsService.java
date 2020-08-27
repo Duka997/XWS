@@ -158,7 +158,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         return ResponseEntity.ok(new UserTokenState(jwt, expiresIn, username, refresh, role, id));
     }
 
-    private User getUserById(Long userId) {
+    public User getUserById(Long userId) {
         return this.userRepository.findById(userId).orElseThrow(() -> new NotFoundException("User with given id was not found."));
     }
 

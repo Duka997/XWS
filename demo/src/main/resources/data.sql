@@ -49,3 +49,12 @@ values (2, '2020-09-08 21:58:58', true, '200', 'Beograd', '2020-09-05 21:58:58',
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (3, '2020-09-10 21:58:58', true, '200', 'Banja Luka', '2020-09-06 21:58:58', 3, 1, 2);
 
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (1, '0', '1200', false, true, '120000', '100', '4', 2, 1,1,1, false);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (2, '2', '2200', true, true, '150000', '200', '3',  1, 1,2,2, false);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena,  marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (3, '0', '2150', false, false, '250000', '600', '5',  3, 3,2,3, false);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena , marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (4, '1', '2250', true, true, '15000', '150', '5',  1, 3,3,3, false);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (5, '3', '1000', true, true, '15510', '121', '4',  1, 3,3,3, false);
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (6, '1', '600', false, false, '270000', '500', '2', 2, 2,1,3 , false );
+INSERT INTO `vozilo` (id, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, marka_automobila_id, klasa_automobila_id, tip_goriva_id, tip_mjenjaca_id, bundle) VALUES (7, '0', '5000', false, true, '10000', '1000', '5', 3, 2,1,1, false );
+
+

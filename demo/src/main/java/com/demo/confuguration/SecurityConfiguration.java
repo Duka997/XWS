@@ -98,9 +98,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(HttpMethod.POST, "/api/tipgoriva/dodaj");
         web.ignoring().antMatchers(HttpMethod.POST, "/api/vozilo/dodaj");
         web.ignoring().antMatchers(HttpMethod.GET, "/api/marka/get");
+        web.ignoring().antMatchers(HttpMethod.DELETE, "/api/marka/delete/{id}");
+        web.ignoring().antMatchers(HttpMethod.PUT, "/api/marka/edit");
         web.ignoring().antMatchers(HttpMethod.GET, "/api/klasa/get");
+        web.ignoring().antMatchers(HttpMethod.DELETE, "/api/klasa/delete/{id}");
+        web.ignoring().antMatchers(HttpMethod.PUT, "/api/klasa/edit");
         web.ignoring().antMatchers(HttpMethod.GET, "/api/tipmjenjaca/get");
+        web.ignoring().antMatchers(HttpMethod.DELETE, "/api/tipmjenjaca/delete/{id}");
+        web.ignoring().antMatchers(HttpMethod.PUT, "/api/tipmjenjaca/edit");
         web.ignoring().antMatchers(HttpMethod.GET, "/api/tipgoriva/get");
+        web.ignoring().antMatchers(HttpMethod.DELETE, "/api/tipgoriva/delete/{id}");
+        web.ignoring().antMatchers(HttpMethod.PUT, "/api/tipgoriva/edit");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/oglasi/dodaj");
+        web.ignoring().antMatchers(HttpMethod.GET, "/api/vozilo/get");
+        web.ignoring().antMatchers(HttpMethod.GET, "/api/cjenovnik/getCjenovnik/{id}");
+
 
     }
 }

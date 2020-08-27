@@ -1,6 +1,5 @@
 package com.demo.controller;
 
-
 import com.demo.dto.KorpaDTO;
 import com.demo.dto.OglasDTO;
 import com.demo.dto.OglasUKorpiDTO;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/oglas")
 public class OglasController {
@@ -24,8 +24,15 @@ public class OglasController {
 
     @Autowired
     private ZahtjevZaIznajmljivanjeService zahtjevZaIznajmljivanjeService;
+    
 
     private ModelMapper modelMapper;
+
+    
+    @PostMapping("/dodaj")
+    public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+        return this.oglasService.noviOglas(oglasDTO);
+    }
 
     @GetMapping(value = "/get")
     public ResponseEntity<?> getAds() {
@@ -69,3 +76,4 @@ public class OglasController {
         return this.oglasService.getOneOglasById(id);
     }
 }
+

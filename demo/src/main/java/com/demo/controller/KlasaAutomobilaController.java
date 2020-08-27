@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/klasa")
 public class KlasaAutomobilaController {
@@ -40,13 +41,11 @@ public class KlasaAutomobilaController {
 
 
     @PutMapping("/edit")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<KlasaAutomobila> edit(@RequestBody KlasaAutomobilaDTO klasaAutomobilaDTO) throws AccessDeniedException {
         return new ResponseEntity<>(this.klasaAutomobilaService.edit(klasaAutomobilaDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity delete(@PathVariable Long id) throws AccessDeniedException {
         klasaAutomobilaService.delete(id);
         return ResponseEntity.ok().build();

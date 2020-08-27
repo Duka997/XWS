@@ -13,6 +13,7 @@ import { ListUsersComponent } from './components/list-users/list-users.component
 import { ListRequestComponent } from './components/list-request/list-request.component';
 
 import { AddCarComponent } from './components/addCar/addCar.component';
+import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
@@ -36,11 +37,10 @@ const routes: Routes = [
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
-
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
-
       { path: 'addCar', component: AddCarComponent },
+      { path: 'addAdd', component: DodajOglasComponent },
 
     ]
   }, 
@@ -52,9 +52,15 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'homepageUser', component: HomepageUserComponent    },
-
+  { path: 'homepageUser', component: HomepageUserComponent ,
+    children: [
+      //{ path: 'addAdd', component: DodajOglasComponent },
+      { path: 'userAd', component: DodajOglasComponent  },
+  ]
+  },
+  { path: 'homepageUser/addAdd', component:  DodajOglasComponent},
   { path: 'homepageUser/userCart', component: UserCartComponent  }, 
+  { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  }
 ];
 
 @NgModule({

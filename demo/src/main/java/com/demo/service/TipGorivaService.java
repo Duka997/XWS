@@ -66,7 +66,9 @@ public class TipGorivaService {
         List<TipGorivaDTO> vrstaGorivaDTOS = new ArrayList<>();
 
         for(TipGoriva t: result){
-            vrstaGorivaDTOS.add(modelMapper.map(t, TipGorivaDTO.class));
+            if(t.isObrisan()==false) {
+                vrstaGorivaDTOS.add(modelMapper.map(t, TipGorivaDTO.class));
+            }
         }
 
         return new ResponseEntity<>(vrstaGorivaDTOS, HttpStatus.OK);

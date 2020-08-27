@@ -31,20 +31,20 @@ public class OglasController {
         return this.oglasService.getAds();
     }
 
-    @PostMapping("/dodajUKorpu")
+    @PostMapping("/dodajUKorpu/{userId}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity add(@RequestBody OglasUKorpiDTO oglasUKorpiDTO) {
-        oglasService.saveInCart(oglasUKorpiDTO);
+    public ResponseEntity add(@RequestBody OglasUKorpiDTO oglasUKorpiDTO, @PathVariable Long userId) {
+        oglasService.saveInCart(oglasUKorpiDTO, userId);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/getCartAds")
-    public ResponseEntity<?> getCartAds() {
-        return this.oglasService.getCartAds();
+    @GetMapping(value = "/getCartAds/{userId}")
+    public ResponseEntity<?> getCartAds(@PathVariable Long userId) {
+        return this.oglasService.getCartAds(userId);
     }
 
     @PostMapping(value = "/remove/{id}")
-    public ResponseEntity<?> rejectRequest(@PathVariable Long id) {
+    public ResponseEntity<?> removeAdFromCart(@PathVariable Long id) {
         return this.oglasService.removeAdFromCart(id);
     }
 

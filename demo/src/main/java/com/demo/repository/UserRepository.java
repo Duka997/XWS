@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+    User findUserById(Long id);
     List<User> findByLastPasswordResetDate(Timestamp lastPasswordResetDate);
 
     List<User> findAllByDeleted(boolean b);

@@ -69,4 +69,7 @@ public class OglasUKorpi {
 
     @Column
     private Long userCartId;    //id usera kod kog se nalazi oglas
+
+    @Column
+    private Long AdId;
 }

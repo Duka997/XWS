@@ -13,14 +13,14 @@ public class Slika {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition="LONGBLOB")
+    @Column(name = "info")
     private String info;
 
-    @Column(columnDefinition="LONGBLOB")
+    @Column(name = "type")
     private String tip;
 
     @Lob
-    @Column(name = "slika", columnDefinition="LONGBLOB")
+    @Column(name = "slika", columnDefinition="BLOB")
     private Blob image;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,6 +32,14 @@ public class Slika {
 
     public Long getId() {
         return id;
+    }
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
     }
 
     public void setId(Long id) {
@@ -46,13 +54,7 @@ public class Slika {
         this.info = info;
     }
 
-    public String getTip() {
-        return tip;
-    }
 
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
 
     public Blob getImage() {
         return image;

@@ -39,4 +39,9 @@ public class UserService {
         // or add username field to user class and find it directly here
         return getUserById(1L);
     }
+
+    public User findByUsername(String userUsername) {
+        User u = userRepository.findByUsername(userUsername);
+        return u;
+    }
 }

@@ -18,6 +18,7 @@ import { RentRequestsComponent } from './header/homepage-agent/rent-requests/ren
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
+import { PriceListComponent } from './components/price-list/price-list.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
     children: [
       { path: 'signup', component: SignupComponent },
       { path: 'search', component: SearchComponent },
+      { path: 'pricelist', component: PriceListComponent },
     ]
   },
   { path: 'homepageAgent/requests', component: RentRequestsComponent},

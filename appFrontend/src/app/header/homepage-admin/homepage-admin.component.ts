@@ -55,7 +55,7 @@ export class HomepageAdminComponent implements OnInit {
     localStorage.removeItem("user-role");
     localStorage.removeItem("refresh-token");
     localStorage.removeItem("id");
-    this.router.navigate(['homepageAdmin']);
+    this.router.navigate(['homepage']);
   }
 
   private getAllMarkaAutomobila(): void{

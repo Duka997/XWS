@@ -41,4 +41,45 @@ public class CjenovnikService {
         return new ResponseEntity<>(cjenovnikDTOS, HttpStatus.OK);
     }
 
+    public ResponseEntity<?> dodajCjenovnik(CjenovnikDTO cjenovnikDTO) {
+
+        Cjenovnik cjenovnik = modelMapper.map(cjenovnikDTO, Cjenovnik.class);
+        User user = this.userService.findByUsername(cjenovnikDTO.getUserUsername());
+        cjenovnik.setUser(user);
+
+        this.cjenovnikRepository.save(cjenovnik);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> izmjeniCjenovnik(CjenovnikDTO cjenovnikDTO) {
+
+        Cjenovnik cjenovnik = this.cjenovnikRepository.getOne(cjenovnikDTO.getId());
+
+        cjenovnik.setId(cjenovnikDTO.getId());
+        cjenovnik.setCijenaPoDanu(cjenovnikDTO.getCijenaPoDanu());
+        cjenovnik.setCijenaPoKM(cjenovnikDTO.getCijenaPoKM());
+        cjenovnik.setCijenaCDW(cjenovnikDTO.getCijenaCDW());
+        cjenovnik.setPopust(cjenovnikDTO.getPopust());
+
+        this.cjenovnikRepository.save(cjenovnik);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getCjenovnikUsername(String username) {
+
+        List<Cjenovnik> cjenovnici = this.cjenovnikRepository.findAllByUserUsername(username);
+        List<CjenovnikDTO> cjenovnikDTOS = new ArrayList<>();
+
+        for(Cjenovnik c: cjenovnici){
+            CjenovnikDTO cjenovnikDTO = modelMapper.map(c, CjenovnikDTO.class);
+            cjenovnikDTO.setUserUsername(c.getUser().getUsername());
+
+            cjenovnikDTOS.add(cjenovnikDTO);
+        }
+
+        return new ResponseEntity<>(cjenovnikDTOS,HttpStatus.OK);
+    }
+
 }

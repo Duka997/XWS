@@ -21,8 +21,6 @@ import { IBundle } from './IBundle';
     bundles: IBundle[] = [];
     bundles2: IRentRequest[] = [];
 
-    max3: any = 0;
-
     constructor(private adsService: AdsService,
         private toastr: ToastrService,
         private router: Router) { }
@@ -80,15 +78,14 @@ import { IBundle } from './IBundle';
         bundleId: oglas.bundleId
       };
       this.bundles2.push(rentRequest);
-      this.max3++;
       console.log("Svi bundle zahtevi: ", this.bundles2);
     }
 
     submitBunddle() {
-      if(this.max3 > 3) {
+      console.log("bundles2 lenght: ",this.bundles2.length);
+      if(this.bundles2.length > 3) {
         alert("3 vehicles is max");
-        this.max3 = 0;
-        this.bundles = [];
+        this.bundles2 = [];
       } else {
         let bundle: IBundle = {
           requests: []
@@ -96,9 +93,8 @@ import { IBundle } from './IBundle';
         this.bundles2.forEach(element => {
           bundle.requests.push(this.createRentRequest(element));
         });
-        console.log("asd", bundle);
+        console.log("bundle", bundle);
         this.bundles.push(bundle);
-        this.max3 = 0;
         this.bundles2 = [];
       }
       
@@ -121,7 +117,7 @@ import { IBundle } from './IBundle';
         requests: this.requests,
         bundles: this.bundles
       }
-      console.log("gds:", cart);
+      console.log("cart: ", cart);
       var userId = parseInt(localStorage.getItem('id'));
       this.adsService.rentACarRequest(cart, userId).subscribe(() => {
         console.log("user id:", userId);

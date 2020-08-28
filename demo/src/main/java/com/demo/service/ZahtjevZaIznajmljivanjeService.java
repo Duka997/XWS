@@ -149,6 +149,13 @@ public class ZahtjevZaIznajmljivanjeService {
         if (!request.getStatus().equals(StatusZahtjeva.PENDING))
             throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + request.getStatus());
 
+        List<ZahtjevZaIznajmljivanje> requests2 = zahtjevZaIznajmljivanjeRepository.findAll();
+        for(ZahtjevZaIznajmljivanje req: requests2) {
+            if (req.getOglas().getId() == request.getOglas().getId() && !req.getStatus().equals(StatusZahtjeva.PENDING)) {
+                throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + req.getStatus());
+            }
+        }
+
         request.setStatus(StatusZahtjeva.RESERVED);
         request.setStatus(StatusZahtjeva.PAID);
 

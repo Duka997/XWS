@@ -31,4 +31,9 @@ public class VoziloController {
         return this.voziloService.findAllVozila();
     }
 
+    @GetMapping(value = "/statistics/{ownersID}")
+    public ResponseEntity<?> getStatistics(@PathVariable Long ownersID){
+        return voziloService.getCarStatistics(ownersID);
+    }
+
 }

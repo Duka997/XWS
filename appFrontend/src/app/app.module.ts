@@ -32,6 +32,7 @@ import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
+import { PriceListComponent } from './components/price-list/price-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SearchComponent } from './components/search/search.component';
     AddCarComponent,
     SearchComponent,
     DodajOglasComponent,
+    PriceListComponent,
   ],
   imports: [
     HttpClientModule,

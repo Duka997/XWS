@@ -10,6 +10,7 @@ import {PorukaService} from '../../services/poruka.service';
   export class Inbox implements OnInit {
   
     public poruke : Poruka[];
+    po =  new Poruka(null,null,null,null);
 
     
   
@@ -25,5 +26,12 @@ import {PorukaService} from '../../services/poruka.service';
         )
       }
   
+      odgovori(posiljalacId:any){
+        var userId = parseInt(localStorage.getItem('id'));
+        this.po.posiljalacId = userId;
+        this.po.primalacId = posiljalacId;
+        localStorage.setItem("primalac", posiljalacId);
+        this.router.navigate(['homepageAgent/inbox/reply']);
+      }
   
   }

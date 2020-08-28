@@ -1,0 +1,19 @@
+
+<form  (ngSubmit)="onSubmit()" class="d-flex p-2 justify-content-center">
+    <fieldset>
+     <legend>Send message:</legend>
+
+    
+    <div>
+      <label  class="col-form-label" for="inputDefault">Message content:</label>
+      <textarea class="form-control" id="brsj" name="brsj" [(ngModel)]="po.sadrzaj"></textarea>
+      <!--<input type="text"  class="form-control" id="brsj" name="brsj" [(ngModel)]="po.sadrzaj"/>-->
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Send</button>
+</fieldset>       
+</form>
+
+
+
+

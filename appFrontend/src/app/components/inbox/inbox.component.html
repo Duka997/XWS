@@ -1,12 +1,12 @@
 <div class="container">
-    <h2 class="ui header">Lista poruka</h2>
+    <h2 class="ui header">Inbox</h2>
     <br>
 
 <table class="ui celled striped table">
     <thead>
-      <th>PosiljalacId</th>
-      <th>Poruka</th>
-      <th>Odgovori</th>
+      <th>SenderId</th>
+      <th>Message</th>
+      <th>Reply</th>
     </thead>
     <tbody>
         <tr *ngFor="let poruka of poruke">
@@ -17,7 +17,7 @@
                 {{poruka.sadrzaj}}
             </td>
             <td>
-                <button type="submit" mat-button color="accent" > Odgovori </button>
+                <button type="submit" mat-button color="accent" (click)="odgovori(poruka.posiljalacId)" > Reply </button>
             </td>
         </tr>
     </tbody>

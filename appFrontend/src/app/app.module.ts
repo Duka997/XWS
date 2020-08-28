@@ -35,6 +35,7 @@ import { HomepageUserComponent } from './header/homepageUser/homepage-user.compo
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import {Inbox} from '../app/components/inbox/inbox.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {Inbox} from '../app/components/inbox/inbox.component';
     DodajOglasComponent,
     PriceListComponent,
     Inbox,
+    MessageComponent,
   ],
   imports: [
     HttpClientModule,

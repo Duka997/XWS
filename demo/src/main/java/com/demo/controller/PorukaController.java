@@ -29,7 +29,7 @@ public class PorukaController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_USER')")
+    //@PreAuthorize("hasRole('ROLE_AGENT') || hasRole('ROLE_USER')")
     public void posaljiPoruku(@RequestBody PorukaDTO porukaDTO) {
         porukaService.posaljiPoruku(porukaDTO);
     }

@@ -16,4 +16,8 @@ export class PorukaService{
         console.log('juhuu'+Id)
         return this._http.get<Poruka[]>(`${this._url1}/${Id}`);
     }
+
+    posaljiPoruku(poruka: Poruka) {
+        return  this._http.post<any>(this._url, poruka);
+     }
 }

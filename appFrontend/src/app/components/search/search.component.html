@@ -136,7 +136,7 @@
                            <svg class="bd-placeholder-img card-img-top" width="150px" height="150px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/><text x="25%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                         </div>
                         <div class="d-flex flex-column" style="margin-left: 15px; width:25%">
-                           <h2>{{o.vozilo.markaAutomobila.nazivMarke}} {{o.vozilo.markaAutomobila.model}}</h2>
+                           <h3>{{o.vozilo.markaAutomobila.nazivMarke}} {{o.vozilo.markaAutomobila.model}}</h3>
                            <span><i><u>Od:</u></i></span>
                            {{o.od | date: 'mediumDate'}} 
                            <span><i><u>Do:</u></i></span>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="d-flex flex-column" style="margin-right: 15px; margin-top: 15px; width:20%">
                            <button class="btn btn-outline-info" (click) = "pogledaj(viewModal,o)" >Pogledaj</button>
-                           <button class="btn btn-outline-info" (click) = "addToCart(o)">Dodaj u korpu</button>
+                           <button class="btn btn-outline-info" *ngIf ="role =='ROLE_AGENT' || role =='ROLE_USER' " (click) = "addToCart(o)">Dodaj u korpu</button>
                         </div>
                   </div>
                   <div class="d-flex flex-wrap p-2 justify-content-center">

@@ -70,6 +70,12 @@
 			<version>2.10.6</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
 		<dependency>
 			<groupId>org.jadira.usertype</groupId>

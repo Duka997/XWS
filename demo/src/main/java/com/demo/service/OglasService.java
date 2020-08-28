@@ -126,26 +126,27 @@ public class OglasService {
         return new ResponseEntity<>(oglasiDTOS, HttpStatus.OK);
     }
 
-    public OglasUKorpi saveInCart(OglasUKorpiDTO oglasUKorpiDTO) {
+    public OglasUKorpi saveInCart(OglasUKorpiDTO oglasUKorpiDTO, Long userId) {
         OglasUKorpi oglasUKorpi = new OglasUKorpi();
-        oglasUKorpi.setId(oglasUKorpiDTO.getId());
+        oglasUKorpi.setAdId(oglasUKorpiDTO.getId());
         oglasUKorpi.setOd(oglasUKorpiDTO.getOd());
         oglasUKorpi.setDoo(oglasUKorpiDTO.getDoo());
-        oglasUKorpi.setUser(new User(oglasUKorpiDTO.getUser()));
-        oglasUKorpi.setUserCartId(oglasUKorpiDTO.getUser().getId()); //oglas se nalazi kod ovog usera u korpi
+        oglasUKorpi.setUserId(oglasUKorpiDTO.getUserId());
+        oglasUKorpi.setUserCartId(userId); //oglas se nalazi kod ovog usera u korpi
         oglasUKorpi.setVozilo(new Vozilo(oglasUKorpiDTO.getVozilo()));
 
         oglasUKorpi = this.oglasUKorpiRepository.save(oglasUKorpi);
         return oglasUKorpi;
     }
 
-    public ResponseEntity<?> getCartAds() {
+    public ResponseEntity<?> getCartAds(Long userId) {
         List<OglasUKorpi> oglasi = this.oglasUKorpiRepository.findAll();
         List<OglasUKorpiDTO> oglasiDTOS = new ArrayList<>();
         for(OglasUKorpi o: oglasi){
             //OglasDTO oglasDTO = modelMapper.map(o, OglasDTO.class);
             OglasUKorpiDTO oglasDTO = new OglasUKorpiDTO(o);
-            oglasiDTOS.add(oglasDTO);
+            if(o.getUserCartId() == userId)
+                oglasiDTOS.add(oglasDTO);
         }
         return new ResponseEntity<>(oglasiDTOS, HttpStatus.OK);
     }

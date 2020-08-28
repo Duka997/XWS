@@ -38,7 +38,8 @@ public class OglasDTO {
         this.mestoPreuzimanja = o.getMjestoPreuzimanja();
         this.od = o.getOd();
         this.doo = o.getDoo();
-      //  this.userId = o.get
+        this.userId = o.getUser().getId();
+        this.id = o.getId();
     }
 
     public Long getId() {

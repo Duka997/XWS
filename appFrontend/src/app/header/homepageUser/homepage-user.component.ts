@@ -36,11 +36,17 @@ export class HomepageUserComponent implements OnInit {
   }
 
   addToCart(oglas: Oglas) {
+    console.log("Primalac : ", oglas.userId);
     var userId = parseInt(localStorage.getItem('id'));
     this.adsService.addAdToCart(oglas,userId).subscribe(data => {
         this.toastr.success('Ad has been added to cart');
       }, error => {
         this.toastr.error(error.error.message);
       });
+  }
+  inbox(){
+    var userId = parseInt(localStorage.getItem('id'));
+    console.log("Primalac id je ", userId )
+    this.router.navigate(['inbox']);
   }
 }

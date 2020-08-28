@@ -19,6 +19,8 @@ import { HomepageUserComponent } from './header/homepageUser/homepage-user.compo
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import {Inbox} from './components/inbox/inbox.component';
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -52,14 +54,16 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
       { path: 'search', component: SearchComponent },
       { path: 'pricelist', component: PriceListComponent },
+      { path: 'inbox', component: Inbox  }
     ]
   },
   { path: 'homepageAgent/requests', component: RentRequestsComponent},
 
   { path: 'homepageUser', component: HomepageUserComponent ,
     children: [
-      //{ path: 'addAdd', component: DodajOglasComponent },
+      //{ path: 'addAdd', component: DodajOglasComponent },homepageUser/userMessages
       { path: 'userAd', component: DodajOglasComponent  },
+      { path: 'inbox', component: Inbox  }
   ]
   },
   { path: 'homepageUser/addAdd', component:  DodajOglasComponent},

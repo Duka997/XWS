@@ -11,4 +11,6 @@ import java.util.List;
 public interface ZahtjevZaIznajmljivanjeRepository extends JpaRepository<ZahtjevZaIznajmljivanje, Long> {
 
     List<ZahtjevZaIznajmljivanje> findByUser(User user);
+    List<ZahtjevZaIznajmljivanje> findAllByOglas_User_Id(Long id);
+    List<ZahtjevZaIznajmljivanje> findByOglasId(Long id);
 }

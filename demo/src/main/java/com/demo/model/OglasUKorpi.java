@@ -50,9 +50,8 @@ public class OglasUKorpi {
     @JoinColumn(name = "vozilo_id")
     private Vozilo vozilo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column
+    private Long userId;
 
     @OneToMany(mappedBy = "oglas")
     private Set<ZahtjevZaIznajmljivanje> zahtjevi;
@@ -69,4 +68,7 @@ public class OglasUKorpi {
 
     @Column
     private Long userCartId;    //id usera kod kog se nalazi oglas
+
+    @Column
+    private Long AdId;
 }

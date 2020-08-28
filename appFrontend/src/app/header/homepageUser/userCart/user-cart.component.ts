@@ -42,7 +42,8 @@ import { IBundle } from './IBundle';
       }
 
     private getAll(): void {
-        this.adsService.getAllAdsForCart().subscribe(data => {
+        var userId = parseInt(localStorage.getItem('id'));
+        this.adsService.getAllAdsForCart(userId).subscribe(data => {
           this.ads = data;
           console.log("Svi oglasi u korpi: ", this.ads);
         }, error => {
@@ -58,10 +59,12 @@ import { IBundle } from './IBundle';
 
     addToRequest(oglas: Oglas) {
       let rentRequest: IRentRequest = {
-        oglasId: oglas.id,
+        id: oglas.id,
+        oglasId: oglas.adId,
         od: oglas.od,
         doo: oglas.doo,
         mjestoPreuzimanja: oglas.mjestoPreuzimanja,
+        bundleId: oglas.bundleId
       };
       this.requests.push(rentRequest);
       console.log("Svi pojedinacni zahtevi: ", this.requests);
@@ -69,10 +72,12 @@ import { IBundle } from './IBundle';
 
     addToBundle(oglas: Oglas) {
       let rentRequest: IRentRequest = {
-        oglasId: oglas.id,
+        id: oglas.id,
+        oglasId: oglas.adId,
         od: oglas.od,
         doo: oglas.doo,
         mjestoPreuzimanja: oglas.mjestoPreuzimanja,
+        bundleId: oglas.bundleId
       };
       this.bundles2.push(rentRequest);
       this.max3++;
@@ -94,16 +99,19 @@ import { IBundle } from './IBundle';
         console.log("asd", bundle);
         this.bundles.push(bundle);
         this.max3 = 0;
+        this.bundles2 = [];
       }
       
     }
 
     createRentRequest(request: IRentRequest) {
       let rentRequest: IRentRequest = {
+        id: request.id,
         oglasId: request.oglasId,
         od: request.od,
         doo: request.doo,
-        mjestoPreuzimanja: request.mjestoPreuzimanja
+        mjestoPreuzimanja: request.mjestoPreuzimanja,
+        bundleId: request.bundleId
       };
       return rentRequest;
     }
@@ -120,6 +128,8 @@ import { IBundle } from './IBundle';
         alert("success");
         this.bundles = [];
         this.requests = [];
+        cart.bundles = [];
+        cart.requests = [];
       })
     }
 

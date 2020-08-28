@@ -14,6 +14,7 @@ import { ListRequestComponent } from './components/list-request/list-request.com
 
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
+import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent },
     ]
   },
+  { path: 'homepageAgent/requests', component: RentRequestsComponent},
 
   { path: 'homepageUser', component: HomepageUserComponent ,
     children: [

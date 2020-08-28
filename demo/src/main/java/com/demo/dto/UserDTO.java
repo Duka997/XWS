@@ -31,5 +31,18 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this.id = user.getId();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.phone = user.getPhone();
+        this.isAdmin = user.isAdmin();
+        this.enabled = user.isEnabled();
+        this.deleted = user.isDeleted();
+        this.address = user.getAddress();
+        this.imeKompanije = user.getImeKompanije();
+        this.poslovniID = user.getPoslovniID();
+        this.lastPasswordResetDate = user.getLastPasswordResetDate();
+        this.email = user.getEmail();
     }
 }

@@ -9,6 +9,8 @@ export class Oglas {
         public od : Date,
         public doo : Date,
         public userId : number,
-        public cjenovnikID : number
+        public cjenovnikID : number,
+        public bundleId: number,
+        public adId: number,
     ){}
 }

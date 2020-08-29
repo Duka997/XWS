@@ -26,6 +26,7 @@ import { OccupationComponent } from './components/occupation/occupation.componen
 import {Inbox} from './components/inbox/inbox.component';
 import {MessageComponent} from '../app/message/message.component'
 import { from } from 'rxjs';
+import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
 
   { path: 'homepageAdmin', component: HomepageAdminComponent,
     children: [
+      { path: '', redirectTo: 'carEntities', pathMatch: 'full' },
       { path: 'addAgent', component: SignupComponent },
       { path: 'comments', component: CommentAdminComponent },
       { path: 'addCarMark', component: AddMarkaAutomobila },
@@ -49,9 +51,7 @@ const routes: Routes = [
       { path: 'addFuelType', component: AddTipGoriva },
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
-      { path: 'addCar', component: AddCarComponent },
-      { path: 'addAdd', component: DodajOglasComponent },
-
+      { path: 'carEntities', component: CarEntitiesComponent },
     ]
   }, 
 
@@ -63,6 +63,8 @@ const routes: Routes = [
       { path: 'commentsAndGrades', component: CommentAndGradesComponent},
       { path: 'requests', component: RentRequestsComponent },
       { path: 'carStat', component: CarStatComponent },
+      { path: 'addCar', component: AddCarComponent },
+      { path: 'addAdd', component: DodajOglasComponent },
       { path: 'carOccupation', component: OccupationComponent },
       { path: 'inbox', component: Inbox  },
       { path: 'inbox/reply', component: MessageComponent}

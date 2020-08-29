@@ -34,6 +34,8 @@ import { RentRequestsComponent } from './header/homepage-agent/rent-requests/ren
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { CarStatComponent } from './components/carStatistics/carStat.component';
+import { OccupationComponent } from './components/occupation/occupation.component';
 import {Inbox} from '../app/components/inbox/inbox.component';
 import { MessageComponent } from './message/message.component';
 
@@ -59,6 +61,8 @@ import { MessageComponent } from './message/message.component';
     SearchComponent,
     DodajOglasComponent,
     PriceListComponent,
+    CarStatComponent,
+    OccupationComponent,
     Inbox,
     MessageComponent,
   ],

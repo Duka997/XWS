@@ -47,9 +47,9 @@ values (2, null, null, '5', '2400', true, true, '150000', '110', '1', 1, 1, 2, 3
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
 values (3, null, null, '3', '1000', false, false, '220000', '100', '3', 3, 2, 1, 2, 3, false);
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
-values (4, null, null, '3', '1000', false, false, '220000', '100', '3', 2, 3, 1, 2, 4, false);
+values (4, null, null, '3', '1000', false, false, '515000', '500', '4', 2, 3, 1, 2, 4, false);
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
-values (5, null, null, '3', '1000', false, false, '220000', '100', '3', 1, 3, 1, 1, 4, false);
+values (5, null, null, '3', '1000', false, false, '12000', '1100', '2', 1, 3, 2, 1, 4, false);
 
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (1, '2020-05-06 21:58:58', true, '200', 'Novi Sad', '2020-05-01 21:58:58', null, 3, 1);
@@ -61,6 +61,16 @@ insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzima
 values (4, '2020-08-03 21:58:58', true, '200', 'Banja Luka', '2020-07-03 21:58:58', null, 4, 4);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (5, '2020-08-03 21:58:58', true, '200', 'Banja Luka', '2020-07-03 21:58:58', null, 4, 5);
+
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (1, '4', 1, 3, 1);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (2, '4', 1, 3, 1);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (3, '5', 1, 3, 1);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (4, '5', 1, 3, 1);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (5, '1', 1, 3, 1);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (6, '4', 1, 3, 2);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (7, '5', 1, 3, 2);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (8, '5', 1, 3, 2);
+insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (9, '4', 1, 3, 3);
 
 insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 56, 56, 56, 16, 3);
 insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (2, 55, 55, 55, 10, 3);

@@ -31,4 +31,14 @@ public class VoziloController {
         return this.voziloService.findAllVozila();
     }
 
+    @GetMapping("/get/{userId}")
+    public ResponseEntity<?> findAllVozilaOfUser(@PathVariable Long userId) throws AccessDeniedException {
+        return this.voziloService.findAllVozilaOfUser(userId);
+    }
+
+    @GetMapping(value = "/statistics/{ownersID}")
+    public ResponseEntity<?> getStatistics(@PathVariable Long ownersID){
+        return voziloService.getCarStatistics(ownersID);
+    }
+
 }

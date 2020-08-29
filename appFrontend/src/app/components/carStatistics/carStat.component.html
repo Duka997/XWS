@@ -1,0 +1,21 @@
+    <div 
+         class="card border-primary mb-3" 
+         style="max-width: 20rem;"
+    >
+         <div class="card-header"><b>Car with most kilometers</b></div>
+         <div class="card-body">
+            <p class="card-text">{{ allCars.voziloSaNajvecomKilometrazomDTO.nazivMarke }} {{ allCars.voziloSaNajvecomKilometrazomDTO.model }}</p>
+            <p class="card-text">Kilometrage: {{ allCars.voziloSaNajvecomKilometrazomDTO.kilometraza }} km</p>
+         </div>
+    </div>
+
+    <div 
+    class="card border-primary mb-3" 
+    style="max-width: 20rem;"
+    >
+    <div class="card-header"><b>Car with best average grade</b></div>
+    <div class="card-body">
+       <p class="card-text">{{ allCars.voziloSaNajvecomOcenomDTO.nazivMarke }} {{ allCars.voziloSaNajvecomOcenomDTO.model }}</p>
+       <p class="card-text">Average Grade: {{ allCars.voziloSaNajvecomOcenomDTO.prosecnaOcena }}</p>
+    </div>
+    </div>

@@ -27,6 +27,12 @@ public class TipGoriva {
     public TipGoriva() {
     }
 
+    public TipGoriva(TipGoriva tipGoriva) {
+        this.id = tipGoriva.getId();
+        this.naziv = tipGoriva.getNaziv();
+        this.obrisan = tipGoriva.isObrisan();
+    }
+
     public Long getId() {
         return id;
     }

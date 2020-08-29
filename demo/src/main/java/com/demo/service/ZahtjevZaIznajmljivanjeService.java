@@ -10,7 +10,6 @@ import com.demo.model.*;
 import com.demo.repository.UserRepository;
 import com.demo.repository.ZahtjevZaIznajmljivanjeRepository;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -149,6 +148,13 @@ public class ZahtjevZaIznajmljivanjeService {
         if (!request.getStatus().equals(StatusZahtjeva.PENDING))
             throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + request.getStatus());
 
+        List<ZahtjevZaIznajmljivanje> requests2 = zahtjevZaIznajmljivanjeRepository.findAll();
+        for(ZahtjevZaIznajmljivanje req: requests2) {
+            if (req.getOglas().getId() == request.getOglas().getId() && !req.getStatus().equals(StatusZahtjeva.PENDING)) {
+                throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + req.getStatus());
+            }
+        }
+
         request.setStatus(StatusZahtjeva.RESERVED);
         request.setStatus(StatusZahtjeva.PAID);
 
@@ -159,18 +165,18 @@ public class ZahtjevZaIznajmljivanjeService {
 
         ZauzetDTO occupiedDTO = ZauzetDTO.builder()
                 .id(request.getId())
-                .dateFrom(request.getOd())
-                .dateTo(request.getDoo())
-                .adsId(adsId)
+                .od(request.getOd())
+                .doo(request.getDoo())
+                .oglasId(adsId)
                 .build();
         cancelOccupiedRequests(occupiedDTO);
     }
 
     public ResponseEntity<?> cancelOccupiedRequests(ZauzetDTO occupiedDTO) {
-        DateTime occupiedFrom = occupiedDTO.getDateFrom();
-        DateTime occupiedTo = occupiedDTO.getDateTo();
+        DateTime occupiedFrom = occupiedDTO.getOd();
+        DateTime occupiedTo = occupiedDTO.getDoo();
 
-        for (Long id: occupiedDTO.getAdsId()){
+        for (Long id: occupiedDTO.getOglasId()){
             List<ZahtjevZaIznajmljivanje> rentRequests = this.zahtjevZaIznajmljivanjeRepository.findByOglasId(id);
             for (ZahtjevZaIznajmljivanje rent : rentRequests){
                 DateTime rentFrom = rent.getOd();

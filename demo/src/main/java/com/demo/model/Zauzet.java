@@ -23,7 +23,7 @@ public class Zauzet {
             @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
     })
-    private DateTime dateFrom;
+    private DateTime od;
 
 
     @Column(name = "date_to", nullable = false)
@@ -31,9 +31,9 @@ public class Zauzet {
             @org.hibernate.annotations.Parameter(name = "databaseZone", value = "UTC"),
             @org.hibernate.annotations.Parameter(name = "javaZone", value = "UTC")
     })
-    private DateTime dateTo;
+    private DateTime doo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id", nullable = false)
-    private Vozilo car;
+    private Vozilo vozilo;
 }

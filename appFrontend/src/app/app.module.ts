@@ -36,6 +36,8 @@ import { UserCartComponent } from './header/homepageUser/userCart/user-cart.comp
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CarStatComponent } from './components/carStatistics/carStat.component';
 import { OccupationComponent } from './components/occupation/occupation.component';
+import {Inbox} from '../app/components/inbox/inbox.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { OccupationComponent } from './components/occupation/occupation.componen
     PriceListComponent,
     CarStatComponent,
     OccupationComponent,
+    Inbox,
+    MessageComponent,
   ],
   imports: [
     HttpClientModule,

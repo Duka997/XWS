@@ -77,3 +77,5 @@ insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, use
 insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (3, 57, 57, 57, 17, 3);
 
 
+insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (1, '2020-06-06 21:58:58', 'Hi :D', 2, 3 );
+insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (2, '2020-06-06 21:59:58', 'Hey :)', 3, 2 )

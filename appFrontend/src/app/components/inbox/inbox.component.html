@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="ui header">Inbox</h2>
+    <br>
+
+<table class="ui celled striped table">
+    <thead>
+      <th>SenderId</th>
+      <th>Message</th>
+      <th>Reply</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let poruka of poruke">
+            <td>
+                {{poruka.posiljalacId}}
+            </td>
+            <td>
+                {{poruka.sadrzaj}}
+            </td>
+            <td>
+                <button type="submit" mat-button color="accent" (click)="odgovori(poruka.posiljalacId)" > Reply </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

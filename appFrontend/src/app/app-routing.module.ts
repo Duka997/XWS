@@ -21,6 +21,11 @@ import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
 import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
+import { CarStatComponent } from './components/carStatistics/carStat.component';
+import { OccupationComponent } from './components/occupation/occupation.component';
+import {Inbox} from './components/inbox/inbox.component';
+import {MessageComponent} from '../app/message/message.component'
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -56,18 +61,25 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent },
       { path: 'pricelist', component: PriceListComponent },
       { path: 'commentsAndGrades', component: CommentAndGradesComponent},
+      { path: 'requests', component: RentRequestsComponent },
+      { path: 'carStat', component: CarStatComponent },
+      { path: 'carOccupation', component: OccupationComponent },
+      { path: 'inbox', component: Inbox  },
+      { path: 'inbox/reply', component: MessageComponent}
     ]
   },
-  { path: 'homepageAgent/requests', component: RentRequestsComponent},
 
   { path: 'homepageUser', component: HomepageUserComponent ,
     children: [
       //{ path: 'addAdd', component: DodajOglasComponent },
       { path: 'userAd', component: DodajOglasComponent  },
+      { path: 'inbox', component: Inbox  }
   ]
   },
+  { path: 'homepageUser/reply', component:  MessageComponent},
   { path: 'homepageUser/addAdd', component:  DodajOglasComponent},
   { path: 'homepageUser/userCart', component: UserCartComponent  }, 
+  { path: 'homepageUser/userCart/inbox', component: Inbox  },
   { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  }
 ];
 

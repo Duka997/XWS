@@ -1,5 +1,7 @@
 package com.demo.dto;
 
+import com.demo.model.TipGoriva;
+
 public class TipGorivaDTO {
 
     private Long id;
@@ -7,6 +9,12 @@ public class TipGorivaDTO {
     private boolean obrisan;
 
     public TipGorivaDTO() {
+    }
+
+    public TipGorivaDTO(TipGoriva tipGoriva) {
+        this.id = tipGoriva.getId();
+        this.naziv = tipGoriva.getNaziv();
+        this.obrisan = tipGoriva.isObrisan();
     }
 
     public Long getId() {

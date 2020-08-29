@@ -82,11 +82,11 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<Ocjena> ocjene;
 
-    @OneToMany(mappedBy = "posiljalac")
-    private Set<Poruka> poslatePoruke;
-
-    @OneToMany(mappedBy = "primalac")
-    private Set<Poruka> primljenePoruke;
+//    @OneToMany(mappedBy = "posiljalac")
+//    private Set<Poruka> poslatePoruke;
+//
+//    @OneToMany(mappedBy = "primalac")
+//    private Set<Poruka> primljenePoruke;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -286,21 +286,21 @@ public class User implements UserDetails {
         this.ocjene = ocjene;
     }
 
-    public Set<Poruka> getPoslatePoruke() {
-        return poslatePoruke;
-    }
-
-    public void setPoslatePoruke(Set<Poruka> poslatePoruke) {
-        this.poslatePoruke = poslatePoruke;
-    }
-
-    public Set<Poruka> getPrimljenePoruke() {
-        return primljenePoruke;
-    }
-
-    public void setPrimljenePoruke(Set<Poruka> primljenePoruke) {
-        this.primljenePoruke = primljenePoruke;
-    }
+//    public Set<Poruka> getPoslatePoruke() {
+//        return poslatePoruke;
+//    }
+//
+//    public void setPoslatePoruke(Set<Poruka> poslatePoruke) {
+//        this.poslatePoruke = poslatePoruke;
+//    }
+//
+//    public Set<Poruka> getPrimljenePoruke() {
+//        return primljenePoruke;
+//    }
+//
+//    public void setPrimljenePoruke(Set<Poruka> primljenePoruke) {
+//        this.primljenePoruke = primljenePoruke;
+//    }
 
     public Collection<Role> getRoles() {
         return roles;

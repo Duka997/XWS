@@ -37,6 +37,10 @@ import { PriceListComponent } from './components/price-list/price-list.component
 import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
 import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarStatComponent } from './components/carStatistics/carStat.component';
+import { OccupationComponent } from './components/occupation/occupation.component';
+import {Inbox} from '../app/components/inbox/inbox.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PriceListComponent,
     CommentAndGradesComponent,
     CommentAdminComponent,
+    CarStatComponent,
+    OccupationComponent,
+    Inbox,
+    MessageComponent,
   ],
   imports: [
     HttpClientModule,

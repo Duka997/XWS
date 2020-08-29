@@ -2,6 +2,8 @@ package com.demo.service;
 
 import com.demo.dto.MarkaAutomobilaDTO;
 import com.demo.dto.VoziloDTO;
+import com.demo.dto.*;
+import com.demo.exception.NotFoundException;
 import com.demo.model.*;
 import com.demo.repository.UserRepository;
 import com.demo.repository.VoziloRepository;
@@ -26,16 +28,23 @@ public class VoziloService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+
     @Autowired
     private MarkaAutomobilaService markaAutomobilaService;
+
     @Autowired
     private TipGorivaService vrstaGorivaService;
+
     @Autowired
     private KlasaAutomobilaService klasaAutomobilaService;
+
     @Autowired
     private  TipMjenjacaService tipMjenjacaService;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -116,6 +125,10 @@ public class VoziloService {
         return myImage;
     }
 
+    public ResponseEntity<?> getCarStatistics(Long ownersID) {
+        Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);
+
+        StatistikaDTO statisticsDTO = new StatistikaDTO();
 
     public ResponseEntity<?> getAllVozila(String username) {
         User user = this.userRepository.findByUsername(username);
@@ -133,5 +146,152 @@ public class VoziloService {
         }
 
         return new ResponseEntity<>(voziloDTOS,HttpStatus.OK);
+
+    }
+
+     public ResponseEntity<?> getCarStatistics(Long ownersID) {
+        Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);
+
+        StatistikaDTO statisticsDTO = new StatistikaDTO();
+        Vozilo carWithHighestAverageGrade = getCarWithHighestGradeByOwnersId(cars);
+        if (carWithHighestAverageGrade != null){
+            VoziloSaNajvecomOcenomDTO carDTO = new VoziloSaNajvecomOcenomDTO();
+
+            carDTO.setId(carWithHighestAverageGrade.getId());
+            carDTO.setMarkaId(carWithHighestAverageGrade.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithHighestAverageGrade.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithHighestAverageGrade.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithHighestAverageGrade.getKlasaAutomobila().getNaziv());
+            carDTO.setProsecnaOcena(getAverageGrade(carWithHighestAverageGrade));
+
+            statisticsDTO.setVoziloSaNajvecomOcenomDTO(carDTO);
+        }
+/*
+        Vozilo carWithMostComments = getCarWithMostCommentsByOwnersId(cars);
+        if (carWithMostComments != null){
+            CarWithMostCommentsDTO carDTO = new CarWithMostCommentsDTO();
+
+            carDTO.setId(carWithMostComments.getId());
+            carDTO.setMarkId(carWithMostComments.getMark().getId());
+            carDTO.setMarkName(carWithMostComments.getMark().getName());
+            carDTO.setModelId(carWithMostComments.getModel().getId());
+            carDTO.setModelName(carWithMostComments.getModel().getName());
+            carDTO.setNumberOfComments(carWithMostComments.getComments().size());
+
+            statisticsDTO.setCarWithMostComments(carDTO);
+        }
+*/
+        Vozilo carWithMostKilometers = getCarWithMostKilometersByOwnersId(cars);
+        if (carWithMostKilometers != null){
+            VoziloSaNajvecomKilometrazomDTO carDTO = new VoziloSaNajvecomKilometrazomDTO();
+
+            carDTO.setId(carWithMostKilometers.getId());
+            carDTO.setMarkaId(carWithMostKilometers.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithMostKilometers.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithMostKilometers.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithMostKilometers.getKlasaAutomobila().getNaziv());
+            carDTO.setKilometraza(carWithMostKilometers.getKilometraza());
+
+            statisticsDTO.setVoziloSaNajvecomKilometrazomDTO(carDTO);
+        }
+
+        return new ResponseEntity<StatistikaDTO>(statisticsDTO, HttpStatus.OK);
+    }
+
+    public Vozilo getCarWithHighestGradeByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have 0 grades. */
+
+        float maxAverageGrade = 0;
+        Vozilo carWithBHighestAverageGrade = new Vozilo();
+
+        for(Vozilo c : cars){
+            if (getAverageGrade(c) == null)
+                continue;
+
+            if (getAverageGrade(c) > maxAverageGrade){
+                maxAverageGrade = getAverageGrade(c);
+                carWithBHighestAverageGrade = c;
+            }
+        }
+
+        if (maxAverageGrade == 0)
+            return null;
+
+        return carWithBHighestAverageGrade;
+    }
+
+    public Float getAverageGrade(Vozilo car){
+        /* Returns null if car has no grades. */
+        /* Returns null if car equals to null. */
+
+        if (car == null)
+            return null;
+
+        int sum = 0;
+        for (Ocjena g : car.getOcjene()){
+            sum += g.getOcjena();
+        }
+
+        if (sum == 0) {
+            return null;
+        } else {
+            Float averageGrade = new Float(0);
+            averageGrade = (float) sum / car.getOcjene().size();
+            return averageGrade;
+        }
+    }
+
+    public Vozilo getCarWithMostKilometersByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have kilometrage equal to 0. */
+
+        double mostKilometers = 0;
+        Vozilo carWithMostKilometers = new Vozilo();
+
+        for (Vozilo c : cars){
+            if (c.getKilometraza() > mostKilometers){
+                mostKilometers = c.getKilometraza();
+                carWithMostKilometers = c;
+            }
+        }
+
+        if (mostKilometers == 0)
+            return null;
+
+        return carWithMostKilometers;
+    }
+
+    public Vozilo getVozilo(Long id) {
+        if (id == null) id = 1L;
+        Vozilo vozilo = voziloRepository.findById(id).orElseThrow(() -> new NotFoundException("Car with given id was not found"));
+
+        return vozilo;
+    }
+
+    public List<Vozilo> getVoziloByUserId(Long id) {
+        User user = this.userService.getUserById(id);
+        List<Vozilo> vozila = this.voziloRepository.findAllByUserId(user.getId());
+        return vozila;
+    }
+
+    public ResponseEntity<?> findAllVozilaOfUser(Long userId) {
+        User user = this.userService.getUserById(userId);
+        List<Vozilo> cars = this.voziloRepository.findAllByUserId(user.getId());
+        List<VoziloDTO> carInfoDTOS = new ArrayList<>();
+
+        for (Vozilo car : cars) {
+            VoziloDTO carInfoDTO = new VoziloDTO();
+            carInfoDTO.setId(car.getId());
+            carInfoDTO.setTipGoriva(new TipGorivaDTO(car.getTipGoriva()));
+            MarkaAutomobilaDTO modelDTO = new MarkaAutomobilaDTO();
+            modelDTO.setId(car.getMarkaAutomobila().getId());
+            modelDTO.setNazivMarke(car.getMarkaAutomobila().getNazivMarke());
+            KlasaAutomobilaDTO markDTO = new KlasaAutomobilaDTO();
+            markDTO.setId(car.getKlasaAutomobila().getId());
+            markDTO.setNaziv(car.getKlasaAutomobila().getNaziv());
+            carInfoDTO.setMarkaAutomobila(modelDTO);
+            carInfoDTO.setKlasaAutomobila(markDTO);
+            carInfoDTOS.add(carInfoDTO);
+        }
+        return new ResponseEntity<>(carInfoDTOS, HttpStatus.OK);
     }
 }

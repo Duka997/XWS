@@ -33,8 +33,10 @@ import { SearchComponent } from './components/search/search.component';
 import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
-import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
+import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { PriceListComponent } from './components/price-list/price-list.component
     SearchComponent,
     DodajOglasComponent,
     PriceListComponent,
+    CommentAndGradesComponent,
+    CommentAdminComponent,
   ],
   imports: [
     HttpClientModule,
@@ -69,6 +73,7 @@ import { PriceListComponent } from './components/price-list/price-list.component
     MatFormFieldModule,
     MatInputModule,
     RouterModule,
+    NgbModule,
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

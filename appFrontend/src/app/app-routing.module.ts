@@ -19,6 +19,8 @@ import { HomepageUserComponent } from './header/homepageUser/homepage-user.compo
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
+import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,7 @@ const routes: Routes = [
   { path: 'homepageAdmin', component: HomepageAdminComponent,
     children: [
       { path: 'addAgent', component: SignupComponent },
+      { path: 'comments', component: CommentAdminComponent },
       { path: 'addCarMark', component: AddMarkaAutomobila },
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
@@ -52,6 +55,7 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
       { path: 'search', component: SearchComponent },
       { path: 'pricelist', component: PriceListComponent },
+      { path: 'commentsAndGrades', component: CommentAndGradesComponent},
     ]
   },
   { path: 'homepageAgent/requests', component: RentRequestsComponent},

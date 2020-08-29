@@ -41,6 +41,7 @@ import { CarStatComponent } from './components/carStatistics/carStat.component';
 import { OccupationComponent } from './components/occupation/occupation.component';
 import {Inbox} from '../app/components/inbox/inbox.component';
 import { MessageComponent } from './message/message.component';
+import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MessageComponent } from './message/message.component';
     OccupationComponent,
     Inbox,
     MessageComponent,
+    CarEntitiesComponent,
   ],
   imports: [
     HttpClientModule,

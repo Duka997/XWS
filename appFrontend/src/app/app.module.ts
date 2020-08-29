@@ -42,6 +42,7 @@ import { OccupationComponent } from './components/occupation/occupation.componen
 import {Inbox} from '../app/components/inbox/inbox.component';
 import { MessageComponent } from './message/message.component';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CarEntitiesComponent } from './components/car-entities/car-entities.com
     Inbox,
     MessageComponent,
     CarEntitiesComponent,
+    ProfileComponent,
   ],
   imports: [
     HttpClientModule,

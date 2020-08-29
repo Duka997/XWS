@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column col-sm-7">
+       <h1 class="display-4" style="text-align: center; border-bottom: 2px solid #ccc;">Comments</h1>
+       <h3 class="display-4" style="text-align: center;" *ngIf = "komentari.length == 0">No comments</h3>
+       <div *ngFor = "let komentar of komentari" class="card">
+          <div class="card-body" >
+             <h5 class="card-title">User: {{komentar.userUsername}}</h5>
+             <p class="card-text">{{komentar.tekst}}</p>
+             <button class="btn btn-secondary" style="float: right; width:100px; height:35px" (click) = "odobri(komentar)">Refuse</button>
+             <button class="btn btn-primary" style="margin-right: 10px; float: right; width:100px; height:35px" (click) = "odbij(komentar)">Accept</button>
+          </div>
+       </div>
+       <br>
+ </div>

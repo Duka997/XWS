@@ -35,6 +35,7 @@ import { HomepageUserComponent } from './header/homepageUser/homepage-user.compo
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CarStatComponent } from './components/carStatistics/carStat.component';
+import { OccupationComponent } from './components/occupation/occupation.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CarStatComponent } from './components/carStatistics/carStat.component';
     DodajOglasComponent,
     PriceListComponent,
     CarStatComponent,
+    OccupationComponent,
   ],
   imports: [
     HttpClientModule,

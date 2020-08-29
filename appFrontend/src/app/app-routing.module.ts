@@ -20,6 +20,7 @@ import { UserCartComponent } from './header/homepageUser/userCart/user-cart.comp
 import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CarStatComponent } from './components/carStatistics/carStat.component';
+import { OccupationComponent } from './components/occupation/occupation.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: 'pricelist', component: PriceListComponent },
       { path: 'requests', component: RentRequestsComponent },
       { path: 'carStat', component: CarStatComponent },
+      { path: 'carOccupation', component: OccupationComponent },
     ]
   },
 

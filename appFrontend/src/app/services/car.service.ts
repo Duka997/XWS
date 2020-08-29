@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
   
     constructor(private http: HttpClient) { }
 
-    getCars() {
-        return this.http.get<any>('http://localhost:8099/api/vozilo/get');
+    getCarsByUser(userId: any) {
+        return this.http.get<any>('http://localhost:8099/api/vozilo/get/' + userId);
     }
 
     getCarStatistics(ownersID: any) {
-        return this.http.get<any>('http://localhost:8099/api/vozilo/statistics/'+ownersID);
+        return this.http.get<any>('http://localhost:8099/api/vozilo/statistics/' + ownersID);
     }
 
   }

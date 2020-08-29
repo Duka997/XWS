@@ -33,8 +33,9 @@ import { SearchComponent } from './components/search/search.component';
 import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
-import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import {Inbox} from '../app/components/inbox/inbox.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,8 @@ import { PriceListComponent } from './components/price-list/price-list.component
     SearchComponent,
     DodajOglasComponent,
     PriceListComponent,
+    Inbox,
+    MessageComponent,
   ],
   imports: [
     HttpClientModule,

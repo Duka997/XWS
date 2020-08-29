@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdsService } from 'src/app/services/ads.service';
 import { Oglas } from 'src/app/model/Ad';
+import {Poruka} from '../../model/poruka';
+import {PorukaService} from '../../services/poruka.service';
 
 @Component({
   selector: 'app-homepage-user',
@@ -11,10 +13,12 @@ import { Oglas } from 'src/app/model/Ad';
 export class HomepageUserComponent implements OnInit {
 
   oglasi = [];
+  po =  new Poruka(null,null,null,null);
 
   constructor(  private router: Router,
                 private toastr: ToastrService,
-                private adsService: AdsService ) { }
+                private adsService: AdsService,
+                private _porukaServis: PorukaService ) { }
 
   ngOnInit(): void {
     this.adsService.getAds().subscribe(data => {
@@ -36,6 +40,7 @@ export class HomepageUserComponent implements OnInit {
   }
 
   addToCart(oglas: Oglas) {
+    console.log("Primalac : ", oglas.userId);
     var userId = parseInt(localStorage.getItem('id'));
     this.adsService.addAdToCart(oglas,userId).subscribe(data => {
         this.toastr.success('Ad has been added to cart');
@@ -43,4 +48,15 @@ export class HomepageUserComponent implements OnInit {
         this.toastr.error(error.error.message);
       });
   }
+  inbox(){
+    var userId = parseInt(localStorage.getItem('id'));
+    console.log("Primalac id je ", userId )
+    this.router.navigate(['inbox']);
+  }
+
+  posaljiPor(userId:any){
+    localStorage.setItem("primalac", userId);
+    this.router.navigate(['homepageUser/reply']);
+  }
+  
 }

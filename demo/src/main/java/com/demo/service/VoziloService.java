@@ -1,6 +1,7 @@
 package com.demo.service;
 
 import com.demo.dto.*;
+import com.demo.exception.NotFoundException;
 import com.demo.model.*;
 import com.demo.repository.VoziloRepository;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
@@ -24,14 +25,21 @@ public class VoziloService {
 
     @Autowired
     private VoziloRepository voziloRepository;
+
     @Autowired
     private MarkaAutomobilaService markaAutomobilaService;
+
     @Autowired
     private TipGorivaService vrstaGorivaService;
+
     @Autowired
     private KlasaAutomobilaService klasaAutomobilaService;
+
     @Autowired
     private  TipMjenjacaService tipMjenjacaService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -224,4 +232,38 @@ public class VoziloService {
         return carWithMostKilometers;
     }
 
+    public Vozilo getVozilo(Long id) {
+        if (id == null) id = 1L;
+        Vozilo vozilo = voziloRepository.findById(id).orElseThrow(() -> new NotFoundException("Car with given id was not found"));
+
+        return vozilo;
+    }
+
+    public List<Vozilo> getVoziloByUserId(Long id) {
+        User user = this.userService.getUserById(id);
+        List<Vozilo> vozila = this.voziloRepository.findAllByUserId(user.getId());
+        return vozila;
+    }
+
+    public ResponseEntity<?> findAllVozilaOfUser(Long userId) {
+        User user = this.userService.getUserById(userId);
+        List<Vozilo> cars = this.voziloRepository.findAllByUserId(user.getId());
+        List<VoziloDTO> carInfoDTOS = new ArrayList<>();
+
+        for (Vozilo car : cars) {
+            VoziloDTO carInfoDTO = new VoziloDTO();
+            carInfoDTO.setId(car.getId());
+            carInfoDTO.setTipGoriva(new TipGorivaDTO(car.getTipGoriva()));
+            MarkaAutomobilaDTO modelDTO = new MarkaAutomobilaDTO();
+            modelDTO.setId(car.getMarkaAutomobila().getId());
+            modelDTO.setNazivMarke(car.getMarkaAutomobila().getNazivMarke());
+            KlasaAutomobilaDTO markDTO = new KlasaAutomobilaDTO();
+            markDTO.setId(car.getKlasaAutomobila().getId());
+            markDTO.setNaziv(car.getKlasaAutomobila().getNaziv());
+            carInfoDTO.setMarkaAutomobila(modelDTO);
+            carInfoDTO.setKlasaAutomobila(markDTO);
+            carInfoDTOS.add(carInfoDTO);
+        }
+        return new ResponseEntity<>(carInfoDTOS, HttpStatus.OK);
+    }
 }

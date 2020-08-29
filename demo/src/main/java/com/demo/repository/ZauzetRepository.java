@@ -10,5 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ZauzetRepository extends JpaRepository<Zauzet, Long> {
+    List<Zauzet> findAllByVoziloId(Long carId);
 
+    List<Zauzet> findAllByVoziloAndDooAfter(Vozilo c, DateTime now);
 }

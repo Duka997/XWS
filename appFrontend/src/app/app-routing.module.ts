@@ -27,6 +27,7 @@ import {Inbox} from './components/inbox/inbox.component';
 import {MessageComponent} from '../app/message/message.component'
 import { from } from 'rxjs';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
       { path: 'carEntities', component: CarEntitiesComponent },
+      { path: 'profile', component: ProfileComponent },
     ]
   }, 
 
@@ -67,7 +69,8 @@ const routes: Routes = [
       { path: 'addAdd', component: DodajOglasComponent },
       { path: 'carOccupation', component: OccupationComponent },
       { path: 'inbox', component: Inbox  },
-      { path: 'inbox/reply', component: MessageComponent}
+      { path: 'inbox/reply', component: MessageComponent},
+      { path: 'profile', component: ProfileComponent },
     ]
   },
 

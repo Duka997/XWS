@@ -65,4 +65,35 @@ export class ListUsersComponent implements OnInit {
       }
     );
   }
+
+  checkPrivilege(roles: string[]){
+    if(roles.indexOf('POST_ADS') > -1)
+        return true;
+    else
+        return false;
+  }
+
+  disableRent(id: number){
+    this.authService.disableEnableRent(id, false).subscribe(
+      data=>{
+        this._toastr.success("User successfully disabled for renting", "Rent");
+        this.refresh();
+      },
+      error=>{
+        this._toastr.error("Error", "Rent");
+      }
+    );
+  }
+
+  enableRent(id: number){
+    this.authService.disableEnableRent(id, true).subscribe(
+      data=>{
+        this._toastr.success("User successfully enabled for renting", "Rent");
+        this.refresh();
+      },
+      error=>{
+        this._toastr.error("Error", "Rent");
+      }
+    );
+  }
 }

@@ -81,4 +81,27 @@ public class UserController {
     public ResponseEntity<?> rejectRequest(@PathVariable Long id) {
         return this.userDetailsService.reject(id);
     }
+
+
+    @GetMapping(value = "/rentPrivilege/{privilege}/{id}")
+    public ResponseEntity<?> rentPrivileges(@PathVariable Boolean privilege, @PathVariable Long id) {
+        boolean flag =  this.userDetailsService.rentPrivilege(privilege, id);
+        if(flag == true){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PatchMapping(value = "")
+    public ResponseEntity<?> edit(@RequestBody UserDTO userDTO) {
+        log.info("Controller /edit reached by user: " + userDTO.getUsername());
+        return this.userDetailsService.edit(userDTO);
+    }
+
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<?> getUser(@PathVariable String username) {
+        log.info("Auth controller - get all users");
+        return this.userDetailsService.getUser(username);
+    }
 }

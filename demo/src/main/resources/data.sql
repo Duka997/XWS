@@ -76,9 +76,6 @@ insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (7, '5', 1
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (8, '5', 1, 3, 2);
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (9, '4', 1, 3, 3);
 
-insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (1, 56, 56, 56, 16, 3);
-insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (2, 55, 55, 55, 10, 3);
-insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (3, 57, 57, 57, 17, 3);
 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 5, 2);
@@ -86,9 +83,9 @@ insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, true, 
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, false, 'Super', 5, 1);
 insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, false, 'Predobro auto', 5, 1);
 
-insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (1,4,6,1,1);
-insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (2,4.5,5,1,1);
-insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (3,4.6,6,2,2);
+insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (10,4,6,1,1);
+insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (11,4.5,5,1,1);
+insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (12,4.6,6,2,2);
 
 
 insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (1, '2020-06-06 21:58:58', 'Hi :D', 2, 3 );

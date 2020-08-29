@@ -9,6 +9,7 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-search',
@@ -30,12 +31,13 @@ export class SearchComponent implements OnInit {
   viewModal: NgbModalRef;
   sortiranje: string = 'Sort by';
   oglas: OglasInfo;
-  //komentari: Komentar[];
+  komentari: [];
 
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
               private _toastr: ToastrService,
               private modalService: NgbModal,
+              private commentService: CommentService
               ) {
     this.pretraga = {
       mjestoPreuzimanja: '',
@@ -161,6 +163,11 @@ export class SearchComponent implements OnInit {
     this.searchService.getOneOglas(oglas.id).subscribe(
       data => {
         this.oglas = data;
+        this.commentService.getKomentari(this.oglas.vozilo.id).subscribe(
+          data => {
+            this.komentari = data
+          }
+        );
       }
     );
 

@@ -19,11 +19,14 @@ import { HomepageUserComponent } from './header/homepageUser/homepage-user.compo
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
+import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
 import { CarStatComponent } from './components/carStatistics/carStat.component';
 import { OccupationComponent } from './components/occupation/occupation.component';
 import {Inbox} from './components/inbox/inbox.component';
 import {MessageComponent} from '../app/message/message.component'
 import { from } from 'rxjs';
+import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 
 
 const routes: Routes = [
@@ -39,16 +42,16 @@ const routes: Routes = [
 
   { path: 'homepageAdmin', component: HomepageAdminComponent,
     children: [
+      { path: '', redirectTo: 'carEntities', pathMatch: 'full' },
       { path: 'addAgent', component: SignupComponent },
+      { path: 'comments', component: CommentAdminComponent },
       { path: 'addCarMark', component: AddMarkaAutomobila },
       { path: 'addCarClass', component: DodajKlasuAutomobila },
       { path: 'addGearboxType', component: DodajTipMjenjaca },
       { path: 'addFuelType', component: AddTipGoriva },
       { path: 'users', component: ListUsersComponent},
       { path: 'requests', component: ListRequestComponent},
-      { path: 'addCar', component: AddCarComponent },
-      { path: 'addAdd', component: DodajOglasComponent },
-
+      { path: 'carEntities', component: CarEntitiesComponent },
     ]
   }, 
 
@@ -57,8 +60,11 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
       { path: 'search', component: SearchComponent },
       { path: 'pricelist', component: PriceListComponent },
+      { path: 'commentsAndGrades', component: CommentAndGradesComponent},
       { path: 'requests', component: RentRequestsComponent },
       { path: 'carStat', component: CarStatComponent },
+      { path: 'addCar', component: AddCarComponent },
+      { path: 'addAdd', component: DodajOglasComponent },
       { path: 'carOccupation', component: OccupationComponent },
       { path: 'inbox', component: Inbox  },
       { path: 'inbox/reply', component: MessageComponent}

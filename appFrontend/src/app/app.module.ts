@@ -34,10 +34,14 @@ import { RentRequestsComponent } from './header/homepage-agent/rent-requests/ren
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
 import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
+import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarStatComponent } from './components/carStatistics/carStat.component';
 import { OccupationComponent } from './components/occupation/occupation.component';
 import {Inbox} from '../app/components/inbox/inbox.component';
 import { MessageComponent } from './message/message.component';
+import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 
 @NgModule({
   declarations: [
@@ -61,10 +65,13 @@ import { MessageComponent } from './message/message.component';
     SearchComponent,
     DodajOglasComponent,
     PriceListComponent,
+    CommentAndGradesComponent,
+    CommentAdminComponent,
     CarStatComponent,
     OccupationComponent,
     Inbox,
     MessageComponent,
+    CarEntitiesComponent,
   ],
   imports: [
     HttpClientModule,
@@ -76,6 +83,7 @@ import { MessageComponent } from './message/message.component';
     MatFormFieldModule,
     MatInputModule,
     RouterModule,
+    NgbModule,
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

@@ -1,8 +1,11 @@
 package com.demo.service;
 
+import com.demo.dto.MarkaAutomobilaDTO;
+import com.demo.dto.VoziloDTO;
 import com.demo.dto.*;
 import com.demo.exception.NotFoundException;
 import com.demo.model.*;
+import com.demo.repository.UserRepository;
 import com.demo.repository.VoziloRepository;
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import org.modelmapper.ModelMapper;
@@ -37,6 +40,8 @@ public class VoziloService {
 
     @Autowired
     private  TipMjenjacaService tipMjenjacaService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -120,11 +125,30 @@ public class VoziloService {
         return myImage;
     }
 
-    public ResponseEntity<?> getCarStatistics(Long ownersID) {
+
+    public ResponseEntity<?> getAllVozila(String username) {
+        User user = this.userRepository.findByUsername(username);
+
+        List<Vozilo> vozila = this.voziloRepository.findAllByUserId(user.getId());
+        List<VoziloDTO> voziloDTOS = new ArrayList<>();
+
+        for(Vozilo v: vozila){
+            VoziloDTO vDTO = new VoziloDTO();
+            vDTO.setId(v.getId());
+
+            vDTO.setMarkaAutomobila(modelMapper.map(v.getMarkaAutomobila(), MarkaAutomobilaDTO.class));
+
+            voziloDTOS.add(vDTO);
+        }
+
+        return new ResponseEntity<>(voziloDTOS,HttpStatus.OK);
+
+    }
+
+     public ResponseEntity<?> getCarStatistics(Long ownersID) {
         Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);
 
         StatistikaDTO statisticsDTO = new StatistikaDTO();
-
         Vozilo carWithHighestAverageGrade = getCarWithHighestGradeByOwnersId(cars);
         if (carWithHighestAverageGrade != null){
             VoziloSaNajvecomOcenomDTO carDTO = new VoziloSaNajvecomOcenomDTO();

@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 @EnableJpaRepositories
 public interface VoziloRepository  extends JpaRepository<Vozilo, Long> {
+    List<Vozilo> findAllByUserId(Long id);
 }

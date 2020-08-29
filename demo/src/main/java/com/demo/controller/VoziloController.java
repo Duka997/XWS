@@ -31,4 +31,9 @@ public class VoziloController {
         return this.voziloService.findAllVozila();
     }
 
+    @GetMapping(value = "getVozila/{username}")
+    public ResponseEntity<?> getAllVozila(@PathVariable String username){
+        return this.voziloService.getAllVozila(username);
+    }
+
 }

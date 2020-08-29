@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DodajMarkuAutomobilaService } from './addMarkuAutomobila.service';
 import { MarkaAutomobila } from 'src/app/model/markaAutomobila';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { MarkaAutomobila } from 'src/app/model/markaAutomobila';
 export class AddMarkaAutomobila implements OnInit {
 
  marka =  new MarkaAutomobila(null,null,null);
-  constructor(private _markaServis : DodajMarkuAutomobilaService, private router : Router) { }
+  constructor(private toastr: ToastrService, private _markaServis : DodajMarkuAutomobilaService, private router : Router) { }
 
   ngOnInit(): void {
 
@@ -23,8 +24,8 @@ export class AddMarkaAutomobila implements OnInit {
      .subscribe(
          data=>{
           console.log('Success!', JSON.stringify(data))
-          alert('New car mark has been added!');
-          this.router.navigate(['homepageAdmin']);
+          this.toastr.success('New car mark has been added!');
+          this.router.navigate(['homepageAdmin/carEntities']);
          } ,
           error=> console.error('Error!',error)
       )

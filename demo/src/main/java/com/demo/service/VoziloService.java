@@ -125,10 +125,6 @@ public class VoziloService {
         return myImage;
     }
 
-    public ResponseEntity<?> getCarStatistics(Long ownersID) {
-        Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);
-
-        StatistikaDTO statisticsDTO = new StatistikaDTO();
 
     public ResponseEntity<?> getAllVozila(String username) {
         User user = this.userRepository.findByUsername(username);

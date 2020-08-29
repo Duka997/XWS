@@ -3,14 +3,25 @@
        <ul class="navbar-nav mr-auto">
          <li class="nav-item">  <a class="nav-link" [routerLink]="['addAgent']">Add agent</a> </li>
          <li class="nav-item">  <a class="nav-link" [routerLink]="['comments']">Comments</a> </li>
-          <li> <a class="nav-link" [routerLink]="['addCarMark']">Add new car mark</a> </li>
-          <li> <a class="nav-link" [routerLink]="['addCarClass']">Add new car class</a> </li> 
-          <li> <a class="nav-link" [routerLink]="['addGearboxType']">Add new gearbox type</a> </li>
-          <li> <a class="nav-link" [routerLink]="['addFuelType']">Add new fuel type</a> </li>
+         <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >Add</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" [routerLink]="['addCarMark']">Add new car mark</a>
+                <a class="dropdown-item" [routerLink]="['addCarClass']">Add new car class</a> 
+                <a class="dropdown-item" [routerLink]="['addGearboxType']">Add new gearbox type</a> 
+                <a class=" dropdown-item" [routerLink]="['addFuelType']">Add new fuel type</a> 
+            </div>
+          </li>
+          <li> <a class="nav-link" [routerLink]="['carEntities']">Car entities</a> </li>
           <li> <a class="nav-link" [routerLink]="['users']">Users</a> </li>
           <li> <a class="nav-link" [routerLink]="['requests']">Requests</a> </li>
-          <li> <a class="nav-link" [routerLink]="['addCar']">Add new car</a> </li>
-          <li> <a class="nav-link" [routerLink]="['addAdd']">Add new ad</a> </li>
        </ul>
 
        <ul class="navbar-nav mr-right" style="float: right;">
@@ -26,159 +37,6 @@
       </ul>
     </nav>
     <router-outlet></router-outlet>
- 
 
-    <h2>List of car marks</h2>
-<table class="ui celled striped table">
-    <thead>
-      <th>Name</th>
-      <th>Model</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let marka of marke">
-            <td>
-                {{marka.nazivMarke}}
-            </td>
-            <td>
-                {{marka.model}}
-            </td>
-            <td>
-                <button type="submit" mat-button color="accent" (click)='editMarku(marka)'> Edit </button>
-            </td>
-            <td>
-                <button type="submit" mat-button color="warn" (click)='deleteMarku(marka.id)' > Delete </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div  class="col-md-3 offset-md-9" *ngIf = 'edit'   >
-    <form #userForm="ngForm"  (ngSubmit)="onSubmit1()">
-    <fieldset>
-        Edit car mark:  
-        <br/>
-        <label>Name:</label>
-        <input type="text"  class="form-control"  id="nazivMarke" name="nazivMarke" [(ngModel)]="editModel.nazivMarke" />
-        <br/>
-        <label>Model:</label>
-        <input type="text"  class="form-control"   id="model" name="model" [(ngModel)]="editModel.model"/>
-        
-    <button  mat-raised-button color="accent">Edit</button>
-    </fieldset>
-    </form>
 </div>
-
-<br/>
-<h2>Lista of car classes</h2>
-<table class="ui celled striped table">
-    <thead>
-      <th>Name</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let klasa of klase">
-            <td>
-                {{klasa.naziv}}
-            </td>
-            <td>
-                <button type="submit" mat-button color="accent" (click)='editKlasu(klasa)'> Edit </button>
-            </td>
-            <td>
-                <button type="submit" mat-button color="warn" (click)='deleteKlasu(klasa.id)'> Delete </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div  class="col-md-3 offset-md-9" *ngIf = 'edit1'   >
-    <form #userForm="ngForm"  (ngSubmit)="onSubmit()">
-    <fieldset>
-        Edit car class:  
-        <br/>
-        <label>Name:</label>
-        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelKlasa.naziv" />
-
-        
-    <button mat-raised-button color="accent">Edit</button>
-    </fieldset>
-    </form>
-</div>
-
-<br/>
-<h2>List of fuel types</h2>
-<table class="ui celled striped table">
-    <thead>
-      <th>Name</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let gorivo of goriva">
-            <td>
-                {{gorivo.naziv}}
-            </td>
-            <td>
-                <button type="submit" mat-button color="accent" (click)='editTipGoriva(gorivo)'> Edit </button>
-            </td>
-            <td>
-                <button type="submit" mat-button color="warn" (click)='deleteTipGoriva(gorivo.id)'> Delete </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div  class="col-md-3 offset-md-9" *ngIf = 'edit2'   >
-    <form #userForm="ngForm"  (ngSubmit)="onSubmit2()">
-    <fieldset>
-        Edit fuel type:  
-        <br/>
-        <label>Name:</label>
-        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipGoriva.naziv" />
-
-        
-    <button mat-raised-button color="accent">Edit</button>
-    </fieldset>
-    </form>
-</div>
-
-
-<br/>
-<h2>List of gearbox type:</h2>
-<table class="ui celled striped table">
-    <thead>
-      <th>Name</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let menjac of menjaci">
-            <td>
-                {{menjac.naziv}}
-            </td>
-            <td>
-                <button type="submit" mat-button color="accent" (click)='editTipMenjaca(menjac)'> Edit </button>
-            </td>
-            <td>
-                <button type="submit" mat-button color="warn"  (click)='deleteTipMenjaca(menjac.id)'> Delete </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div  class="col-md-3 offset-md-9" *ngIf = 'edit3'   >
-    <form #userForm="ngForm"  (ngSubmit)="onSubmit3()">
-    <fieldset>
-        Edit gearbox type:  
-        <br/>
-        <label>Name:</label>
-        <input type="text"  class="form-control"  id="naziv" name="naziv" [(ngModel)]="editModelTipMenjaca.naziv" />
-
-        
-    <button mat-raised-button color="accent">Edit</button>
-    </fieldset>
-    </form>
-</div>
-
- </div>
-
 

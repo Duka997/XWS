@@ -7,6 +7,7 @@ import { DodajVoziloService } from '../addCar/addCar.service';
 import { DodajOglasService } from './addAdd.service';
 import { CjenovnikService } from '../pricelist/pricelist.service';
 import { USER_ID_KEY } from 'src/app/config/local-storage-keys';
+import { CarService } from 'src/app/services/car.service';
 
 
 
@@ -24,13 +25,13 @@ export class DodajOglasComponent implements OnInit {
 
 
   constructor(private _voziloServis : DodajVoziloService, private router: Router,
-   private _oglasService : DodajOglasService, private cjenovnikService: CjenovnikService) { }
+   private _oglasService : DodajOglasService, private cjenovnikService: CjenovnikService, private carService: CarService) { }
 
   ngOnInit(): void {
 
     this.oglas.userId = parseInt(localStorage.getItem("id"));
 
-    this._oglasService.getVozila().subscribe(
+    this.carService.getCarsByUser(localStorage.getItem('id')).subscribe(
       data => {
         this.vozila = data;
         console.log(data);

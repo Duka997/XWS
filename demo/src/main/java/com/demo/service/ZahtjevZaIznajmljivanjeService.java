@@ -73,6 +73,17 @@ public class ZahtjevZaIznajmljivanjeService {
         return new ResponseEntity<>(requestsDTO, HttpStatus.OK);
     }
 
+    public ResponseEntity<?> getAllHistory(Long userId) {
+        //User user = this.userDetailsService.getLoggedInUser();
+        User user = this.userRepository.findUserById(userId);
+        List<ZahtjevZaIznajmljivanje> requests = this.zahtjevZaIznajmljivanjeRepository.findAllByUserId(userId);
+
+        List<ZahtjevDTO> retVal = getRequestDTOS(requests);
+        SviZahtjeviDTO requestsDTO = this.filterRequests(retVal);
+
+        return new ResponseEntity<>(requestsDTO, HttpStatus.OK);
+    }
+
     public SviZahtjeviDTO filterRequests(List<ZahtjevDTO> retVal) {
         SviZahtjeviDTO requestsDTO = new SviZahtjeviDTO();
         List<ZahtjevDTO> pending = new ArrayList<>();

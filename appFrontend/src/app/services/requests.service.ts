@@ -13,6 +13,10 @@ import { IReport } from '../model/Report';
         return this.http.get<any>('http://localhost:8099/api/request/getRequests/'+userId);
     }
 
+    getRequestsHistory(userId: any) {
+        return this.http.get<any>('http://localhost:8099/api/request/getRequestsHistory/'+userId);
+    }
+
     acceptRequest(reqId: any) {
         return this.http.post<any>('http://localhost:8099/api/request/accept/'+reqId, {});
     }

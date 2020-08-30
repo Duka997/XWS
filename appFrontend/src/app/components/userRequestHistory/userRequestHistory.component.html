@@ -1,0 +1,58 @@
+<div class="d-flex p-2 justify-content-center">
+    <div class="d-flex flex-column p-2 justify-content-center">
+      <br/><br/>
+      <div >
+          <h3 class="display-4" style="text-align: center;">All requests:</h3>
+      </div>
+      <br/><br/>
+      <div class="d-flex flex-row flex-wrap p-2 justify-content-center">
+        <div
+          *ngFor="let p of pending"
+          class="card border-primary mb-3"
+          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+        >
+          <div class="card-body">
+            <h4>Pending</h4>
+            <h4 class="card-title">Ad ID: {{p.oglasId}}</h4>
+            <p class="card-title">Status: {{p.status}}</p>
+            <p class="card-title">User: {{p.userId}}</p>
+            <p class="card-title">Bundle ID: {{p.bundleId}}</p>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
+
+      <div class="d-flex flex-row flex-wrap p-2 justify-content-center">
+        <div
+          *ngFor="let pa of paid"
+          class="card border-primary mb-3"
+          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+        >
+          <div class="card-body">
+            <h4>In Progress</h4>
+            <h4 class="card-title">Ad ID: {{pa.oglasId}}</h4>
+            <p class="card-title">Status: {{pa.status}}</p>
+            <p class="card-title">User: {{pa.userId}}</p>
+            <p class="card-title">Bundle ID: {{pa.bundleId}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row flex-wrap p-2 justify-content-center">
+        <div
+          *ngFor="let f of finished"
+          class="card border-primary mb-3"
+          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+        >
+          <div class="card-body">
+            <h4>Finished</h4>
+            <h4 class="card-title">Ad ID: {{f.oglasId}}</h4>
+            <p class="card-title">Status: {{f.status}}</p>
+            <p class="card-title">User: {{f.userId}}</p>
+            <p class="card-title">Bundle ID: {{f.bundleId}}</p>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
+    </div>
+  </div>

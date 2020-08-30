@@ -119,6 +119,13 @@
 			<version>1.0</version>
 		</dependency>
 
+		<!-- dep for time difference -->
+		<dependency>
+			<groupId>com.darwinsys</groupId>
+			<artifactId>hirondelle-date4j</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

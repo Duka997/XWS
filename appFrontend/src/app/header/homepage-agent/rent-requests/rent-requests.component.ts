@@ -41,12 +41,19 @@ export class RentRequestsComponent implements OnInit {
         if (req.bundleId == -1)
             this.requestService.acceptRequest(req.id).subscribe(
                 data => { this.getRequests() },
-                error => { this.toastr.error(error.error) }
-                );
+                error => { 
+                    if(error.status == 500) {
+                        this.toastr.warning('Car is already rented for that period', 'Rent');
+                    } 
+                });
         else
         this.requestService.acceptBundle(req.bundleId)
             .subscribe(data => { this.getRequests() },
-            error => { this.toastr.error(error.error) });
+            error => { 
+                if(error.status == 500) {
+                    this.toastr.warning('Car is already rented for that period', 'Rent');
+                } 
+             });
     }
 
     cancel(req: IRentRequest) {

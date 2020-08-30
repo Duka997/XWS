@@ -29,6 +29,7 @@ import { from } from 'rxjs';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserRequstHistoryComponent } from './components/userRequestHistory/userRequestHistory.component';
 
 
 const routes: Routes = [
@@ -80,14 +81,15 @@ const routes: Routes = [
     children: [
       //{ path: 'addAdd', component: DodajOglasComponent },
       { path: 'userAd', component: DodajOglasComponent  },
-      { path: 'inbox', component: Inbox  }
+      { path: 'inbox', component: Inbox  },
   ]
   },
   { path: 'homepageUser/reply', component:  MessageComponent},
   { path: 'homepageUser/addAdd', component:  DodajOglasComponent},
   { path: 'homepageUser/userCart', component: UserCartComponent  }, 
   { path: 'homepageUser/userCart/inbox', component: Inbox  },
-  { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  }
+  { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  },
+  { path: 'homepageUser/userRequests', component: UserRequstHistoryComponent  }
 ];
 
 @NgModule({

@@ -120,11 +120,15 @@ public class CustomUserDetailsService implements UserDetailsService{
         if(userDTO.getRoles().get(0).equals("ROLE_AGENT")){
             user.setImeKompanije(userDTO.getImeKompanije());
             user.setPoslovniID(userDTO.getPoslovniID());
+            Privilege privilege = this.privilegeRepository.findByName("POST_ADS");
+            user.getPrivileges().add(privilege);
         }else if(userDTO.getRoles().get(0).equals("ROLE_ADMIN")){
             user.setAdmin(true);
         }else if(userDTO.getRoles().get(0).equals("ROLE_USER")){
             user.setEnabled(false);
             user.setLastPasswordResetDate(null);
+            Privilege privilege = this.privilegeRepository.findByName("POST_ADS");
+            user.getPrivileges().add(privilege);
         }
 
         Role role = this.roleRepository.findByName(userDTO.getRoles().get(0));
@@ -293,5 +297,35 @@ public class CustomUserDetailsService implements UserDetailsService{
         user.setEnabled(false);
         user.setDeleted(true);
         this.userRepository.save(user);
+    }
+
+    public boolean rentPrivilege(Boolean privilege, Long id) {
+        User user =  this.userRepository.getOne(id);
+        Privilege privilegee = this.privilegeRepository.findByName("POST_ADS");
+        if(privilege  == true){
+            user.getPrivileges().add(privilegee);
+            this.userRepository.save(user);
+            return true;
+        }else if(privilege == false){
+            user.getPrivileges().remove(privilegee);
+            this.userRepository.save(user);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public ResponseEntity<?> edit(UserDTO userDTO) {
+        User user = this.userRepository.getOne(userDTO.getId());
+        user.setImeKompanije(userDTO.getImeKompanije());
+        user.setPoslovniID(userDTO.getPoslovniID());
+        user.setEmail(userDTO.getEmail());
+        user.setAddress(userDTO.getAddress());
+        user.setSurname(userDTO.getSurname());
+        user.setName(userDTO.getName());
+
+        this.userRepository.save(user);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

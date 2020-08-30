@@ -43,6 +43,7 @@ import {Inbox} from '../app/components/inbox/inbox.component';
 import { MessageComponent } from './message/message.component';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
 import { ReportComponent } from './components/report/report.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ReportComponent } from './components/report/report.component';
     MessageComponent,
     CarEntitiesComponent,
     ReportComponent,
+    ProfileComponent,
   ],
   imports: [
     HttpClientModule,

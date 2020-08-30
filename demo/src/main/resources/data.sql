@@ -3,6 +3,8 @@ insert into role (name, id) values ('ROLE_ADMIN', 1);
 insert into role (name, id) values ('ROLE_AGENT', 2);
 insert into role (name, id) values ('ROLE_USER', 3);
 
+insert into privilege  (name, id) values ('POST_ADS', 1);
+
 insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
 values (1, 'kaca', 'Katarina', 'Prodanovic', 'Stepe Stepanovica 10', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, true, '2020-06-09T21:39:42.000');
 insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
@@ -23,6 +25,13 @@ insert into users_roles (user_id, role_id) values (3, 2);
 insert into users_roles (user_id, role_id) values (4, 2);
 insert into users_roles (user_id, role_id) values (5, 3);
 insert into users_roles (user_id, role_id) values (6, 3);
+
+insert into users_privileges (user_id, privilege_id) values (1, 1);
+insert into users_privileges (user_id, privilege_id) values (2, 1);
+insert into users_privileges (user_id, privilege_id) values (3, 1);
+insert into users_privileges (user_id, privilege_id) values (4, 1);
+insert into users_privileges (user_id, privilege_id) values (5, 1);
+insert into users_privileges (user_id, privilege_id) values (6, 1);
 
 insert into `tipmjenjaca` (id, naziv, obrisan) values (1, 'manuelni', false);
 insert into `tipmjenjaca` (id, naziv,obrisan) values (2, 'automatski', false);

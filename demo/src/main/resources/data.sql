@@ -87,6 +87,12 @@ insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (10,4,6,1
 insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (11,4.5,5,1,1);
 insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (12,4.6,6,2,2);
 
-
 insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (1, '2020-06-06 21:58:58', 'Hi :D', 2, 3 );
-insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (2, '2020-06-06 21:59:58', 'Hey :)', 3, 2 )
+insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (2, '2020-06-06 21:59:58', 'Hey :)', 3, 2 );
+
+insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
+values (1, '2020-08-06 21:58:58', '2020-08-28 21:58:58', 'Novi Sad', '2020-08-20 21:58:58', true, 'PAID', null, 1, 2);
+insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
+values (2, '2020-08-12 21:58:58', '2020-08-25 21:58:58', 'Novi Sad', '2020-08-22 21:58:58', true, 'PAID', null, 2, 5);
+insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
+values (3, '2020-08-12 21:58:58', '2020-09-10 21:58:58', 'Novi Sad', '2020-08-28 21:58:58', true, 'PAID', null, 2, 2);

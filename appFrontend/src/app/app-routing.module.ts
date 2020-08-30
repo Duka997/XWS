@@ -27,6 +27,7 @@ import {Inbox} from './components/inbox/inbox.component';
 import {MessageComponent} from '../app/message/message.component'
 import { from } from 'rxjs';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 const routes: Routes = [
@@ -67,7 +68,8 @@ const routes: Routes = [
       { path: 'addAdd', component: DodajOglasComponent },
       { path: 'carOccupation', component: OccupationComponent },
       { path: 'inbox', component: Inbox  },
-      { path: 'inbox/reply', component: MessageComponent}
+      { path: 'inbox/reply', component: MessageComponent},
+      { path: 'report', component: ReportComponent  },
     ]
   },
 

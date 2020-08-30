@@ -34,7 +34,7 @@ export class RentRequestsComponent implements OnInit {
             this.finished = data.finished;
             console.log("data: ", data);
           });
-      }
+    }
 
     accept(req: IRentRequest) {
         console.log("potvrdjen: ",req);

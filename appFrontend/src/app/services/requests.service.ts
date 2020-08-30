@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { IReport } from '../model/Report';
 
 @Injectable({
     providedIn: 'root'
@@ -27,5 +28,9 @@ import { HttpClient } from '@angular/common/http';
     cancelBundle(bundleId: any) {
         return this.http.post<any>('http://localhost:8099/api/bundle/cancel/'+bundleId, {});
     }
+
+    createReport(report: IReport) {
+        return this.http.post<any>("http://localhost:8099/api/report/add", report);
+      }
 
 }

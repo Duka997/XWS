@@ -23,6 +23,8 @@
         <thead>
           <th>Ad ID</th>
           <th>Vehicle ID</th>
+          <th>From Date</th>
+          <th>To Date</th>
           <th>Single request</th>
           <th>Bundle</th>
           <th>Remove</th>
@@ -36,6 +38,14 @@
 
               <td>
                 {{ oglas.vozilo.id }}
+            </td>
+
+            <td>
+              {{ oglas.od | date: 'mediumDate' }}
+            </td>
+
+            <td>
+              {{ oglas.doo | date: 'mediumDate' }}
             </td>
 
             <td>

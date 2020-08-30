@@ -21,7 +21,10 @@
     <table class="ui celled striped table">
         <thead>
           <th>Ad ID</th>
-          <th>Vehicle ID</th>
+          <th>Vehicle</th>
+          <th>Owner</th>
+          <th>From Date</th>
+          <th>To Date</th>
           <th>Cart</th>
           <th>Message</th>
         </thead>
@@ -33,7 +36,19 @@
               </td>
 
               <td>
-                {{ oglas.vozilo.id }}
+                {{ oglas.vozilo.markaAutomobila.nazivMarke }} {{ oglas.vozilo.klasaAutomobila.naziv }}
+              </td>
+
+              <td>
+                {{ oglas.vozilo.agent.name }} {{ oglas.vozilo.agent.surname }}
+              </td>
+
+              <td>
+                {{ oglas.od | date: 'mediumDate' }}
+              </td>
+
+              <td>
+                {{ oglas.doo | date: 'mediumDate' }}
               </td>
   
               <td>

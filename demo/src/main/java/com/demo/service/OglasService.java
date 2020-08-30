@@ -235,4 +235,11 @@ public class OglasService {
 
         return new ResponseEntity<>(oglasDTO, HttpStatus.OK);
     }
+
+    public Oglas getCar(Long ad_id) {
+        if (ad_id == null) ad_id = 1L;
+        Oglas ad = oglasRepository.findById(ad_id).orElseThrow(() -> new NotFoundException("Ad with given id was not found"));
+
+        return  ad;
+    }
 }

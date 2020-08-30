@@ -1,0 +1,57 @@
+<div class="d-flex p-2 justify-content-center">
+    <div class="d-flex flex-column p-2 justify-content-center">
+      <br/><br/>
+      <div >
+          <h3 class="display-4" style="text-align: center;">All Finished Requests:</h3>
+      </div>
+      <br/><br/>
+      <div class="d-flex flex-row flex-wrap p-2 justify-content-center">
+        <div
+          *ngFor="let f of finished"
+          class="card border-primary mb-3"
+          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+        >
+          <div class="card-body">
+            <h4 class="card-title">Ad ID: {{f.oglasId}}</h4>
+            <h4 class="card-title">Date: {{f.od | date: 'mediumDate'}} - {{f.doo | date: 'mediumDate'}}</h4>
+            <p class="card-title">Status: {{f.status}}</p>
+            <p class="card-title">User: {{f.userId}}</p>
+            <p class="card-title">Bundle ID: {{f.bundleId}}</p>
+            <button type="button" class="btn btn-outline-dark" (click)="openRequest(modal, f)">Open Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #modal let-modal>
+    <div class="modal-header">
+       <h4 class="modal-title " id="modal-basic-title" *ngIf="mode == 'ADD'"><b style="color: deeppink; text-align: center;">Open Request</b></h4>
+       <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+       >
+          <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+    <div class="modal-body">
+       <div class="d-flex flex-column">
+            <div class="d-flex flex-column">
+                    <div class="d-flex flex-column" id ="ap">
+                        <label id = "label" for="kilometrage" style="color: deeppink;">Kilometrage:</label>
+                        <input [(ngModel)] = "kilometrage" type="number" min="0" name="doo" id="kilometrage" class="form-control"/>
+                    </div>
+                    <div class="d-flex flex-column" id ="ap">
+                        <label id = "label" for="comment" style="color: deeppink;">Comment</label>
+                        <input [(ngModel)] = "commentReport" type="string" min="0" name="commnet" id="commnet" class="form-control"/>
+                    </div>
+
+            <div  style="margin: 20px;">
+                <button style="float: right;" *ngIf="mode == 'ADD'" class="btn btn-outline" id="btnSearchSecondary" (click) = "sendReport()">Send</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    </ng-template>

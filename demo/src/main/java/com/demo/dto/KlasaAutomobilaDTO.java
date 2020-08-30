@@ -1,11 +1,18 @@
 package com.demo.dto;
 
+import com.demo.model.KlasaAutomobila;
+
 public class KlasaAutomobilaDTO {
     private Long id;
     private String naziv;
     private boolean obrisan;
 
     public KlasaAutomobilaDTO() {
+    }
+
+    public KlasaAutomobilaDTO(KlasaAutomobila klasaAutomobila) {
+        this.id = klasaAutomobila.getId();
+        this.naziv = klasaAutomobila.getNaziv();
     }
 
     public Long getId() {

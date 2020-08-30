@@ -1,4 +1,5 @@
 import { Vozilo } from './car';
+import { User } from './user';
 
 export class Oglas {
     constructor(
@@ -12,5 +13,6 @@ export class Oglas {
         public cjenovnikID : number,
         public bundleId: number,
         public adId: number,
+        public user: User
     ){}
 }

@@ -290,4 +290,9 @@ public class VoziloService {
         }
         return new ResponseEntity<>(carInfoDTOS, HttpStatus.OK);
     }
+
+    public Vozilo updateCarsKilometrage(Vozilo car, double newKilometers){
+        car.setKilometraza(car.getKilometraza() + newKilometers);
+        return car;
+    }
 }

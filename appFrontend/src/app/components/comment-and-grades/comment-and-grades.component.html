@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-center flex-column" >
             <div class="form-group">
                 <h4 class="border-bottom border-gray pb-2 mb-0">Auta</h4>
-                <select class="form-control" [(ngModel)]="vozilo" (change) = "voziloPromjena(vozilo)" id="selectedCar">
+                <select class="form-control" [(ngModel)]="selektovanoVozilo" (change) = "voziloPromjena()" id="selectedCar">
                     <option *ngFor = "let v of vozila" [ngValue]="v">
                         {{v.markaAutomobila.nazivMarke}} {{v.markaAutomobila.model}}
                     </option>
@@ -22,11 +22,22 @@
                     <strong class="d-block text-gray-dark">@{{k.userUsername}}</strong>
                     {{k.tekst}}
                   </p>
+                  <button type="button" class="btn btn-primary" style="float: left; height: 35px " (click) = "addComment(k)" *ngIf = "k.userUsername != username">Reply</button>
                 </div>
-                <textarea *ngIf = "mode == 'ADD'" class="form-control" style="width: 300px; height: 100px;" [(ngModel)] ="komentar"></textarea>
-                <br>
-                <button type="button" *ngIf = "vozilo != null" class="btn btn-outline-secondary" style="color:deeppink; width: 150px; height: 30px;" 
-                (click) = "onClickDodaj()">Dodaj</button>
+                <div class="media text-muted pt-3 d-flex flex-column" *ngIf= "mode =='COMMENT'">
+                    <div class="d-flex flex-column">
+                        <div  class="d-flex flex-row">
+                            To:  @{{selektovaniKomentar.userUsername}}<br>
+                        </div>
+                            Text: {{selektovaniKomentar.tekst}}
+                    </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)] = "komentarTekst"></textarea>
+                    <br>
+                    <div  class="d-flex flex-row">
+                        <button type="button" class="btn btn-primary" style="float: left;" (click) = "onClickDodaj()">Comment</button>
+                        <button type="button" class="btn btn-danger" style="float: right; margin-left: 420px;" (click) = "cancel()">Cancel</button>
+                    </div>
+                </div>
             </div>
             <div class=" my-3 p-3 bg-white rounded shadow-sm" style="width: 50%; margin-left: 10px; height: min-content;">
                 <h6 class="border-bottom border-gray pb-2 mb-0">Ocene</h6>

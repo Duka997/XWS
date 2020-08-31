@@ -9,9 +9,11 @@ import lombok.*;
 @Builder
 public class KomentarDTO {
     private Long id;
-    private  String tekst;
+    private String tekst;
     private boolean odobren;
-    private VoziloDTO vozilo;
+    private Long voziloId;
     private Long userId;
     private String userUsername;
+    private Long oglasId;
+    private String role;
 }

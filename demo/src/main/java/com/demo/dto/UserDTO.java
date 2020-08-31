@@ -28,6 +28,7 @@ public class UserDTO {
     private Timestamp lastPasswordResetDate;
     private List<String> roles;
     private String email;
+    private Integer numCancelled;
 
     public UserDTO(User user) {
         this.id = user.getId();

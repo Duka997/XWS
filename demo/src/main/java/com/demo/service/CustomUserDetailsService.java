@@ -113,6 +113,7 @@ public class CustomUserDetailsService implements UserDetailsService{
                 .deleted(false)
                 .imeKompanije("")
                 .poslovniID("")
+                .numCancelled(0)
                 .lastPasswordResetDate(new Timestamp(System.currentTimeMillis()))
                 .build();
 
@@ -120,14 +121,16 @@ public class CustomUserDetailsService implements UserDetailsService{
         if(userDTO.getRoles().get(0).equals("ROLE_AGENT")){
             user.setImeKompanije(userDTO.getImeKompanije());
             user.setPoslovniID(userDTO.getPoslovniID());
-            Privilege privilege = this.privilegeRepository.findByName("POST_ADS");
+            Privilege privilege = this.privilegeRepository.findByName("CREATE_RESERVATION");
+            user.setLastPasswordResetDate(new Timestamp(System.currentTimeMillis()));
             user.getPrivileges().add(privilege);
         }else if(userDTO.getRoles().get(0).equals("ROLE_ADMIN")){
+            user.setLastPasswordResetDate(new Timestamp(System.currentTimeMillis()));
             user.setAdmin(true);
         }else if(userDTO.getRoles().get(0).equals("ROLE_USER")){
             user.setEnabled(false);
             user.setLastPasswordResetDate(null);
-            Privilege privilege = this.privilegeRepository.findByName("POST_ADS");
+            Privilege privilege = this.privilegeRepository.findByName("CREATE_RESERVATION");
             user.getPrivileges().add(privilege);
         }
 
@@ -238,7 +241,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         List<User> users = this.userRepository.findAllByDeleted(false);
         List<UserDTO> userDTOS = new ArrayList<>();
         for(User u: users){
-            if (u.getRoles().iterator().next().getName().equals("ROLE_USER") && u.getLastPasswordResetDate() != null){
+            if (!u.getRoles().iterator().next().getName().equals("ROLE_ADMIN") && u.getLastPasswordResetDate() != null){
                 UserDTO userDTO = modelMapper.map(u, UserDTO.class);
                 userDTO.setRoles(new ArrayList<>());
                 for(Role r: u.getRoles()){
@@ -301,7 +304,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     public boolean rentPrivilege(Boolean privilege, Long id) {
         User user =  this.userRepository.getOne(id);
-        Privilege privilegee = this.privilegeRepository.findByName("POST_ADS");
+        Privilege privilegee = this.privilegeRepository.findByName("CREATE_RESERVATION");
         if(privilege  == true){
             user.getPrivileges().add(privilegee);
             this.userRepository.save(user);

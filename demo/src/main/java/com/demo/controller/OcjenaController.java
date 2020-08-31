@@ -22,4 +22,9 @@ public class OcjenaController {
     private ResponseEntity<?> getOcjeneZaAuto(@PathVariable Long voziloId){
         return this.ocjenaService.getOcjeneZaAuto(voziloId);
     }
+
+    @GetMapping(value = "/provjeri/{username}/{id}")
+    private ResponseEntity<?> provjeriOcjenu(@PathVariable Long id, @PathVariable String username){
+        return this.ocjenaService.provjeriOcjenu(username, id);
+    }
 }

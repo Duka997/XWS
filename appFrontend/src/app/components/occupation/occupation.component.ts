@@ -7,7 +7,8 @@ import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-occupation',
-  templateUrl: './occupation.component.html'
+  templateUrl: './occupation.component.html',
+  styleUrls: ['./occupation.component.css']
 })
 export class OccupationComponent implements OnInit {
   newOccupationForm;
@@ -75,7 +76,7 @@ export class OccupationComponent implements OnInit {
         }else if(error.status == 409) {
           this._toastr.warning('Car is already rented for that period', 'Occupation');
         }else{
-        this._toastr.error("Error setting occupation", "Occupation");
+          this._toastr.error("Error setting occupation", "Occupation");
         }
       }
     );

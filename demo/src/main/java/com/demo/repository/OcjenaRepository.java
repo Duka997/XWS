@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface OcjenaRepository extends JpaRepository<Ocjena, Long> {
     List<Ocjena> findAllByVoziloId(Long voziloId);
+
+    Ocjena findByUserIdAndOglasId(Long id, Long id1);
 }

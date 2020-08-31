@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { GradeService } from 'src/app/services/grade.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-comment-and-grades',
@@ -11,20 +12,45 @@ import { GradeService } from 'src/app/services/grade.service';
 export class CommentAndGradesComponent implements OnInit {
 
   public vozila: [];
-  public vozilo: {
+  public selektovanoVozilo: {
     id: null
-  } = null;
-  public komentar: string;
+  };
+  public role: string;
+  public komentarTekst: string ='';
+  public komentar:{};
+  public selektovaniKomentar:{
+    oglasId: '',
+    voziloId: '',
+    userUsername: '',
+    tekst: ''
+  }; 
   public komentari: [];
   public ocene: [];
   mode: string = 'VIEW';
+  username: string;
+  checkCommentFlag: boolean = false;
 
-  constructor(private carService: CarService, private commentService: CommentService, private gradeService: GradeService) { }
+  constructor(private carService: CarService,
+            private commentService: CommentService, 
+            private gradeService: GradeService,
+            private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.role = localStorage.getItem("user-role");
+    this.username = localStorage.getItem("username");
     this.carService.getVozila(localStorage.getItem('username')).subscribe(
       data => {this.vozila = data}
     );
+  }
+
+  cancel(){
+    this.mode='VIEW';
+    this.komentarTekst = '';
+  }
+
+  addComment(comment){
+    this.mode = 'COMMENT';
+    this.selektovaniKomentar = comment;
   }
 
   refresh(){
@@ -33,14 +59,15 @@ export class CommentAndGradesComponent implements OnInit {
     );
   }
 
-  voziloPromjena(vozilo: any){
-    this.commentService.getKomentari(vozilo.id).subscribe(
+  voziloPromjena(){
+    this.mode = 'VIEW';
+    this.commentService.getKomentari(this.selektovanoVozilo.id).subscribe(
       data=> {
         this.komentari =  data;
       }
     );
 
-    this.gradeService.getOcjene(vozilo.id).subscribe(
+    this.gradeService.getOcjene(this.selektovanoVozilo.id).subscribe(
       data=> {
         this.ocene =  data;
       }
@@ -48,32 +75,36 @@ export class CommentAndGradesComponent implements OnInit {
   }
 
   onClickDodaj(){
-    if(this.mode == 'VIEW'){
-      this.mode = 'ADD';
+    if(this.komentar == ''){
+      this.toastr.info('Please, insert text', "Comment");
       return;
     }
     
     let newKomenatar  = {
       id: null,
-      tekst: this.komentar,
-      vozilo: {
-        id: this.vozilo.id,
-      }
+      odobren:false,
+      role: localStorage.getItem("user-role"),
+      userUsername: localStorage.getItem("username"),
+      tekst: this.komentarTekst,
+      oglasId: this.selektovaniKomentar.oglasId ,
+      userId: localStorage.getItem("id"),
+      voziloId: this.selektovaniKomentar.voziloId
     }
 
-    
-
-    this.commentService.dodajKomentar(newKomenatar, localStorage.getItem('username')).subscribe(
+    this.commentService.dodajKomentarOdgovor(newKomenatar).subscribe(
       data=>{
-        this.refresh();      
+        this.toastr.success("Comment succesfully created", "Comment");    
+      },
+      error =>{
+        if(error.status == 400)
+          this.toastr.info("Comment already sent", "Comment");
+        else
+          this.toastr.error("Error creating comment", "Comment");
       }
     );
 
-    this.vozilo = null;
-    this.komentar = '';
-    this.mode = 'VIEW';
-    this.komentari = [];
-    this.ocene = [];
+    this.komentarTekst = '';
+    this.mode ='VIEW';
   }
 
 }

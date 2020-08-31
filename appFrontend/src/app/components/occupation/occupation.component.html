@@ -53,7 +53,7 @@
                <tr class="table-info" *ngFor = "let o of occupations">
                   <td>{{o.od | date: 'mediumDate'}}</td>
                   <td>{{o.doo | date: 'mediumDate'}}</td>
-                  <td>{{o.vozilo.markaAutomobila.nazivMarke}} {{o.vozilo.klasaAutomobila.naziv}}</td>
+                  <td>{{o.vozilo.markaAutomobila.nazivMarke}} {{o.vozilo.markaAutomobila.model}}</td>
                 </tr>
             </tbody>
          </table>

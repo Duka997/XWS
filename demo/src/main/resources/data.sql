@@ -3,20 +3,20 @@ insert into role (name, id) values ('ROLE_ADMIN', 1);
 insert into role (name, id) values ('ROLE_AGENT', 2);
 insert into role (name, id) values ('ROLE_USER', 3);
 
-insert into privilege  (name, id) values ('POST_ADS', 1);
+insert into privilege  (name, id) values ('CREATE_RESERVATION', 1);
 
-insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
-values (1, 'kaca', 'Katarina', 'Prodanovic', 'Stepe Stepanovica 10', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, true, '2020-06-09T21:39:42.000');
-insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
-values (2, 'milica', 'Milica', 'Radovanovic', 'Kilavci 2', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000');
-insert into users (id, username, name, surname, address, password, enabled, deleted, is_admin, last_password_reset_date, ime_kompanije, poslovniid)
-values (3, 'nevena', 'Nevena', 'Djukin', 'Padej 3', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 'pow wow ltd', '1');
-insert into users (id, username, name, surname, address, password, enabled, deleted, is_admin, last_password_reset_date, ime_kompanije, poslovniid)
-values (4, 'agent1', 'Nikola', 'Jokic', 'Somborski put 3', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 'Burekdzinica', '2');
-insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
-values (5, 'user1', 'Blagoje', 'Pantic', 'Kilavci 22', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000');
-insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date)
-values (6, 'user2', 'Stanoje', 'Stanic', 'Kilavci 12', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000');
+insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date, num_cancelled)
+values (1, 'kaca', 'Katarina', 'Prodanovic', 'Stepe Stepanovica 10', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, true, '2020-06-09T21:39:42.000', 1);
+insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date, num_cancelled)
+values (2, 'milica', 'Milica', 'Radovanovic', 'Kilavci 2', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 1);
+insert into users (id, username, name, surname, address, password, enabled, deleted, is_admin, last_password_reset_date, ime_kompanije, poslovniid, num_cancelled)
+values (3, 'nevena', 'Nevena', 'Djukin', 'Padej 3', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 'pow wow ltd', '1', 0);
+insert into users (id, username, name, surname, address, password, enabled, deleted, is_admin, last_password_reset_date, ime_kompanije, poslovniid, num_cancelled)
+values (4, 'agent1', 'Nikola', 'Jokic', 'Somborski put 3', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 'Burekdzinica', '2', 0);
+insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date, num_cancelled)
+values (5, 'user1', 'Blagoje', 'Pantic', 'Kilavci 22', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 0);
+insert into users (id, username, name, surname, address, password, enabled,  deleted, is_admin, last_password_reset_date, num_cancelled)
+values (6, 'user2', 'Stanoje', 'Stanic', 'Kilavci 12', '$2a$10$U9jvaVCEV.48aHuR2vck/emgRLXJ3d5jleYyCTwdO/X9fmDtZ0bgG', true, false, false, '2020-06-09T21:39:42.000', 0);
 
 
 insert into users_roles (user_id, role_id) values (1, 1);
@@ -67,9 +67,9 @@ insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, use
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (1, '2020-09-26 21:58:58', true, '200', 'Novi Sad', '2020-08-11 21:58:58', 1, 3, 1);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (2, '2020-09-29 21:58:58', true, '200', 'Beograd', '2020-08-20 21:58:58', 2, 3, 3);
+values (2, '2020-09-29 21:58:58', true, '200', 'Beograd', '2020-08-20 21:58:58', 2, 3, 2);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (3, '2020-09-30 21:58:58', true, '200', 'Banja Luka', '2020-08-25 21:58:58', 1, 3, 2);
+values (3, '2020-09-30 21:58:58', true, '200', 'Banja Luka', '2020-08-25 21:58:58', 1, 3, 3);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (4, '2020-09-23 21:58:58', true, '200', 'Banja Luka', '2020-08-23 21:58:58', 3, 4, 4);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
@@ -77,7 +77,7 @@ values (5, '2020-09-23 21:58:58', true, '200', 'Banja Luka', '2020-08-28 21:58:5
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (6, '2020-09-30 21:58:58', true, '109', 'Zrenjanin', '2020-09-01 21:58:58', 1, 3, 1);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (7, '2020-09-15 21:58:58', true, '250', 'Subotica', '2020-08-30 21:58:58', 2, 3, 4);
+values (7, '2020-09-15 21:58:58', true, '250', 'Subotica', '2020-08-30 21:58:58', 2, 3, 2);
 
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (1, '4', 1, 3, 1);
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (2, '4', 1, 3, 1);
@@ -90,11 +90,11 @@ insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (8, '5', 1
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (9, '4', 1, 3, 3);
 
 
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (1, true, 'Vrh auto', 6, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (2, true, 'Udobno', 5, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (3, true, 'Svidja mi se', 6, 2);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (4, false, 'Super', 5, 1);
-insert into `komentar` (id, odobren,tekst, user_id, vozilo_id) values (5, false, 'Predobro auto', 5, 1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id, oglas_id) values (1, true, 'Vrh auto', 6, 1,1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id, oglas_id) values (2, true, 'Udobno', 5, 2,2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id, oglas_id) values (3, true, 'Svidja mi se', 6, 2,2);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id, oglas_id) values (4, false, 'Super', 5, 1,1);
+insert into `komentar` (id, odobren,tekst, user_id, vozilo_id, oglas_id) values (5, false, 'Predobro auto', 5, 1,1);
 
 insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (10,4,6,1,1);
 insert into `ocena` (id, ocjena, user_id, oglas_id, vozilo_id ) values (11,4.5,5,1,1);
@@ -112,4 +112,4 @@ values (3, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-08-20
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
 values (4, '2020-08-12 21:58:58', '2020-08-30 21:58:58', 'Novi Sad', '2020-08-14 21:58:58', false, 'PAID', null, 2, 2);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
-values (5, '2020-08-12 21:58:58', '2020-08-15 21:58:58', 'Novi Sad', '2020-08-07 21:58:58', false, 'PAID', null, 2, 2);
+values (5, '2020-08-12 21:58:58', '2020-08-15 21:58:58', 'Novi Sad', '2020-08-07 21:58:58', false, 'PAID', null, 3, 2);

@@ -162,21 +162,21 @@ public class VoziloService {
 
             statisticsDTO.setVoziloSaNajvecomOcenomDTO(carDTO);
         }
-/*
+
         Vozilo carWithMostComments = getCarWithMostCommentsByOwnersId(cars);
         if (carWithMostComments != null){
-            CarWithMostCommentsDTO carDTO = new CarWithMostCommentsDTO();
+            VoziloSaNajviseKomentaraDTO carDTO = new VoziloSaNajviseKomentaraDTO();
 
             carDTO.setId(carWithMostComments.getId());
-            carDTO.setMarkId(carWithMostComments.getMark().getId());
-            carDTO.setMarkName(carWithMostComments.getMark().getName());
-            carDTO.setModelId(carWithMostComments.getModel().getId());
-            carDTO.setModelName(carWithMostComments.getModel().getName());
-            carDTO.setNumberOfComments(carWithMostComments.getComments().size());
+            carDTO.setMarkaId(carWithMostComments.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithMostComments.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithMostComments.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithMostComments.getKlasaAutomobila().getNaziv());
+            carDTO.setBrojKomentara(carWithMostComments.getKomentari().size());
 
-            statisticsDTO.setCarWithMostComments(carDTO);
+            statisticsDTO.setVoziloSaNajviseKomentaraDTO(carDTO);
         }
-*/
+
         Vozilo carWithMostKilometers = getCarWithMostKilometersByOwnersId(cars);
         if (carWithMostKilometers != null){
             VoziloSaNajvecomKilometrazomDTO carDTO = new VoziloSaNajvecomKilometrazomDTO();
@@ -235,6 +235,24 @@ public class VoziloService {
             averageGrade = (float) sum / car.getOcjene().size();
             return averageGrade;
         }
+    }
+
+    public Vozilo getCarWithMostCommentsByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have 0 comments. */
+        int maxComments = 0;
+        Vozilo carWithMostComments = new Vozilo();
+
+        for(Vozilo c : cars){
+            if (c.getKomentari().size() > maxComments){
+                maxComments = c.getKomentari().size();
+                carWithMostComments = c;
+            }
+        }
+
+        if (maxComments == 0)
+            return null;
+
+        return carWithMostComments;
     }
 
     public Vozilo getCarWithMostKilometersByOwnersId(Set<Vozilo> cars){

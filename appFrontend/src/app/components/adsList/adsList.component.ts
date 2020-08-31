@@ -62,11 +62,6 @@ export class AdsListComponent implements OnInit {
     this.router.navigate(['inbox']);
   }
 
-  posaljiPor(userId:any){
-    localStorage.setItem("primalac", userId);
-    this.router.navigate(['homepageUser/reply']);
-  }
-
   seeVehicle(sadrzaj: any, selectedVehicle: Vozilo) {
     //this.clear();
     //this.refresh();

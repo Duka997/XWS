@@ -8,7 +8,6 @@
           <th>From Date</th>
           <th>To Date</th>
           <th>Cart</th>
-          <th>Message</th>
         </thead>
         <tbody>
             <tr *ngFor="let oglas of oglasi">
@@ -39,10 +38,6 @@
   
               <td>
                   <button type="button" class="btn btn-success" (click)="addToCart(oglas)">Add</button>
-              </td>
-
-              <td>
-                <button type="button" class="btn btn-primary" (click)="posaljiPor(oglas.userId)">Send message</button>
               </td>
 
             </tr>

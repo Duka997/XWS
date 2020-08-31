@@ -22,7 +22,9 @@
     <table class="ui celled striped table">
         <thead>
           <th>Ad ID</th>
-          <th>Vehicle ID</th>
+          <th>Vehicle</th>
+          <th>Open</th>
+          <th>Owner</th>
           <th>From Date</th>
           <th>To Date</th>
           <th>Single request</th>
@@ -37,7 +39,15 @@
               </td>
 
               <td>
-                {{ oglas.vozilo.id }}
+                {{ oglas.vozilo.markaAutomobila.nazivMarke }} {{ oglas.vozilo.klasaAutomobila.naziv }}
+              </td>
+
+            <td>
+              <button type="button" class="btn btn-outline-dark" (click)="seeVehicle(modal, oglas.vozilo)">See Vehicle</button>
+            </td>
+
+            <td>
+              {{ oglas.vozilo.agent.name }} {{ oglas.vozilo.agent.surname }}
             </td>
 
             <td>
@@ -66,3 +76,38 @@
     <button type="button" class="btn btn-success" (click)="sendRequest()">Send request</button>
 
  </div>
+
+ <ng-template #modal let-modal>
+  <div class="modal-header">
+     <h4 class="modal-title " id="modal-basic-title" *ngIf="mode == 'ADD'"><b style="color: deeppink; text-align: center;">See Vehicle</b></h4>
+     <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+     >
+        <span aria-hidden="true">&times;</span>
+     </button>
+  </div>
+  <div class="modal-body">
+     <div class="d-flex flex-column">
+          <div class="d-flex flex-column">
+                  <div class="d-flex flex-column" id ="ap">
+                    <label id = "label" style="color: rgb(3, 70, 17);">Car mark: {{ vehicle.markaAutomobila.nazivMarke }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Car class: {{ vehicle.klasaAutomobila.naziv }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Number of child car seats: {{ vehicle.brSjedistaZaDjecu }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Price: {{ vehicle.cijena }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Collision Damage Wavier: {{ vehicle.coliisionDamageWavier }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Andorid: {{ vehicle.imaAndroid }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Kilometrage: {{ vehicle.kilometraza }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Can cross kilometers: {{ vehicle.mozePreciKM }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Grade: {{ vehicle.ocjena }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Car fuel: {{ vehicle.tipGoriva.naziv }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Car gearbox: {{ vehicle.tipMjenjaca.naziv }}</label>
+                    <label id = "label" style="color: rgb(3, 70, 17);;">Photographs: {{ vehicle.slike }} </label>
+
+                  </div>
+          </div>
+      </div>
+  </div>
+  </ng-template>

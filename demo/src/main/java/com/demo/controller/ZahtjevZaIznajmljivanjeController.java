@@ -17,6 +17,11 @@ public class ZahtjevZaIznajmljivanjeController {
         return this.zahtjevZaIznajmljivanjeService.getAll(userId);
     }
 
+    @GetMapping(value = "/getRequestsHistory/{userId}")
+    public ResponseEntity<?> getRequestsHistory(@PathVariable Long userId) {
+        return this.zahtjevZaIznajmljivanjeService.getAllHistory(userId);
+    }
+
     @PostMapping(value = "/accept/{id}")
     public ResponseEntity<?> acceptRequest(@PathVariable Long id) {
         return this.zahtjevZaIznajmljivanjeService.acceptRequest(id);

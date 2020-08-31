@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/requests.service';
 import { ToastrService } from 'ngx-toastr';
-import { IRentRequest } from '../../homepageUser/userCart/IRequestRent';
 import { IAllRequests } from './irequests.all';
+import { IRentRequest } from 'src/app/components/userCart/IRequestRent';
 
 @Component({
   selector: 'app-rent-request',

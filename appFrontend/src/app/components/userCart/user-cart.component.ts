@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Oglas } from 'src/app/model/Ad';
 import { Vozilo } from 'src/app/model/car';
-import { ICart } from './ICart';
 import { IRentRequest } from './IRequestRent';
 import { IBundle } from './IBundle';
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';

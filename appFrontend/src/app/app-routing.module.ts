@@ -11,12 +11,9 @@ import { DodajTipMjenjaca } from './components/addGearboxType/addGearboxType.com
 import { AddTipGoriva } from './components/addFuelType/addFuelType.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { ListRequestComponent } from './components/list-request/list-request.component';
-
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
-import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
-import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
@@ -27,9 +24,12 @@ import {Inbox} from './components/inbox/inbox.component';
 import {MessageComponent} from '../app/message/message.component'
 import { from } from 'rxjs';
 import { CarEntitiesComponent } from './components/car-entities/car-entities.component';
-import { ReportComponent } from './components/report/report.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdsListComponent } from './components/adsList/adsList.component';
+import { UserCartComponent } from './components/userCart/user-cart.component';
+import { ReportComponent } from './components/report/report.component';
 import { UserRequstHistoryComponent } from './components/userRequestHistory/userRequestHistory.component';
+import { RentRequestsComponent } from './components/rent-requests/rent-requests.component';
 
 
 const routes: Routes = [
@@ -82,14 +82,15 @@ const routes: Routes = [
       //{ path: 'addAdd', component: DodajOglasComponent },
       { path: 'userAd', component: DodajOglasComponent  },
       { path: 'inbox', component: Inbox  },
+      { path: 'adsList', component: AdsListComponent  },
+      { path: 'reply', component:  MessageComponent},
+      { path: 'addAdd', component:  DodajOglasComponent},
+      { path: 'userCart', component: UserCartComponent  }, 
+      { path: 'userRequests', component: UserRequstHistoryComponent  }
   ]
   },
-  { path: 'homepageUser/reply', component:  MessageComponent},
-  { path: 'homepageUser/addAdd', component:  DodajOglasComponent},
-  { path: 'homepageUser/userCart', component: UserCartComponent  }, 
   { path: 'homepageUser/userCart/inbox', component: Inbox  },
-  { path: 'homepageUser/userCart/userAd', component: DodajOglasComponent  },
-  { path: 'homepageUser/userRequests', component: UserRequstHistoryComponent  }
+  
 ];
 
 @NgModule({

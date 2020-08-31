@@ -41,14 +41,21 @@ public class OcjenaService {
         ocena.setUser(user);
         Oglas oglas = this.oglasService.findById(ocenaDTO.getOglasId());
         ocena.setOglas(oglas);
-        ocena.setVozilo(oglas.getVozilo());
         Vozilo vozilo = oglas.getVozilo();
+        ocena.setVozilo(vozilo);
+
         double sum = 0;
         if(vozilo.getOcjene().size() != 0) {
             for (Ocjena o : vozilo.getOcjene()) {
                 sum = sum + o.getOcjena();
             }
             vozilo.setOcjena(sum/vozilo.getOcjene().size());
+        }
+
+        Ocjena ocjenaProvjera = this.ocjenaRepository.findByUserIdAndOglasId(user.getId(),oglas.getId());
+
+        if(ocjenaProvjera != null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         this.voziloRepository.save(vozilo);
@@ -71,5 +78,15 @@ public class OcjenaService {
         }
 
         return new ResponseEntity<>(ocenaDTOS, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> provjeriOcjenu(String username, Long id) {
+        User user = this.userRepository.findByUsername(username);
+        Ocjena ocjenaProvjera = this.ocjenaRepository.findByUserIdAndOglasId(user.getId(), id);
+
+        if (ocjenaProvjera != null) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.OK);
     }
 }

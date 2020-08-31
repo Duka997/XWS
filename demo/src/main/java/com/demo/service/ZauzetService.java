@@ -6,6 +6,7 @@ import com.demo.model.*;
 import com.demo.repository.ZahtjevZaIznajmljivanjeRepository;
 import com.demo.repository.ZauzetRepository;
 import org.joda.time.DateTime;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,9 @@ public class ZauzetService {
 
     @Autowired
     private VoziloService voziloService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private ZahtjevZaBundleService zahtjevZaBundleService;
@@ -171,8 +175,7 @@ public class ZauzetService {
             List<Zauzet> occupieds = this.zauzetRepository.findAllByVoziloAndDooAfter(c, DateTime.now());
             for(Zauzet o: occupieds){
                 ZauzetDTO occupiedDTO = new ZauzetDTO();
-                //occupiedDTO.setCar(modelMapper.map(o.getCar(), CarInfoDTO.class));
-                occupiedDTO.setVozilo(new VoziloDTO(o.getVozilo()));
+                occupiedDTO.setVozilo(modelMapper.map(o.getVozilo(), VoziloDTO.class));
                 occupiedDTO.setOd(o.getOd());
                 occupiedDTO.setDoo(o.getDoo());
                 occupiedDTO.setVoziloId(o.getVozilo().getId());

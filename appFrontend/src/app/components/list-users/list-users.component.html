@@ -5,13 +5,14 @@
         <div
           *ngFor="let u of users"
           class="card border-primary mb-3"
-          style="max-width: 20rem; max-height: 25rem; float: left; margin: 10px"
+          style="max-width: 16rem; max-height: 25rem; float: left; margin: 10px"
         >
           <div class="card-body">
             <h4 class="card-title">{{u.name}} {{u.surname}}</h4>
             <p class="card-text">Username: {{u.username}}</p>
             <p class="card-text">Address: {{u.address}}</p>
             <p class="card-text">Email: {{u.email}}</p>
+            <p class="card-text">Number of cancelled request: {{u.numCancelled}}</p>
             <button type="button" style="margin-top: 7px; margin-bottom: 7px; width: 100%;" class="btn btn-danger" *ngIf = "checkPrivilege(u.roles)"  (click) = "disableRent(u.id)" >Disable for renting</button>
             <button type="button" style="margin-top: 7px; margin-bottom: 7px; width: 100%;" *ngIf = "!checkPrivilege(u.roles)" class="btn btn-success" (click) = "enableRent(u.id)" >Enable for renting</button>
             <button type="button" class="btn btn-danger" *ngIf="u.enabled == true" (click)="disable(u.id)">Disable</button> 

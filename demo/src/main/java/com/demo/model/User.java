@@ -53,6 +53,9 @@ public class User implements UserDetails {
     private boolean enabled;
 
     @Column
+    private Integer numCancelled;
+
+    @Column
     private boolean deleted;
 
     @Column

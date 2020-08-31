@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileComponent implements OnInit {
   role: string = '';
   username: string = '';
-  user: User = {};
+  user: User ;
   mode: string = 'VIEW';
 
   constructor(private authService: AuthService,

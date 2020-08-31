@@ -32,7 +32,8 @@ export class SignupComponent implements OnInit {
                    imeKompanije:'',
                    poslovniID:'',
                    email:'',
-                   address:''
+                   address:'',
+                   numCancelled: 0
                  }
                }
 

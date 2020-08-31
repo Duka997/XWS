@@ -207,6 +207,9 @@ public class ZahtjevZaIznajmljivanjeService {
 
     public ResponseEntity<?> cancelRequest(Long requestId) {
         ZahtjevZaIznajmljivanje rentRequest = this.zahtjevZaIznajmljivanjeRepository.findById(requestId).orElseThrow(() -> new NotFoundException("Request with given id was not found"));
+        User user = rentRequest.getUser(); // ovo da se poveca broj otkazanih zahtijeva od strane korisnik koji je kreirao zahtijev
+        user.setNumCancelled(user.getNumCancelled() + 1);
+        this.userRepository.save(user);
         if (rentRequest.getStatus().equals(StatusZahtjeva.PAID))
             throw new InvalidOperationException("Rent request has already been paid. It cannot be cancelled.");
         rentRequest.setStatus(StatusZahtjeva.CANCELED);

@@ -67,7 +67,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   checkPrivilege(roles: string[]){
-    if(roles.indexOf('POST_ADS') > -1)
+    if(roles.indexOf('CREATE_RESERVATION') > -1)
         return true;
     else
         return false;

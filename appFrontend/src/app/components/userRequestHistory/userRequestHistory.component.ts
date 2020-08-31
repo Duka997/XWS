@@ -5,6 +5,9 @@ import { AdsService } from 'src/app/services/ads.service';
 import { RequestService } from 'src/app/services/requests.service';
 import { IAllRequests } from 'src/app/header/homepage-agent/rent-requests/irequests.all';
 import { IRentRequest } from 'src/app/header/homepageUser/userCart/IRequestRent';
+import { Oglas } from 'src/app/model/add';
+import { IRentRequestHistory } from './model/IRequestRent';
+import { IAllRequestsHistory } from './model/irequests.all';
 
 @Component({
     selector: 'app-user-request-history',
@@ -12,14 +15,17 @@ import { IRentRequest } from 'src/app/header/homepageUser/userCart/IRequestRent'
   })
   export class UserRequstHistoryComponent implements OnInit {
 
-    all: IRentRequest[];
-    pending: IRentRequest[];
-    paid: IRentRequest[];
-    finished: IRentRequest[];
+    all: IRentRequestHistory[];
+    pending: IRentRequestHistory[];
+    paid: IRentRequestHistory[];
+    finished: IRentRequestHistory[];
+
+    ads: Oglas[];
     
     constructor(  private router: Router,
         private toastr: ToastrService,
-        private requestService: RequestService) { }
+        private requestService: RequestService,
+        private adsService: AdsService) { }
     
     ngOnInit(): void {
         this.getRequests();
@@ -28,13 +34,14 @@ import { IRentRequest } from 'src/app/header/homepageUser/userCart/IRequestRent'
     getRequests() {
         var userId = parseInt(localStorage.getItem('id'));
         this.requestService.getRequestsHistory(userId)
-          .subscribe((data: IAllRequests) => {
+          .subscribe((data: IAllRequestsHistory) => {
             this.all = data.all;
             this.pending = data.pending;
             this.paid = data.paid;
             this.finished = data.finished;
             console.log("data: ", data);
-          });
+        });
+
     }
   
 

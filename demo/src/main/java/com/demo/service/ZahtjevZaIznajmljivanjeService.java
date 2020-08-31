@@ -1,9 +1,6 @@
 package com.demo.service;
 
-import com.demo.dto.KorpaDTO;
-import com.demo.dto.SviZahtjeviDTO;
-import com.demo.dto.ZahtjevDTO;
-import com.demo.dto.ZauzetDTO;
+import com.demo.dto.*;
 import com.demo.exception.InvalidOperationException;
 import com.demo.exception.NotFoundException;
 import com.demo.model.*;
@@ -54,6 +51,7 @@ public class ZahtjevZaIznajmljivanjeService {
                     .od(request.getOd())
                     .mjestoPreuzimanja(request.getMjestoPreuzimanja())
                     .oglasId(request.getOglas().getId())
+                    .oglas(new OglasDTO(request.getOglas()))
                     .status(String.valueOf(request.getStatus()))
                     .userId(request.getUser().getId())
                     .bundleId(request.getBundle() != null ? request.getBundle().getId() : -1)

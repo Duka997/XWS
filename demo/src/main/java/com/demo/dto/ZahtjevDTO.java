@@ -16,6 +16,7 @@ public class ZahtjevDTO {
     private DateTime doo;
     private String status;
     private Long oglasId;
+    private OglasDTO oglas;
     private Long bundleId;
     private Long userId;
 

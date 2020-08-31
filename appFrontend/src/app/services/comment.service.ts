@@ -12,8 +12,16 @@ export class CommentService {
     return this.http.get<any>('http://localhost:8099/api/komentar/getKomentareVozilo/'+id);
   }
 
-  dodajKomentar(komentar: any, username: string){
-    return this.http.post<any>('http://localhost:8099/api/komentar/dodaj/'+username, komentar);
+  dodajKomentar(komentar: any){
+    return this.http.post<any>('http://localhost:8099/api/komentar', komentar);
+  }
+
+  dodajKomentarOdgovor(komentar: any){
+    return this.http.post<any>('http://localhost:8099/api/komentar/odgovor', komentar);
+  }
+
+  provjeriKomentar(id: number, username: string) {
+    return this.http.get<any>('http://localhost:8099/api/komentar/provjeri/' + username + "/" + id);
   }
 
   getKomentare(){

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RequestService } from 'src/app/services/requests.service';
-import { IAllRequests } from 'src/app/header/homepage-agent/rent-requests/irequests.all';
-import { IRentRequest } from 'src/app/header/homepageUser/userCart/IRequestRent';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Vozilo } from 'src/app/model/car';
 import { AdsService } from 'src/app/services/ads.service';
 import { IReport } from 'src/app/model/Report';
 import { Oglas } from 'src/app/model/Ad';
+import { IRentRequest } from '../userCart/IRequestRent';
+import { IAllRequests } from '../rent-requests/irequests.all';
 
 @Component({
     selector: 'app-report',

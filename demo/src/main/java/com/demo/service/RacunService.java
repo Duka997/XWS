@@ -15,7 +15,7 @@ public class RacunService {
     private UserService userService;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
     private RacunRepository racunRepository;
@@ -28,7 +28,7 @@ public class RacunService {
 
         double price = kilometrage * priceList.getCijenaPoKM();
         bill.setCijena(price);
-        //this.userDetailsService.rentPrivilege(false, user_id);
+        this.userDetailsService.rentPrivilege(false, user_id);
 
         this.racunRepository.save(bill);
     }

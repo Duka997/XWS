@@ -154,7 +154,9 @@ public class ZahtjevZaIznajmljivanjeService {
         List<ZahtjevZaIznajmljivanje> requests2 = zahtjevZaIznajmljivanjeRepository.findAll();
         for(ZahtjevZaIznajmljivanje req: requests2) {
             if (req.getOglas().getId() == request.getOglas().getId() && !req.getStatus().equals(StatusZahtjeva.PENDING)) {
-                throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + req.getStatus());
+                boolean flag = checkDates(req, request);
+                if(flag)
+                    throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + req.getStatus());
             }
         }
 
@@ -179,6 +181,33 @@ public class ZahtjevZaIznajmljivanjeService {
                 .oglasId(adsId)
                 .build();
         cancelOccupiedRequests(occupiedDTO);
+    }
+
+    public boolean checkDates(ZahtjevZaIznajmljivanje req, ZahtjevZaIznajmljivanje request) {
+        boolean flag = false;
+
+        DateTime occupiedFrom = req.getOd();
+        DateTime occupiedTo = req.getDoo();
+        DateTime rentFrom = request.getOd();
+        DateTime rentTo = request.getDoo();
+
+        if (rentFrom.isAfter(occupiedFrom) && rentTo.isBefore(occupiedTo)) {
+            flag = true;
+        }
+        if (rentFrom.isBefore(occupiedFrom) && rentTo.isAfter(occupiedTo)) {
+            flag = true;
+        }
+        if (rentFrom.isBefore(occupiedFrom) && rentTo.isBefore(occupiedTo) && rentTo.isAfter(occupiedFrom)) {
+            flag = true;
+        }
+        if (rentFrom.isAfter(occupiedFrom) && rentTo.isAfter(occupiedTo) && rentFrom.isBefore(occupiedTo)) {
+            flag = true;
+        }
+        if (rentFrom.isEqual(occupiedFrom) && rentTo.isEqual(occupiedTo)) {
+            flag = true;
+        }
+
+        return flag;
     }
 
     public ResponseEntity<?> cancelOccupiedRequests(ZauzetDTO occupiedDTO) {

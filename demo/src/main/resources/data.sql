@@ -65,19 +65,19 @@ insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, use
 insert into `cjenovnik` (id, cijenacdw, cijena_po_danu, cijena_pokm, popust, user_id) values (3, 57, 57, 57, 17, 4);
 
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (1, '2020-09-26 21:58:58', true, '200', 'Novi Sad', '2020-08-11 21:58:58', 1, 3, 1);
+values (1, '2020-09-16 21:58:58', true, '200', 'Novi Sad', '2020-09-08 21:58:58', 1, 3, 1);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (2, '2020-09-29 21:58:58', true, '200', 'Beograd', '2020-08-20 21:58:58', 2, 3, 2);
+values (2, '2020-10-10 21:58:58', true, '200', 'Beograd', '2020-09-09 21:58:58', 2, 3, 2);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (3, '2020-09-30 21:58:58', true, '200', 'Banja Luka', '2020-08-25 21:58:58', 1, 3, 3);
+values (3, '2020-09-15 21:58:58', true, '200', 'Banja Luka', '2020-09-10 21:58:58', 1, 3, 3);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (4, '2020-09-23 21:58:58', true, '200', 'Banja Luka', '2020-08-23 21:58:58', 3, 4, 4);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
 values (5, '2020-09-23 21:58:58', true, '200', 'Banja Luka', '2020-08-28 21:58:58', 3, 4, 5);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (6, '2020-09-30 21:58:58', true, '109', 'Zrenjanin', '2020-09-01 21:58:58', 1, 3, 1);
+values (6, '2020-09-17 21:58:58', true, '109', 'Zrenjanin', '2020-09-13 21:58:58', 1, 3, 1);
 insert into `oglasi` (id, doo, dostupan, dozvoljena_kilometraza, mjesto_preuzimanja, od, cjenovnik_id, user_id, vozilo_id)
-values (7, '2020-09-15 21:58:58', true, '250', 'Subotica', '2020-08-30 21:58:58', 2, 3, 2);
+values (7, '2020-09-15 21:58:58', true, '250', 'Subotica', '2020-09-11 21:58:58', 2, 3, 2);
 
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (1, '4', 1, 3, 1);
 insert into `ocena` (id, ocjena, oglas_id, user_id, vozilo_id) values (2, '4', 1, 3, 1);

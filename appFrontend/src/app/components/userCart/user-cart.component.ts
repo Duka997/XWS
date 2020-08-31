@@ -58,6 +58,7 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     removeFromCart(oglasId: number) {
         this.adsService.removeAdFromCart(oglasId).subscribe(data => {
             alert('Removed from cart!');
+            this.getAll();
         })
     }
 

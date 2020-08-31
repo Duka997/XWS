@@ -48,6 +48,16 @@ import { IAllRequestsHistory } from './model/irequests.all';
         localStorage.setItem("primalac", userId);
         this.router.navigate(['homepageUser/reply']);
     }
+
+    cancelRequest(adId: any) {
+        this.requestService.cancelRequest(adId).subscribe( 
+            data=>{
+                alert('Request is canceled!');
+                this.getRequests();
+               } ,
+                error=> console.error('Error!',error)
+        );
+    }
   
 
   }

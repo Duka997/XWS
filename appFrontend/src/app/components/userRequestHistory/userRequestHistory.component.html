@@ -39,6 +39,7 @@
             <p class="card-title">Status: {{pa.status}}</p>
             <p class="card-title">Agent: {{pa.oglas.vozilo.agent.name}} {{pa.oglas.vozilo.agent.surname}}</p>
             <p class="card-title">Bundle ID: {{pa.bundleId}}</p>
+            <button type="button" class="btn btn-primary" (click)="posaljiPor(pa.oglas.userId)">Send message</button>
           </div>
         </div>
       </div>

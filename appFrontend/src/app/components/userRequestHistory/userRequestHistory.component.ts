@@ -43,6 +43,11 @@ import { IAllRequestsHistory } from './model/irequests.all';
         });
 
     }
+
+    posaljiPor(userId:any){
+        localStorage.setItem("primalac", userId);
+        this.router.navigate(['homepageUser/reply']);
+    }
   
 
   }

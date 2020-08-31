@@ -13,6 +13,8 @@ public interface ZahtjevZaIznajmljivanjeRepository extends JpaRepository<Zahtjev
 
     List<ZahtjevZaIznajmljivanje> findByUser(User user);
 
+    List<ZahtjevZaIznajmljivanje> findAllByUserId(Long id);
+
     List<ZahtjevZaIznajmljivanje> findAllByOglas_User_Id(Long id);
 
     List<ZahtjevZaIznajmljivanje> findByOglasId(Long id);

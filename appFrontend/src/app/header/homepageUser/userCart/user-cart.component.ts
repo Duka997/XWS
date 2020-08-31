@@ -7,6 +7,7 @@ import { Vozilo } from 'src/app/model/car';
 import { ICart } from './ICart';
 import { IRentRequest } from './IRequestRent';
 import { IBundle } from './IBundle';
+import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-user-cart',
@@ -21,9 +22,15 @@ import { IBundle } from './IBundle';
     bundles: IBundle[] = [];
     bundles2: IRentRequest[] = [];
 
+    modal: NgbModalRef;
+    mode: string = 'ADD';
+  
+    vehicle: Vozilo;
+
     constructor(private adsService: AdsService,
         private toastr: ToastrService,
-        private router: Router) { }
+        private router: Router,
+        private ngbModal: NgbModal) { }
 
     ngOnInit(): void {
         this.getAll();
@@ -127,6 +134,21 @@ import { IBundle } from './IBundle';
         cart.bundles = [];
         cart.requests = [];
       })
+    }
+
+    seeVehicle(sadrzaj: any, selectedVehicle: Vozilo) {
+      //this.clear();
+      //this.refresh();
+  
+      this.ads.forEach(element => {
+          if(element.vozilo.id == selectedVehicle.id) {
+              this.vehicle = element.vozilo;
+              console.log("Vehicle: ", this.vehicle);
+          }
+      });
+  
+      this.mode = 'ADD';
+      this.modal = this.ngbModal.open(sadrzaj,{size: 'lg'});
     }
 
   }

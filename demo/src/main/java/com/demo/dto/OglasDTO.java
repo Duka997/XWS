@@ -40,6 +40,8 @@ public class OglasDTO {
         this.doo = o.getDoo();
         this.userId = o.getUser().getId();
         this.id = o.getId();
+        this.user = new UserDTO(o.getUser());
+        this.cjenovnik = new CjenovnikDTO(o.getCjenovnik());
     }
 
     public Long getId() {

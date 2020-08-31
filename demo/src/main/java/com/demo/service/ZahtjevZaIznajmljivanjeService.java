@@ -1,26 +1,20 @@
 package com.demo.service;
 
-import com.demo.dto.KorpaDTO;
-import com.demo.dto.SviZahtjeviDTO;
-import com.demo.dto.ZahtjevDTO;
-import com.demo.dto.ZauzetDTO;
+import com.demo.dto.*;
 import com.demo.exception.InvalidOperationException;
 import com.demo.exception.NotFoundException;
 import com.demo.model.*;
 import com.demo.repository.UserRepository;
 import com.demo.repository.ZahtjevZaIznajmljivanjeRepository;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +51,7 @@ public class ZahtjevZaIznajmljivanjeService {
                     .od(request.getOd())
                     .mjestoPreuzimanja(request.getMjestoPreuzimanja())
                     .oglasId(request.getOglas().getId())
+                    .oglas(new OglasDTO(request.getOglas()))
                     .status(String.valueOf(request.getStatus()))
                     .userId(request.getUser().getId())
                     .bundleId(request.getBundle() != null ? request.getBundle().getId() : -1)
@@ -69,6 +64,17 @@ public class ZahtjevZaIznajmljivanjeService {
         //User user = this.userDetailsService.getLoggedInUser();
         User user = this.userRepository.findUserById(userId);
         List<ZahtjevZaIznajmljivanje> requests = this.zahtjevZaIznajmljivanjeRepository.findAllByOglas_User_Id(userId);
+
+        List<ZahtjevDTO> retVal = getRequestDTOS(requests);
+        SviZahtjeviDTO requestsDTO = this.filterRequests(retVal);
+
+        return new ResponseEntity<>(requestsDTO, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getAllHistory(Long userId) {
+        //User user = this.userDetailsService.getLoggedInUser();
+        User user = this.userRepository.findUserById(userId);
+        List<ZahtjevZaIznajmljivanje> requests = this.zahtjevZaIznajmljivanjeRepository.findAllByUserId(userId);
 
         List<ZahtjevDTO> retVal = getRequestDTOS(requests);
         SviZahtjeviDTO requestsDTO = this.filterRequests(retVal);
@@ -138,10 +144,7 @@ public class ZahtjevZaIznajmljivanjeService {
 
         this.zauzetService.saveRequestAsOccupied(request);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccessControlAllowOrigin("*");
-
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     public void acceptRequest2(ZahtjevZaIznajmljivanje request) {
@@ -153,6 +156,12 @@ public class ZahtjevZaIznajmljivanjeService {
             if (req.getOglas().getId() == request.getOglas().getId() && !req.getStatus().equals(StatusZahtjeva.PENDING)) {
                 throw new InvalidOperationException("Rent request cannot be accepted, it's not in pending state, but has status: " + req.getStatus());
             }
+        }
+
+        //rentiranje vise od 30 dana => popust 20%
+        Days diffInDays = Days.daysBetween(request.getOd(), request.getDoo());
+        if(diffInDays.toPeriod().getDays() > 30) {
+            request.getOglas().getCjenovnik().setPopust(20);
         }
 
         request.setStatus(StatusZahtjeva.RESERVED);

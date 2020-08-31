@@ -1,5 +1,6 @@
 package com.demo.dto;
 
+import com.demo.model.Cjenovnik;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,15 @@ public class CjenovnikDTO {
         private String userUsername;
 
     public CjenovnikDTO() {
+    }
+
+    public CjenovnikDTO(Cjenovnik cjenovnik) {
+        this.id = cjenovnik.getId();
+        this.cijenaPoDanu = cjenovnik.getCijenaPoDanu();
+        this.cijenaPoKM = cjenovnik.getCijenaPoKM();
+        this.cijenaCDW = cjenovnik.getCijenaCDW();
+        this.popust = cjenovnik.getPopust();
+        this.userUsername = cjenovnik.getUser().getUsername();
     }
 
     public Long getId() {

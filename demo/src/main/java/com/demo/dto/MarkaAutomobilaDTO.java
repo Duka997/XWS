@@ -1,5 +1,6 @@
 package com.demo.dto;
 
+import com.demo.model.MarkaAutomobila;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,12 @@ public class MarkaAutomobilaDTO {
     private boolean obrisan;
 
     public MarkaAutomobilaDTO() {
+    }
+
+    public MarkaAutomobilaDTO(MarkaAutomobila markaAutomobila) {
+        this.id = markaAutomobila.getId();
+        this.nazivMarke = markaAutomobila.getNazivMarke();
+        this.model = markaAutomobila.getModel();
     }
 
     public Long getId() {

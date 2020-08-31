@@ -1,5 +1,7 @@
 package com.demo.dto;
 
+import com.demo.model.TipMjenjaca;
+
 public class TipMjenjacaDTO {
 
     private Long id;
@@ -7,6 +9,11 @@ public class TipMjenjacaDTO {
     private boolean obrisan;
 
     public TipMjenjacaDTO() {
+    }
+
+    public TipMjenjacaDTO(TipMjenjaca tipMjenjaca) {
+        this.id = tipMjenjaca.getId();
+        this.naziv = tipMjenjaca.getNaziv();
     }
 
     public Long getId() {

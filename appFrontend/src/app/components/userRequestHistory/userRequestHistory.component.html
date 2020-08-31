@@ -62,6 +62,7 @@
             <p class="card-title">Agent: {{f.oglas.vozilo.agent.name}} {{f.oglas.vozilo.agent.surname}}</p>
             <p class="card-title">Bundle ID: {{f.bundleId}}</p>
             <button type="button" class="btn btn-primary" (click)="open(mymodal, f)">Comment</button>
+            <button type="button" class="btn btn-primary" (click)="posaljiPor(f.oglas.userId)">Send message</button>
           </div>
         </div>
       </div>

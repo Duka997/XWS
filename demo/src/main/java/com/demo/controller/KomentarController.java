@@ -13,14 +13,26 @@ public class KomentarController {
     @Autowired
     private KomentarService komentarService;
 
-    @PostMapping(value = "/dodaj/{username}")
-    private ResponseEntity<?> dodajKomentar(@RequestBody KomentarDTO komentarDTO, @PathVariable String username){
-        return this.komentarService.kreirajKomentar(komentarDTO, username);
+
+    @PostMapping()
+    private ResponseEntity<?> dodajKomentar(@RequestBody KomentarDTO komentarDTO) {
+        return this.komentarService.kreirajKomentar(komentarDTO, false);
+    }
+
+    @PostMapping(value = "/odgovor")
+    private ResponseEntity<?> dodajKomentarReply(@RequestBody KomentarDTO komentarDTO) {
+
+        return this.komentarService.kreirajKomentar(komentarDTO, true);
     }
 
     @GetMapping(value = "/getKomentareVozilo/{voziloId}")
     private ResponseEntity<?> pokupiKomentare(@PathVariable Long voziloId){
         return this.komentarService.pokupiKomentare(voziloId);
+    }
+
+    @GetMapping(value = "/provjeri/{username}/{id}")
+    private ResponseEntity<?> provjerikomentar(@PathVariable Long id, @PathVariable String username){
+        return this.komentarService.provjeriKomentar(username, id);
     }
 
     @GetMapping()

@@ -3,9 +3,11 @@ package com.demo.service;
 import com.demo.dto.KomentarDTO;
 import com.demo.dto.VoziloDTO;
 import com.demo.model.Komentar;
+import com.demo.model.Oglas;
 import com.demo.model.User;
 import com.demo.model.Vozilo;
 import com.demo.repository.KomentarRepository;
+import com.demo.repository.OglasRepository;
 import com.demo.repository.UserRepository;
 import com.demo.repository.VoziloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +30,28 @@ public class KomentarService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO, String username) {
+    @Autowired
+    private OglasRepository oglasRepository;
+
+    public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO, Boolean odgovor) {
         Komentar komentar = new Komentar();
         komentar.setOdobren(false);
         komentar.setTekst(komentarDTO.getTekst());
 
-        User user = this.userRepository.findByUsername(username);
+        User user = this.userRepository.findByUsername(komentarDTO.getUserUsername());
+        Oglas oglas = this.oglasRepository.getOne(komentarDTO.getOglasId());
+        Vozilo vozilo = oglas.getVozilo();
+        komentar.setVozilo(vozilo);
+        komentar.setOglas(oglas);
         komentar.setUser(user);
 
-        Vozilo vozilo = this.voziloRepository.getOne(komentarDTO.getVozilo().getId());
-        komentar.setVozilo(vozilo);
-
+        if(komentarDTO.getRole().equals("ROLE_USER") && odgovor == false) {
+            Komentar komentarProvjera = this.komentarRepository.findByUserIdAndOglasId(user.getId(), oglas.getId());
+            if (komentarProvjera != null) {
+                return new ResponseEntity<>("User already add comment for this car", HttpStatus.BAD_REQUEST);
+            }
+        }
+        
         this.komentarRepository.save(komentar);
 
         return new ResponseEntity<>( HttpStatus.CREATED);
@@ -52,11 +65,11 @@ public class KomentarService {
             User user = this.userRepository.getOne(k.getUser().getId());
             KomentarDTO komentarDTO = KomentarDTO.builder()
                     .id(k.getId())
+                    .oglasId(k.getOglas().getId())
                     .odobren(k.isOdobren())
                     .tekst(k.getTekst())
                     .userId(k.getUser().getId())
                     .userUsername(user.getUsername())
-                    .vozilo(new VoziloDTO(k.getVozilo()))
                     .build();
             komentariDTO.add(komentarDTO);
         }
@@ -71,11 +84,11 @@ public class KomentarService {
             User user = this.userRepository.getOne(k.getUser().getId());
             KomentarDTO komentarDTO = KomentarDTO.builder()
                     .id(k.getId())
+                    .oglasId(k.getOglas().getId())
                     .odobren(k.isOdobren())
                     .tekst(k.getTekst())
                     .userId(k.getUser().getId())
                     .userUsername(user.getUsername())
-                    .vozilo(new VoziloDTO(k.getVozilo()))
                     .build();
             komentariDTO.add(komentarDTO);
         }
@@ -92,5 +105,15 @@ public class KomentarService {
             this.komentarRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+
+    public ResponseEntity<?> provjeriKomentar(String username, Long id) {
+        User user = this.userRepository.findByUsername(username);
+        Komentar komentarprovjera = this.komentarRepository.findByUserIdAndOglasId(user.getId(), id);
+
+        if (komentarprovjera != null) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.OK);
     }
 }

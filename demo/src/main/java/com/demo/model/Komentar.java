@@ -21,6 +21,9 @@ public class Komentar {
     private Long id;
 
     @Column
+    private Long refId;
+
+    @Column
     private String tekst;
 
     @Column

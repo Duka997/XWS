@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 import static javax.persistence.InheritanceType.JOINED;
@@ -56,9 +57,6 @@ public class User {
 
     @Column
     private  String role;
-
-    @Column
-    private boolean isEnabled;
 
     @OneToMany(mappedBy = "user")
     private Set<Vozilo> vozila;

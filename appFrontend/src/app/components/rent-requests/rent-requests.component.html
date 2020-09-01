@@ -14,8 +14,10 @@
           <div class="card-body">
             <h4 class="card-title">Ad ID: {{p.oglasId}}</h4>
             <p class="card-title">Status: {{p.status}}</p>
-            <p class="card-title">User: {{p.userId}}</p>
+            <p class="card-title">User: {{p.user.name}} {{p.user.surname}}</p>
+            <p class="card-title">Vehicle: {{p.oglas.vozilo.markaAutomobila.nazivMarke}} {{p.oglas.vozilo.markaAutomobila.model}} - {{p.oglas.vozilo.klasaAutomobila.naziv}}</p>
             <p class="card-title">Bundle ID: {{p.bundleId}}</p>
+            <p class="card-title">Date : {{p.od | date: 'mediumDate'}} - {{p.doo | date: 'mediumDate'}}</p>
             <button type="button" class="btn btn-success" (click)="accept(p)">Accept</button> 
             <button type="button" class="btn btn-danger" (click)="cancel(p)">Cancel</button>
           </div>

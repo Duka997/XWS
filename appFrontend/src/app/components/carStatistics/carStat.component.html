@@ -19,3 +19,14 @@
        <p class="card-text">Average Grade: {{ allCars.voziloSaNajvecomOcenomDTO.prosecnaOcena }}</p>
     </div>
     </div>
+
+    <div 
+    class="card border-primary mb-3" 
+    style="max-width: 20rem;"
+    >
+    <div class="card-header"><b>Car with most comments</b></div>
+    <div class="card-body">
+       <p class="card-text">{{ allCars.voziloSaNajviseKomentaraDTO.nazivMarke }} {{ allCars.voziloSaNajviseKomentaraDTO.model }}</p>
+       <p class="card-text">Number of comments: {{ allCars.voziloSaNajviseKomentaraDTO.brojKomentara }}</p>
+    </div>
+    </div>

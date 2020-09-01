@@ -38,6 +38,10 @@ public class PorukaService {
                 PorukaDTO porukaDTO = new PorukaDTO(por.getId(), por.getSadrzaj(), por.getPosiljalacId(), por.getPrimalacId());
                 messageDTOS.add(porukaDTO);
             }
+            if(por.getPosiljalacId().equals(id)){
+                PorukaDTO porukaDTO = new PorukaDTO(por.getId(), por.getSadrzaj(), por.getPosiljalacId(), por.getPrimalacId());
+                messageDTOS.add(porukaDTO);
+            }
         }
         return messageDTOS;
     }

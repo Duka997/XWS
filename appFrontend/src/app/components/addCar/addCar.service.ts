@@ -17,8 +17,8 @@ export class DodajVoziloService{
 
     constructor(private _http: HttpClient) { }
 
-   dodajVozilo(vozilo: Vozilo) {
-       return  this._http.post<any>(this._url, vozilo);
+   dodajVozilo(vozilo: Vozilo, agentId: any) {
+       return  this._http.post<any>('http://localhost:8099/api/vozilo/dodaj/'+agentId, vozilo);
     }
 
     getVozila():Observable<any>{

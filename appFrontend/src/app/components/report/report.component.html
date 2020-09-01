@@ -15,7 +15,8 @@
             <h4 class="card-title">Ad ID: {{f.oglasId}}</h4>
             <h4 class="card-title">Date: {{f.od | date: 'mediumDate'}} - {{f.doo | date: 'mediumDate'}}</h4>
             <p class="card-title">Status: {{f.status}}</p>
-            <p class="card-title">User: {{f.userId}}</p>
+            <p class="card-title">User: {{f.user.name}} {{f.user.surname}}</p>
+            <p class="card-title">Vehicle: {{f.oglas.vozilo.markaAutomobila.nazivMarke}} {{f.oglas.vozilo.markaAutomobila.model}} - {{f.oglas.vozilo.klasaAutomobila.naziv}}</p>
             <p class="card-title">Bundle ID: {{f.bundleId}}</p>
             <button type="button" class="btn btn-outline-dark" (click)="openRequest(modal, f)">Open Request</button>
           </div>

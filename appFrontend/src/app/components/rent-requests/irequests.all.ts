@@ -1,4 +1,4 @@
-import { IRentRequest } from '../../homepageUser/userCart/IRequestRent';
+import { IRentRequest } from 'src/app/components/userCart/IRequestRent';
 
 export interface IAllRequests {
     all: IRentRequest[];

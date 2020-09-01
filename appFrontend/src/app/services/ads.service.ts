@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Oglas } from '../model/Ad';
-import { Vozilo } from '../model/car';
-import { ICart } from '../header/homepageUser/userCart/ICart';
+import { ICart } from '../components/userCart/ICart';
 
 @Injectable({
     providedIn: 'root'

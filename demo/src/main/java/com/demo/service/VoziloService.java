@@ -74,7 +74,7 @@ public class VoziloService {
         return u;
     }
 
-    public Vozilo dodajNovoVozilo(VoziloDTO carDTO) throws SQLException, Base64DecodingException, java.nio.file.AccessDeniedException {
+    public Vozilo dodajNovoVozilo(VoziloDTO carDTO, Long agentId) throws SQLException, Base64DecodingException, java.nio.file.AccessDeniedException {
 
         System.out.println("marka "+carDTO.getMarkaAutomobila().getId());
         MarkaAutomobila markaAutomobilak = this.markaAutomobilaService.findById(carDTO.getMarkaAutomobila().getId());
@@ -98,6 +98,7 @@ public class VoziloService {
         }
 
         Vozilo vozilo = new Vozilo();
+        User user = userRepository.findById(agentId).orElseThrow(() -> new NotFoundException("User with given id was not found."));
         vozilo.setCijena(carDTO.getCijena());
         vozilo.setKilometraza(carDTO.getKilometraza());
         vozilo.setMozePreciKM(carDTO.getMozePreciKM());
@@ -110,6 +111,7 @@ public class VoziloService {
         vozilo.setImaAndroid(carDTO.getImaAndroid());
         vozilo.setColiisionDamageWavier(carDTO.isColiisionDamageWavier());
         vozilo.setSlike(slike);
+        vozilo.setUser(user);
         vozilo = this.voziloRepository.save(vozilo);
         return vozilo;
     }
@@ -162,21 +164,21 @@ public class VoziloService {
 
             statisticsDTO.setVoziloSaNajvecomOcenomDTO(carDTO);
         }
-/*
+
         Vozilo carWithMostComments = getCarWithMostCommentsByOwnersId(cars);
         if (carWithMostComments != null){
-            CarWithMostCommentsDTO carDTO = new CarWithMostCommentsDTO();
+            VoziloSaNajviseKomentaraDTO carDTO = new VoziloSaNajviseKomentaraDTO();
 
             carDTO.setId(carWithMostComments.getId());
-            carDTO.setMarkId(carWithMostComments.getMark().getId());
-            carDTO.setMarkName(carWithMostComments.getMark().getName());
-            carDTO.setModelId(carWithMostComments.getModel().getId());
-            carDTO.setModelName(carWithMostComments.getModel().getName());
-            carDTO.setNumberOfComments(carWithMostComments.getComments().size());
+            carDTO.setMarkaId(carWithMostComments.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithMostComments.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithMostComments.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithMostComments.getKlasaAutomobila().getNaziv());
+            carDTO.setBrojKomentara(carWithMostComments.getKomentari().size());
 
-            statisticsDTO.setCarWithMostComments(carDTO);
+            statisticsDTO.setVoziloSaNajviseKomentaraDTO(carDTO);
         }
-*/
+
         Vozilo carWithMostKilometers = getCarWithMostKilometersByOwnersId(cars);
         if (carWithMostKilometers != null){
             VoziloSaNajvecomKilometrazomDTO carDTO = new VoziloSaNajvecomKilometrazomDTO();
@@ -237,6 +239,24 @@ public class VoziloService {
         }
     }
 
+    public Vozilo getCarWithMostCommentsByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have 0 comments. */
+        int maxComments = 0;
+        Vozilo carWithMostComments = new Vozilo();
+
+        for(Vozilo c : cars){
+            if (c.getKomentari().size() > maxComments){
+                maxComments = c.getKomentari().size();
+                carWithMostComments = c;
+            }
+        }
+
+        if (maxComments == 0)
+            return null;
+
+        return carWithMostComments;
+    }
+
     public Vozilo getCarWithMostKilometersByOwnersId(Set<Vozilo> cars){
         /* Returns null if all cars have kilometrage equal to 0. */
 
@@ -281,6 +301,7 @@ public class VoziloService {
             MarkaAutomobilaDTO modelDTO = new MarkaAutomobilaDTO();
             modelDTO.setId(car.getMarkaAutomobila().getId());
             modelDTO.setNazivMarke(car.getMarkaAutomobila().getNazivMarke());
+            modelDTO.setModel(car.getMarkaAutomobila().getModel());
             KlasaAutomobilaDTO markDTO = new KlasaAutomobilaDTO();
             markDTO.setId(car.getKlasaAutomobila().getId());
             markDTO.setNaziv(car.getKlasaAutomobila().getNaziv());

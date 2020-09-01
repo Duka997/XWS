@@ -30,9 +30,7 @@ import { ListRequestComponent } from './components/list-request/list-request.com
 import { AddCarComponent } from './components/addCar/addCar.component';
 import { DodajOglasComponent } from './components/addAdd/addAdd.component';
 import { SearchComponent } from './components/search/search.component';
-import { RentRequestsComponent } from './header/homepage-agent/rent-requests/rent-requests.component';
 import { HomepageUserComponent } from './header/homepageUser/homepage-user.component';
-import { UserCartComponent } from './header/homepageUser/userCart/user-cart.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { CommentAndGradesComponent } from './components/comment-and-grades/comment-and-grades.component';
 import { CommentAdminComponent } from './components/comment-admin/comment-admin.component';
@@ -45,6 +43,9 @@ import { CarEntitiesComponent } from './components/car-entities/car-entities.com
 import { ReportComponent } from './components/report/report.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserRequstHistoryComponent } from './components/userRequestHistory/userRequestHistory.component';
+import { AdsListComponent } from './components/adsList/adsList.component';
+import { UserCartComponent } from './components/userCart/user-cart.component';
+import { RentRequestsComponent } from './components/rent-requests/rent-requests.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { UserRequstHistoryComponent } from './components/userRequestHistory/user
     ReportComponent,
     ProfileComponent,
     UserRequstHistoryComponent,
+    AdsListComponent,
   ],
   imports: [
     HttpClientModule,

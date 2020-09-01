@@ -12,18 +12,21 @@ import {PorukaService} from '../../services/poruka.service';
     public poruke : Poruka[];
     po =  new Poruka(null,null,null,null);
 
-    
+    primalacPoruke: any;
   
     constructor(private router: Router,  private _porukaServis: PorukaService) { }
   
     ngOnInit(): void {
         var userId = parseInt(localStorage.getItem('id'));
+        this.primalacPoruke = userId;
         this._porukaServis.getMojePoruke(userId).subscribe(
             data=>{ 
                 this.poruke = data;
+                console.log("Poruke: ",this.poruke)
             },
             error=> console.error('Error!', error)
         )
+
       }
   
       odgovori(posiljalacId:any){
@@ -32,6 +35,13 @@ import {PorukaService} from '../../services/poruka.service';
         this.po.primalacId = posiljalacId;
         localStorage.setItem("primalac", posiljalacId);
         this.router.navigate(['homepageAgent/inbox/reply']);
+      }
+
+      checkSender(posiljalacId: any){
+        if(posiljalacId == this.primalacPoruke)
+            return true;
+        else
+            return false;
       }
   
   }

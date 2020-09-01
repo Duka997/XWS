@@ -301,6 +301,7 @@ public class VoziloService {
             MarkaAutomobilaDTO modelDTO = new MarkaAutomobilaDTO();
             modelDTO.setId(car.getMarkaAutomobila().getId());
             modelDTO.setNazivMarke(car.getMarkaAutomobila().getNazivMarke());
+            modelDTO.setModel(car.getMarkaAutomobila().getModel());
             KlasaAutomobilaDTO markDTO = new KlasaAutomobilaDTO();
             markDTO.setId(car.getKlasaAutomobila().getId());
             markDTO.setNaziv(car.getKlasaAutomobila().getNaziv());

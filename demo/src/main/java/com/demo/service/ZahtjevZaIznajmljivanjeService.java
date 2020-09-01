@@ -54,6 +54,7 @@ public class ZahtjevZaIznajmljivanjeService {
                     .oglas(new OglasDTO(request.getOglas()))
                     .status(String.valueOf(request.getStatus()))
                     .userId(request.getUser().getId())
+                    .user(new UserDTO(request.getUser()))
                     .bundleId(request.getBundle() != null ? request.getBundle().getId() : -1)
                     .build());
         }

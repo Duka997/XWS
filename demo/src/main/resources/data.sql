@@ -37,17 +37,19 @@ insert into `tipmjenjaca` (id, naziv, obrisan) values (1, 'manuelni', false);
 insert into `tipmjenjaca` (id, naziv,obrisan) values (2, 'automatski', false);
 insert into `tipmjenjaca` (id, naziv, obrisan) values (3, 'poluautomatski', false);
 
-insert into `klasaautomobila` (id, naziv, obrisan) values (1, 'klasa1', false);
-insert into `klasaautomobila` (id, naziv, obrisan) values (2, 'klasa2', false);
-insert into `klasaautomobila` (id, naziv, obrisan) values (3, 'klasa3', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (1, 'SUV', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (2, 'Old timer', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (3, 'Gradski auto', false);
+insert into `klasaautomobila` (id, naziv, obrisan) values (4, 'Hecbek', false);
 
 insert into `vrstagoriva` (id, naziv, obrisan) values (1, 'benzin', false);
 insert into `vrstagoriva` (id, naziv, obrisan) values (2, 'dizel', false);
 insert into `vrstagoriva` (id, naziv, obrisan) values (3, 'plin', false);
 
-insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (1, 'BMW', 'model1', false);
-insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (2, 'Audi', 'model2', false);
-insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Wolsvagen', 'model3', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (1, 'BMW', 'X3', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (2, 'Audi', 'A6', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Volkswagen', 'Golf', false);
+insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (4, 'Tesla', 'Model X', false);
 
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
 values (1, null, null, '4', '1200', false, true, '120000', '150', '5', 1, 1, 3, 1, 3, false);

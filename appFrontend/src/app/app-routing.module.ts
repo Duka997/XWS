@@ -86,7 +86,8 @@ const routes: Routes = [
       { path: 'reply', component:  MessageComponent},
       { path: 'addAdd', component:  DodajOglasComponent},
       { path: 'userCart', component: UserCartComponent  }, 
-      { path: 'userRequests', component: UserRequstHistoryComponent  }
+      { path: 'userRequests', component: UserRequstHistoryComponent  },
+      { path: 'search', component: SearchComponent },
   ]
   },
   { path: 'homepageUser/userCart/inbox', component: Inbox  },

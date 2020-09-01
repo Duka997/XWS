@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommentService } from 'src/app/services/comment.service';
+import { AdsService } from 'src/app/services/ads.service';
+import { Oglas } from 'src/app/model/Ad';
 
 @Component({
   selector: 'app-search',
@@ -37,7 +39,8 @@ export class SearchComponent implements OnInit {
               private searchService: SearchService,
               private _toastr: ToastrService,
               private modalService: NgbModal,
-              private commentService: CommentService
+              private commentService: CommentService,
+              private adsService: AdsService
               ) {
     this.pretraga = {
       mjestoPreuzimanja: '',
@@ -174,13 +177,14 @@ export class SearchComponent implements OnInit {
     this.viewModal = this.modalService.open(sadrzaj, {size: 'lg', scrollable: true});
   }
 
-  public addToCart(oglas: OglasInfo): void {
-    /*console.log("Oglas: ",oglas);
-    this.adsService.addVehicleToCart(oglas.vozilo).subscribe(data => {
-      this.toastr.success('Vehicle has been added to cart');
+  public addToCart(oglas: Oglas): void {
+    console.log("Oglas: ",oglas);
+    var userId = parseInt(localStorage.getItem('id'));
+    this.adsService.addAdToCart(oglas, userId).subscribe(data => {
+      this._toastr.success('Vehicle has been added to cart');
     }, error => {
-      this.toastr.error(error.error.message);
-    });*/
+      this._toastr.error(error.error.message);
+    });
   }
   
 }

@@ -52,7 +52,7 @@ insert into `markaautomobila` (id, naziv_marke, model, obrisan) values (3, 'Wols
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
 values (1, null, null, '4', '1200', false, true, '120000', '150', '5', 1, 1, 3, 1, 3, false);
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
-values (2, null, null, '5', '2400', true, true, '150000', '110', '1', 1, 1, 2, 3, 3, false);
+values (2, null, null, '5', '2400', true, true, '150000', '110', '1', 2, 1, 2, 3, 3, false);
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
 values (3, null, null, '3', '1000', false, false, '220000', '100', '3', 3, 2, 1, 2, 3, false);
 insert into `vozilo` (id, slika, info, br_sjedista_za_djecu, cijena, coliision_damage_wavier, ima_android, kilometraza, moze_precikm, ocjena, klasa_automobila_id, marka_automobila_id, tip_goriva_id, tip_mjenjaca_id, user_id, bundle)
@@ -104,12 +104,15 @@ insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) val
 insert into `poruka` (id, datum_slanja, sadrzaj, posiljalac_id, primalac_id) values (2, '2020-06-06 21:59:58', 'Hey :)', 3, 2 );
 
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
-values (1, '2020-08-06 21:58:58', '2020-09-26 21:58:58', 'Novi Sad', '2020-08-11 21:58:58', false, 'PAID', null, 1, 2);
+values (1, '2020-08-06 21:58:58', '2020-09-26 21:58:58', 'Novi Sad', '2020-09-11 21:58:58', false, 'PAID', null, 1, 2);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
-values (2, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-08-20 21:58:58', false, 'PAID', null, 2, 5);
+values (2, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-09-20 21:58:58', false, 'PAID', null, 2, 5);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
 values (3, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-08-20 21:58:58', false, 'PAID', null, 2, 2);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
 values (4, '2020-08-12 21:58:58', '2020-08-30 21:58:58', 'Novi Sad', '2020-08-14 21:58:58', false, 'PAID', null, 2, 2);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
 values (5, '2020-08-12 21:58:58', '2020-08-15 21:58:58', 'Novi Sad', '2020-08-07 21:58:58', false, 'PAID', null, 3, 2);
+
+insert into `zauzet` (id, date_to, date_from, car_id) values (1, '2020-09-26 21:58:58', '2020-09-11 21:58:58', 1);
+insert into `zauzet` (id, date_to, date_from, car_id) values (2, '2020-09-29 21:58:58', '2020-09-20 21:58:58', 2);

@@ -16,4 +16,5 @@ public class KomentarDTO {
     private String userUsername;
     private Long oglasId;
     private String role;
+    private Long refId;
 }

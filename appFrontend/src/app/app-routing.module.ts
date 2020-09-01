@@ -90,7 +90,6 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent },
   ]
   },
-  { path: 'homepageUser/userCart/inbox', component: Inbox  },
   
 ];
 

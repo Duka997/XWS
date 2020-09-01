@@ -70,7 +70,7 @@ this._mjenjacServis.getTipoveMjenjaca().subscribe(
            data=>{
             console.log('Success!', JSON.stringify(data))
             alert('New car has been added!');
-            this.router.navigate(['homepageAdmin']);
+            this.router.navigate(['homepageAgent']);
            } ,
             error=> console.error('Error!',error)
         )

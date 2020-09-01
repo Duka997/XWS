@@ -21,9 +21,9 @@ public class VoziloController {
     @Autowired
     private VoziloService voziloService;
 
-    @PostMapping("/dodaj")
-    public ResponseEntity add(@RequestBody VoziloDTO mDTO) throws Base64DecodingException, SQLException, AccessDeniedException {
-        voziloService.dodajNovoVozilo(mDTO);
+    @PostMapping("/dodaj/{agentId}")
+    public ResponseEntity add(@RequestBody VoziloDTO mDTO, @PathVariable Long agentId) throws Base64DecodingException, SQLException, AccessDeniedException {
+        voziloService.dodajNovoVozilo(mDTO, agentId);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/get")

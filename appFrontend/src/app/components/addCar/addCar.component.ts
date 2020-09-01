@@ -65,7 +65,8 @@ this._mjenjacServis.getTipoveMjenjaca().subscribe(
   onSubmit(){ 
       this.vozilo.slike = this.imageURLs;
       console.log(this.vozilo);
-        this._voziloServis.dodajVozilo(this.vozilo)
+      var agentId = parseInt(localStorage.getItem('id'));
+      this._voziloServis.dodajVozilo(this.vozilo, agentId)
        .subscribe(
            data=>{
             console.log('Success!', JSON.stringify(data))

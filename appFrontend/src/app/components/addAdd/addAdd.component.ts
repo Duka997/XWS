@@ -55,7 +55,7 @@ export class DodajOglasComponent implements OnInit {
            data=>{
             console.log('Success!', JSON.stringify(data))
             alert('New ad has been added!');
-            this.router.navigate(['homepageAdmin']);
+            this.router.navigate(['homepageAgent']);
            } ,
             error=> console.error('Error!',error)
         )

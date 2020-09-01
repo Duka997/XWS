@@ -74,7 +74,7 @@ public class VoziloService {
         return u;
     }
 
-    public Vozilo dodajNovoVozilo(VoziloDTO carDTO) throws SQLException, Base64DecodingException, java.nio.file.AccessDeniedException {
+    public Vozilo dodajNovoVozilo(VoziloDTO carDTO, Long agentId) throws SQLException, Base64DecodingException, java.nio.file.AccessDeniedException {
 
         System.out.println("marka "+carDTO.getMarkaAutomobila().getId());
         MarkaAutomobila markaAutomobilak = this.markaAutomobilaService.findById(carDTO.getMarkaAutomobila().getId());
@@ -98,6 +98,7 @@ public class VoziloService {
         }
 
         Vozilo vozilo = new Vozilo();
+        User user = userRepository.findById(agentId).orElseThrow(() -> new NotFoundException("User with given id was not found."));
         vozilo.setCijena(carDTO.getCijena());
         vozilo.setKilometraza(carDTO.getKilometraza());
         vozilo.setMozePreciKM(carDTO.getMozePreciKM());
@@ -110,6 +111,7 @@ public class VoziloService {
         vozilo.setImaAndroid(carDTO.getImaAndroid());
         vozilo.setColiisionDamageWavier(carDTO.isColiisionDamageWavier());
         vozilo.setSlike(slike);
+        vozilo.setUser(user);
         vozilo = this.voziloRepository.save(vozilo);
         return vozilo;
     }

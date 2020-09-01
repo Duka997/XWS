@@ -11,6 +11,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @Table(name = "oglasi")
 public class Oglas {
@@ -28,6 +30,9 @@ public class Oglas {
 
     @Column
     private double dozvoljenaKilometraza;
+
+    @Column
+    private Long refId;
 
     @Column(name = "od")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = {

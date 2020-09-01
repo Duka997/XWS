@@ -1,4 +1,4 @@
-package com.demo.dto;
+package xml.team7.voziloservice.dto;
 
 import lombok.*;
 
@@ -16,5 +16,4 @@ public class KomentarDTO {
     private String userUsername;
     private Long oglasId;
     private String role;
-    private Long refId;
 }

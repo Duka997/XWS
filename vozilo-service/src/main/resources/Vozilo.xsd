@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           targetNamespace="https://ftn.uns.ac.rs/vozilo" xmlns:car="https://ftn.uns.ac.rs/vozilo">
+    <xs:element name="PostCommentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="commentRequest" type="car:TComment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostCommentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="commentResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCommentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="commentRequest" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetCommentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="comments" type="car:TComment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TComment">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="text" type="xs:string"/>
+            <xs:element name="approved" type="xs:boolean"/>
+            <xs:element name="userId" type="xs:long"/>
+            <xs:element name="userUsername" type="xs:string"/>
+            <xs:element name="adId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

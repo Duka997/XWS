@@ -81,6 +81,20 @@ services:
         tty: true
         depends_on:
             - eureka
+            
+    demo:
+        image: demo
+        container_name: demo
+        build: 
+            context: ./demo
+            dockerfile: Dockerfile
+        ports: 
+            - "8099:8099"
+        environment:
+            - REGISTRY_HOST=eureka
+        tty: true
+        depends_on:
+            - eureka
         
     zuul:
         image: zuul

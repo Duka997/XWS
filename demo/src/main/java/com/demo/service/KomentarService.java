@@ -1,7 +1,11 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.KomentarDTO;
 import com.demo.dto.VoziloDTO;
+import com.demo.generated.GetCommentResponse;
+import com.demo.generated.PostCommentResponse;
+import com.demo.generated.TComment;
 import com.demo.model.Komentar;
 import com.demo.model.Oglas;
 import com.demo.model.User;
@@ -10,6 +14,7 @@ import com.demo.repository.KomentarRepository;
 import com.demo.repository.OglasRepository;
 import com.demo.repository.UserRepository;
 import com.demo.repository.VoziloRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +38,12 @@ public class KomentarService {
     @Autowired
     private OglasRepository oglasRepository;
 
+    @Autowired
+    private VoziloClient voziloClient;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
     public ResponseEntity<?> kreirajKomentar(KomentarDTO komentarDTO, Boolean odgovor) {
         Komentar komentar = new Komentar();
         komentar.setOdobren(false);
@@ -51,6 +62,21 @@ public class KomentarService {
                 return new ResponseEntity<>("User already add comment for this car", HttpStatus.BAD_REQUEST);
             }
         }
+
+        if(komentarDTO.getRole().equals("ROLE_AGENT")) {
+            TComment tComment = new TComment();
+            tComment.setApproved(false);
+            tComment.setText(komentarDTO.getTekst());
+            tComment.setUserUsername(user.getUsername());
+            tComment.setAdId(oglas.getId());
+
+            try {
+                PostCommentResponse response = this.voziloClient.postNewComment(tComment);
+                komentar.setRefId(response.getCommentResponse());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         
         this.komentarRepository.save(komentar);
 
@@ -60,6 +86,21 @@ public class KomentarService {
     public ResponseEntity<?> pokupiKomentare(Long id) {
         List<Komentar> komentari = this.komentarRepository.findAllByVoziloIdAndOdobren(id, true);
         List<KomentarDTO> komentariDTO = new ArrayList<>();
+
+        List<KomentarDTO> komentariDTOSoap = new ArrayList<>();
+        List<Oglas> oglasi = this.oglasRepository.findAllByVoziloId(id);
+        for(Oglas oglas: oglasi){
+            if(oglas.getRefId() != null) {
+                try {
+                    GetCommentResponse response = this.voziloClient.getComments(oglas.getRefId());
+                    for (TComment t : response.getComments()) {
+                        komentariDTOSoap.add(modelMapper.map(t, KomentarDTO.class));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
         for(Komentar k: komentari){
             User user = this.userRepository.getOne(k.getUser().getId());
@@ -72,6 +113,12 @@ public class KomentarService {
                     .userUsername(user.getUsername())
                     .build();
             komentariDTO.add(komentarDTO);
+        }
+
+        for(KomentarDTO k: komentariDTOSoap){
+            if(!komentariDTO.contains(k)){
+                komentariDTO.add(k);
+            }
         }
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
     }

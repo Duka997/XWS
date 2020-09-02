@@ -8,10 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "tipmjenjaca")
 public class TipMjenjaca {
 
@@ -24,4 +21,31 @@ public class TipMjenjaca {
 
         @Column
         private Boolean obrisan;
+
+        public TipMjenjaca() {
+        }
+
+        public Long getId() {
+                return id;
+        }
+
+        public void setId(Long id) {
+                this.id = id;
+        }
+
+        public String getNaziv() {
+                return naziv;
+        }
+
+        public void setNaziv(String naziv) {
+                this.naziv = naziv;
+        }
+
+        public Boolean getObrisan() {
+                return obrisan;
+        }
+
+        public void setObrisan(Boolean obrisan) {
+                this.obrisan = obrisan;
+        }
 }

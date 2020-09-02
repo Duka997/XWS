@@ -9,6 +9,8 @@ import xml.team7.voziloservice.dto.UserDTO;
 import xml.team7.voziloservice.model.User;
 import xml.team7.voziloservice.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -33,5 +35,11 @@ public class UserService {
 
         this.userRepository.save(user);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    public User getUserById(Long userId) {
+    User byId = userRepository.findById(userId).get();
+        return byId;
     }
 }

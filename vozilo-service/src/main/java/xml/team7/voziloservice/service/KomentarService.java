@@ -40,13 +40,13 @@ public class KomentarService {
                 .odobren(false)
                 .tekst(commentRequest.getText())
                 .build();
-        /*User user = this.userRepository.findByUsername(commentRequest.getUserUsername());
+        User user = this.userRepository.findByUsername(commentRequest.getUserUsername());
         Oglas oglas = this.oglasRepository.getOne(commentRequest.getAdId());
         Vozilo vozilo = oglas.getVozilo();
 
         komentar.setVozilo(vozilo);
         komentar.setOglas(oglas);
-        komentar.setUser(user);*/
+        komentar.setUser(user);
 
         komentar = this.komentarRepository.save(komentar);
         log.info("Comment service - comment created");

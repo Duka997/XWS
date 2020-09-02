@@ -47,4 +47,13 @@ public class MarkaAutomobilaService {
 
         return new ResponseEntity<>(modeli, HttpStatus.OK);
     }
+
+    public void save(MarkaAutomobilaDTO mDTO) {
+        MarkaAutomobila m = new MarkaAutomobila();
+        m.setNazivMarke(mDTO.getNazivMarke());
+        m.setModel(mDTO.getModel());
+        m.setObrisan(false);
+        m.setId(mDTO.getId());
+        this.markaAutomobilaRepository.save(m);
+    }
 }

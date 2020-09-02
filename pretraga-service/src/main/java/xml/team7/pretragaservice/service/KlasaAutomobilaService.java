@@ -34,4 +34,12 @@ public class KlasaAutomobilaService {
 
         return new ResponseEntity<>(klasaAutomobilaDTOS, HttpStatus.OK);
     }
+
+    public void save(KlasaAutomobilaDTO mDTO) {
+            KlasaAutomobila m = new KlasaAutomobila();
+            m.setNaziv(mDTO.getNaziv());
+            m.setObrisan(false);
+            m.setId(mDTO.getId());
+            this.klasaAutoRepository.save(m);
+    }
 }

@@ -1,27 +1,19 @@
-package xml.team7.voziloservice.model;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+package xml.team7.voziloservice.dto;
 
-import javax.persistence.*;
 
-@Entity
-@AllArgsConstructor
-@Table(name="klasaautomobila")
-public class KlasaAutomobila {
+import xml.team7.voziloservice.model.KlasaAutomobila;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KlasaAutomobilaDTO {
     private Long id;
-
-    @Column
     private String naziv;
-
-    @Column
     private boolean obrisan;
 
-    public KlasaAutomobila() {
+    public KlasaAutomobilaDTO() {
+    }
+
+    public KlasaAutomobilaDTO(KlasaAutomobila klasaAutomobila) {
+        this.id = klasaAutomobila.getId();
+        this.naziv = klasaAutomobila.getNaziv();
     }
 
     public Long getId() {

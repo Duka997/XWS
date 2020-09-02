@@ -10,7 +10,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let poruka of poruke">
-            <td>
+            <td *ngIf="checkSender(poruka.posiljalacId)">
+                Me
+            </td>
+            <td *ngIf="!checkSender(poruka.posiljalacId)">
                 {{poruka.posiljalacId}}
             </td>
             <td>

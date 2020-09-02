@@ -19,5 +19,6 @@ public class ZahtjevDTO {
     private OglasDTO oglas;
     private Long bundleId;
     private Long userId;
+    private UserDTO user;
 
 }

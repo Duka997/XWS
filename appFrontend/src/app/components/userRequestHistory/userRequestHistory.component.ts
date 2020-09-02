@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdsService } from 'src/app/services/ads.service';
 import { RequestService } from 'src/app/services/requests.service';
-import { IAllRequests } from 'src/app/header/homepage-agent/rent-requests/irequests.all';
-import { IRentRequest } from 'src/app/header/homepageUser/userCart/IRequestRent';
 import { Oglas } from 'src/app/model/add';
 import { IRentRequestHistory } from './model/IRequestRent';
 import { IAllRequestsHistory } from './model/irequests.all';

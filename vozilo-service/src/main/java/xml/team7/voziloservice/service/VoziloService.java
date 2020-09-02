@@ -10,8 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
-import xml.team7.voziloservice.dto.MarkaAutomobilaDTO;
-import xml.team7.voziloservice.dto.VoziloDTO;
+import xml.team7.voziloservice.dto.*;
 import xml.team7.voziloservice.model.*;
 import xml.team7.voziloservice.repository.UserRepository;
 import xml.team7.voziloservice.repository.VoziloRepository;
@@ -156,6 +155,134 @@ public class VoziloService {
     }
 
 
+    public ResponseEntity<?> getCarStatistics(Long ownersID) {
+        Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);
+
+        StatistikaDTO statisticsDTO = new StatistikaDTO();
+        Vozilo carWithHighestAverageGrade = getCarWithHighestGradeByOwnersId(cars);
+        if (carWithHighestAverageGrade != null){
+            VoziloSaNajvecomOcenomDTO carDTO = new VoziloSaNajvecomOcenomDTO();
+
+            carDTO.setId(carWithHighestAverageGrade.getId());
+            carDTO.setMarkaId(carWithHighestAverageGrade.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithHighestAverageGrade.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithHighestAverageGrade.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithHighestAverageGrade.getKlasaAutomobila().getNaziv());
+            carDTO.setProsecnaOcena(getAverageGrade(carWithHighestAverageGrade));
+
+            statisticsDTO.setVoziloSaNajvecomOcenomDTO(carDTO);
+        }
+
+        Vozilo carWithMostComments = getCarWithMostCommentsByOwnersId(cars);
+        if (carWithMostComments != null){
+            VoziloSaNajviseKomentaraDTO carDTO = new VoziloSaNajviseKomentaraDTO();
+
+            carDTO.setId(carWithMostComments.getId());
+            carDTO.setMarkaId(carWithMostComments.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithMostComments.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithMostComments.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithMostComments.getKlasaAutomobila().getNaziv());
+            carDTO.setBrojKomentara(carWithMostComments.getKomentari().size());
+
+            statisticsDTO.setVoziloSaNajviseKomentaraDTO(carDTO);
+        }
+
+        Vozilo carWithMostKilometers = getCarWithMostKilometersByOwnersId(cars);
+        if (carWithMostKilometers != null){
+            VoziloSaNajvecomKilometrazomDTO carDTO = new VoziloSaNajvecomKilometrazomDTO();
+
+            carDTO.setId(carWithMostKilometers.getId());
+            carDTO.setMarkaId(carWithMostKilometers.getMarkaAutomobila().getId());
+            carDTO.setNazivMarke(carWithMostKilometers.getMarkaAutomobila().getNazivMarke());
+            carDTO.setModelId(carWithMostKilometers.getKlasaAutomobila().getId());
+            carDTO.setModel(carWithMostKilometers.getKlasaAutomobila().getNaziv());
+            carDTO.setKilometraza(carWithMostKilometers.getKilometraza());
+
+            statisticsDTO.setVoziloSaNajvecomKilometrazomDTO(carDTO);
+        }
+
+        return new ResponseEntity<StatistikaDTO>(statisticsDTO, HttpStatus.OK);
+    }
+
+    public Vozilo getCarWithHighestGradeByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have 0 grades. */
+
+        float maxAverageGrade = 0;
+        Vozilo carWithBHighestAverageGrade = new Vozilo();
+
+        for(Vozilo c : cars){
+            if (getAverageGrade(c) == null)
+                continue;
+
+            if (getAverageGrade(c) > maxAverageGrade){
+                maxAverageGrade = getAverageGrade(c);
+                carWithBHighestAverageGrade = c;
+            }
+        }
+
+        if (maxAverageGrade == 0)
+            return null;
+
+        return carWithBHighestAverageGrade;
+    }
+
+    public Float getAverageGrade(Vozilo car){
+        /* Returns null if car has no grades. */
+        /* Returns null if car equals to null. */
+
+        if (car == null)
+            return null;
+
+        int sum = 0;
+        for (Ocjena g : car.getOcjene()){
+            sum += g.getOcjena();
+        }
+
+        if (sum == 0) {
+            return null;
+        } else {
+            Float averageGrade = new Float(0);
+            averageGrade = (float) sum / car.getOcjene().size();
+            return averageGrade;
+        }
+    }
+
+    public Vozilo getCarWithMostCommentsByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have 0 comments. */
+        int maxComments = 0;
+        Vozilo carWithMostComments = new Vozilo();
+
+        for(Vozilo c : cars){
+            if (c.getKomentari().size() > maxComments){
+                maxComments = c.getKomentari().size();
+                carWithMostComments = c;
+            }
+        }
+
+        if (maxComments == 0)
+            return null;
+
+        return carWithMostComments;
+    }
+
+    public Vozilo getCarWithMostKilometersByOwnersId(Set<Vozilo> cars){
+        /* Returns null if all cars have kilometrage equal to 0. */
+
+        double mostKilometers = 0;
+        Vozilo carWithMostKilometers = new Vozilo();
+
+        for (Vozilo c : cars){
+            if (c.getKilometraza() > mostKilometers){
+                mostKilometers = c.getKilometraza();
+                carWithMostKilometers = c;
+            }
+        }
+
+        if (mostKilometers == 0)
+            return null;
+
+        return carWithMostKilometers;
+    }
 
 
 }

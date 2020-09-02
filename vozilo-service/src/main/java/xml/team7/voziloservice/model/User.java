@@ -35,28 +35,11 @@ public class User {
     private String username;
 
     @Column
-    private String password;
-
-    @Column
     private String email;
 
-    @Column
-    private String phone;
-
-    @Column
-    private String ucidn;
 
     @Column
     private String address;
-
-    @Column
-    private String city;
-
-    @Column
-    private String country;
-
-    @Column
-    private  String role;
 
     @OneToMany(mappedBy = "user")
     private Set<Vozilo> vozila;

@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private _toastr: ToastrService) {
-      this.user.name ='';
+      
      }
 
   ngOnInit(): void {

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.team7.pretragaservice.dto.MarkaAutomobilaDTO;
+import xml.team7.pretragaservice.dto.TipGorivaDTO;
 import xml.team7.pretragaservice.service.MarkaAutomobilaService;
 
 import java.nio.file.AccessDeniedException;
@@ -25,4 +26,12 @@ public class MarkaAutomobilaController {
     public ResponseEntity<?> getAllModels(@PathVariable Long markId) {
         return this.markaAutomobilaService.getAllModels(markId);
     }
+
+    @PostMapping("/dodaj")
+    public ResponseEntity add(@RequestBody MarkaAutomobilaDTO mDTO) {
+        markaAutomobilaService.save(mDTO);
+        return ResponseEntity.ok().build();
+    }
+
+
 }

@@ -34,4 +34,13 @@ public class TipMjenjacaService {
         }
         return new ResponseEntity<>(finalResult, HttpStatus.OK);
     }
+
+    public TipMjenjaca save(TipMjenjacaDTO mDTO) {
+        TipMjenjaca m = new TipMjenjaca();
+        m.setNaziv(mDTO.getNaziv());
+        m.setObrisan(false);
+        m.setId(mDTO.getId());
+        m = this.tipMjenjacaRepository.save(m);
+        return m;
+    }
 }

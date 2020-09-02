@@ -5,13 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import xml.team7.voziloservice.dto.MarkaAutomobilaDTO;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name="markaautomobila")
 public class MarkaAutomobila {
@@ -27,5 +25,44 @@ public class MarkaAutomobila {
     private String model;
 
     @Column
-    private Boolean obrisan;
+    private boolean obrisan;
+
+    public MarkaAutomobila(MarkaAutomobilaDTO mDTO) {
+        this.id = mDTO.getId();
+        this.nazivMarke = mDTO.getNazivMarke();
+        this.model = mDTO.getModel();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNazivMarke() {
+        return nazivMarke;
+    }
+
+    public void setNazivMarke(String nazivMarke) {
+        this.nazivMarke = nazivMarke;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public boolean isObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(boolean obrisan) {
+        this.obrisan = obrisan;
+    }
+   
 }

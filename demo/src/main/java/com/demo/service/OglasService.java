@@ -88,7 +88,7 @@ public class OglasService {
         //   Agent pom = agentService.findById(oglasDTO.getUserId());
         if(user.getImeKompanije() == null || user.getImeKompanije().equals("")){
         System.out.println("null - agent je");
-        if(user.getOcjene().size()>2){
+        if(user.getOglasi().size()>2){
             return new ResponseEntity<>(HttpStatus.valueOf("Korisnik ne moze dodati vise od 3 oglasa"));
          }
          }

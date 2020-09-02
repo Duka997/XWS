@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xml.team7.pretragaservice.dto.TipMjenjacaDTO;
 import xml.team7.pretragaservice.service.TipMjenjacaService;
 
 import java.util.List;
@@ -20,5 +21,11 @@ public class TipMjenjacaContreoller {
     @GetMapping("/get")
     public ResponseEntity<?> getKlase() {
         return tipMjenjacaService.getMjenjaci();
+    }
+
+    @PostMapping("/dodaj")
+    public ResponseEntity add(@RequestBody TipMjenjacaDTO mDTO) {
+        tipMjenjacaService.save(mDTO);
+        return ResponseEntity.ok().build();
     }
 }

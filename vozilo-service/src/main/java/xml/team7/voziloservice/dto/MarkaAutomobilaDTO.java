@@ -1,32 +1,23 @@
-package xml.team7.pretragaservice.model;
-
+package xml.team7.voziloservice.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import xml.team7.voziloservice.model.MarkaAutomobila;
 
-import javax.persistence.*;
 
-@Entity
 @AllArgsConstructor
-@Table(name="markaautomobila")
-public class MarkaAutomobila {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MarkaAutomobilaDTO {
     private Long id;
-
-    @Column
     private String nazivMarke;
-
-    @Column
     private String model;
+    private boolean obrisan;
 
-    @Column
-    private Boolean obrisan;
+    public MarkaAutomobilaDTO() {
+    }
 
-    public MarkaAutomobila() {
+    public MarkaAutomobilaDTO(MarkaAutomobila markaAutomobila) {
+        this.id = markaAutomobila.getId();
+        this.nazivMarke = markaAutomobila.getNazivMarke();
+        this.model = markaAutomobila.getModel();
     }
 
     public Long getId() {
@@ -53,11 +44,11 @@ public class MarkaAutomobila {
         this.model = model;
     }
 
-    public Boolean getObrisan() {
+    public boolean isObrisan() {
         return obrisan;
     }
 
-    public void setObrisan(Boolean obrisan) {
+    public void setObrisan(boolean obrisan) {
         this.obrisan = obrisan;
     }
 }

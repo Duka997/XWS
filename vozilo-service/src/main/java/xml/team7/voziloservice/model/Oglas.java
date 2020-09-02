@@ -11,10 +11,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "oglasi")
 public class Oglas {
 
@@ -66,4 +63,103 @@ public class Oglas {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cjenovnik_id")
     private Cjenovnik cjenovnik;
+
+    public Oglas() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isDostupan() {
+        return dostupan;
+    }
+
+    public void setDostupan(boolean dostupan) {
+        this.dostupan = dostupan;
+    }
+
+    public String getMjestoPreuzimanja() {
+        return mjestoPreuzimanja;
+    }
+
+    public void setMjestoPreuzimanja(String mjestoPreuzimanja) {
+        this.mjestoPreuzimanja = mjestoPreuzimanja;
+    }
+
+    public double getDozvoljenaKilometraza() {
+        return dozvoljenaKilometraza;
+    }
+
+    public void setDozvoljenaKilometraza(double dozvoljenaKilometraza) {
+        this.dozvoljenaKilometraza = dozvoljenaKilometraza;
+    }
+
+    public DateTime getOd() {
+        return od;
+    }
+
+    public void setOd(DateTime od) {
+        this.od = od;
+    }
+
+    public DateTime getDoo() {
+        return doo;
+    }
+
+    public void setDoo(DateTime doo) {
+        this.doo = doo;
+    }
+
+    public Vozilo getVozilo() {
+        return vozilo;
+    }
+
+    public void setVozilo(Vozilo vozilo) {
+        this.vozilo = vozilo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<ZahtjevZaIznajmljivanje> getZahtjevi() {
+        return zahtjevi;
+    }
+
+    public void setZahtjevi(Set<ZahtjevZaIznajmljivanje> zahtjevi) {
+        this.zahtjevi = zahtjevi;
+    }
+
+    public Set<Komentar> getKomentari() {
+        return komentari;
+    }
+
+    public void setKomentari(Set<Komentar> komentari) {
+        this.komentari = komentari;
+    }
+
+    public Set<Ocjena> getOcjene() {
+        return ocjene;
+    }
+
+    public void setOcjene(Set<Ocjena> ocjene) {
+        this.ocjene = ocjene;
+    }
+
+    public Cjenovnik getCjenovnik() {
+        return cjenovnik;
+    }
+
+    public void setCjenovnik(Cjenovnik cjenovnik) {
+        this.cjenovnik = cjenovnik;
+    }
 }

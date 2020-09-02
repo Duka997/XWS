@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xml.team7.pretragaservice.dto.OglasDTO;
 import xml.team7.pretragaservice.dto.PretragaDTO;
 import xml.team7.pretragaservice.service.OglasService;
 
@@ -29,5 +30,10 @@ public class OglasController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getOneOglasById(@PathVariable Long id) {
         return this.oglasService.getOneOglasById(id);
+    }
+
+    @PostMapping("/dodaj")
+    public ResponseEntity<?> addNew(@RequestBody OglasDTO oglasDTO) {
+        return this.oglasService.noviOglas(oglasDTO);
     }
 }

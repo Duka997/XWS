@@ -35,4 +35,14 @@ public class TipGorivaService {
         }
         return new ResponseEntity<>(finalResult, HttpStatus.OK);
     }
+
+    public TipGoriva save(TipGorivaDTO mDTO) {
+        TipGoriva m = new TipGoriva();
+        m.setNaziv(mDTO.getNaziv());
+        m.setObrisan(false);
+        m.setId(mDTO.getId());
+        m = this.vrstaGorivaRepository.save(m);
+        return m;
+    }
+
 }

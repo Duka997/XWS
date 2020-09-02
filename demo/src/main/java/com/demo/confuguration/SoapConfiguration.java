@@ -18,7 +18,7 @@ public class SoapConfiguration {
     @Bean
     public VoziloClient voziloClient(Jaxb2Marshaller marshaller) {
         VoziloClient voziloClient = new VoziloClient();
-        voziloClient.setDefaultUri("http://localhost:8083/vozilo-soap");
+        voziloClient.setDefaultUri("http://localhost:8082/vozilo-soap");
         voziloClient.setMarshaller(marshaller);
         voziloClient.setUnmarshaller(marshaller);
         return voziloClient;

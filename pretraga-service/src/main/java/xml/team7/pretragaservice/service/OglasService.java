@@ -14,7 +14,9 @@ import xml.team7.pretragaservice.dto.CjenovnikDTO;
 import xml.team7.pretragaservice.dto.OglasDTO;
 import xml.team7.pretragaservice.dto.PretragaDTO;
 import xml.team7.pretragaservice.dto.VoziloDTO;
+import xml.team7.pretragaservice.model.Cjenovnik;
 import xml.team7.pretragaservice.model.Oglas;
+import xml.team7.pretragaservice.model.Vozilo;
 import xml.team7.pretragaservice.repository.OglasRepository;
 
 import java.util.ArrayList;
@@ -115,5 +117,19 @@ public class OglasService {
         oglasDTO.setVozilo(voziloDTO);
 
         return new ResponseEntity<>(oglasDTO, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Void> noviOglas(OglasDTO oglasDTO) {
+        Oglas oglas = new Oglas();
+        oglas.setVozilo(modelMapper.map(oglasDTO.getVozilo(), Vozilo.class));
+        oglas.setDostupan(oglasDTO.isDostupan());
+        oglas.setOd(oglasDTO.getOd());
+        oglas.setDoo(oglasDTO.getDoo());
+        oglas.setMjestoPreuzimanja(oglasDTO.getMestoPreuzimanja());
+        //oglas.setCjenovnik(oglasDTO.getCjenovnikID());
+
+        oglas.setId(oglasDTO.getId());
+        this.oglasRepository.save(oglas);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

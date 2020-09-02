@@ -1,0 +1,43 @@
+package xml.team7.zahtjevservice.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.joda.time.DateTime;
+import xml.team7.zahtjevservice.model.OglasUKorpi;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class OglasUKorpiDTO {
+
+    private Long id;
+    private boolean dostupan;
+    private String mjestoPreuzimanja;
+    private double dozvoljenaKilometraza;
+    private DateTime od;
+    private DateTime doo;
+    private VoziloDTO vozilo;
+    private Long userId;
+    //private Set<ZahtjevZaIznajmljivanjeDTO> zahtjevi;
+    //private Set<KomentarDTO> komentari;
+    //private Set<OcjenaDTO> ocjene;
+    //private CjenovnikDTO cjenovnik;
+    private Long userCartId;    //id usera kod kog se nalazi oglas
+    private Long adId;
+
+    public OglasUKorpiDTO(OglasUKorpi o) {
+        this.id = o.getId();
+        this.dostupan = o.isDostupan();
+        this.mjestoPreuzimanja = o.getMjestoPreuzimanja();
+        this.dozvoljenaKilometraza = o.getDozvoljenaKilometraza();
+        this.od = o.getOd();
+        this.doo = o.getDoo();
+        this.vozilo = new VoziloDTO(o.getVozilo());
+        this.userId = o.getUserId();
+        this.userCartId = o.getUserCartId();
+        this.adId = o.getAdId();
+    }
+}

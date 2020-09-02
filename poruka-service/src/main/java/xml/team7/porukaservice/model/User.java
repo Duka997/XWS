@@ -68,9 +68,4 @@ public class User {
     @Column
     private String poslovniID;
 
-    @OneToMany(mappedBy = "posiljalac")
-    private Set<Poruka> poslatePoruke;
-
-    @OneToMany(mappedBy = "primalac")
-    private Set<Poruka> primljenePoruke;
 }

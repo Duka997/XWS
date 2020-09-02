@@ -24,9 +24,6 @@ public class OglasController {
 
     @Autowired
     private ZahtjevZaIznajmljivanjeService zahtjevZaIznajmljivanjeService;
-    
-
-    private ModelMapper modelMapper;
 
     
     @PostMapping("/dodaj")

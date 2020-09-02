@@ -29,11 +29,16 @@ public class Poruka {
     })
     private DateTime datumSlanja;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "posiljalac_id")
-    private User posiljalac;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "posiljalac_id")
+//    private User posiljalac;
+    @Column
+    private Long posiljalacId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "primalac_id")
-    private User primalac;
+    @Column
+    private Long primalacId;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "primalac_id")
+//    private User primalac;
 }

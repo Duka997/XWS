@@ -5,11 +5,8 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import xml.team7.voziloservice.generated.GetCommentRequest;
-import xml.team7.voziloservice.generated.GetCommentResponse;
-import xml.team7.voziloservice.generated.PostCommentRequest;
-import xml.team7.voziloservice.generated.PostCommentResponse;
-import xml.team7.voziloservice.service.KomentarService;
+import xml.team7.voziloservice.generated.*;
+import xml.team7.voziloservice.service.*;
 
 @Endpoint
 public class VoziloEndpoint {
@@ -17,6 +14,21 @@ public class VoziloEndpoint {
 
     @Autowired
     private KomentarService komentarService;
+
+    @Autowired
+    private KlasaAutomobilaService klasaAutomobilaService;
+
+    @Autowired
+    private MarkaAutomobilaService markaAutomobilaService;
+
+    @Autowired
+    private TipGorivaService tipGorivaService;
+
+    @Autowired
+    private TipMjenjacaService tipMjenjacaService;
+
+    @Autowired
+    private VoziloService voziloService;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostCommentRequest")
     @ResponsePayload
@@ -29,5 +41,35 @@ public class VoziloEndpoint {
     public GetCommentResponse getComments(@RequestPayload GetCommentRequest request) {
         return this.komentarService.getCommentsSoap(request.getCommentRequest());
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostKlasaAutomobilaRequest")
+    @ResponsePayload
+    public PostKlasaAutomobilaResponse posKlasa(@RequestPayload PostKlasaAutomobilaRequest request) {
+        return this.klasaAutomobilaService.postKlasaSoap(request.getKlasaRequest());
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostMarkaAutomobilaRequest")
+    @ResponsePayload
+    public PostMarkaResponse postMarkaAutomobila(@RequestPayload PostMarkaRequest request) {
+        return this.markaAutomobilaService.postMarkaSoap(request.getMarkaRequest());
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostGorivoRequest")
+    @ResponsePayload
+    public PostGorivoResponse postGorivo(@RequestPayload PostGorivoRequest request) {
+        return this.tipGorivaService.postGorivoSoap(request.getGorivoRequest());
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostMjenjacRequest")
+    @ResponsePayload
+    public PostMjenjacResponse postMjenjac(@RequestPayload PostMjenjacRequest request) {
+        return this.tipMjenjacaService.postMjenjacSoap(request.getMjenjacRequest());
+    }
+
+  /*  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostVoziloRequest")
+    @ResponsePayload
+    public PostVoziloResponse postVozilo(@RequestPayload PostVoziloRequest request) {
+        return this.voziloService.postVoziloSoap(request.getVoziloRequest());
+    }*/
 
 }

@@ -1,6 +1,9 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.MarkaAutomobilaDTO;
+import com.demo.generated.PostMarkaResponse;
+import com.demo.generated.TMarkaAutomobila;
 import com.demo.model.MarkaAutomobila;
 import com.demo.repository.MarkaAutomobilaRepository;
 import org.modelmapper.ModelMapper;
@@ -21,6 +24,9 @@ public class MarkaAutomobilaService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VoziloClient voziloClient;
+
     public MarkaAutomobila findById(Long id) throws AccessDeniedException {
         MarkaAutomobila u = markaAutomobilaRepository.findById(id).orElseGet(null);
         return u;
@@ -31,6 +37,18 @@ public class MarkaAutomobilaService {
         MarkaAutomobila m = new MarkaAutomobila(mDTO);
         m.setObrisan(false);
         m = this.markaAutomobilaRepository.save(m);
+
+        TMarkaAutomobila tComment = new TMarkaAutomobila();
+        tComment.setNazivMarke(mDTO.getNazivMarke());
+        tComment.setModel(mDTO.getModel());
+        tComment.setObrisan(mDTO.isObrisan());
+
+        try {
+            PostMarkaResponse response = this.voziloClient.postNewMarka(tComment);
+            //komentar.setRefId(response.getCommentResponse());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return m;
     }
 

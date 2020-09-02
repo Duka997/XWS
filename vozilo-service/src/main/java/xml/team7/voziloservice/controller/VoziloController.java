@@ -1,6 +1,6 @@
 package xml.team7.voziloservice.controller;
 
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
+import org.bouncycastle.util.encoders.Base64;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class VoziloController {
     private VoziloService voziloService;
 
     @PostMapping("/dodaj/{agentId}")
-    public ResponseEntity add(@RequestBody VoziloDTO mDTO, @PathVariable Long agentId) throws Base64DecodingException, SQLException, AccessDeniedException, NotFoundException {
+    public ResponseEntity add(@RequestBody VoziloDTO mDTO, @PathVariable Long agentId) throws  SQLException, AccessDeniedException, NotFoundException {
         voziloService.dodajNovoVozilo(mDTO, agentId);
         return ResponseEntity.ok().build();
     }

@@ -9,6 +9,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.client.PretragaClient;
 import xml.team7.voziloservice.dto.KlasaAutomobilaDTO;
+import xml.team7.voziloservice.generated.PostKlasaAutomobilaResponse;
+import xml.team7.voziloservice.generated.TKlasaAutomobila;
 import xml.team7.voziloservice.model.KlasaAutomobila;
 import xml.team7.voziloservice.repository.KlasaAutomobilaRepository;
 
@@ -70,4 +72,15 @@ public class KlasaAutomobilaService {
         this.klasaAutoRepository.save(klasaAutomobila);
     }
 
+    public PostKlasaAutomobilaResponse postKlasaSoap(TKlasaAutomobila klasaRequest) {
+        KlasaAutomobila klasaAutomobila = new KlasaAutomobila();
+        klasaAutomobila.setId(klasaAutomobila.getId());
+        klasaAutomobila.setNaziv(klasaRequest.getNaziv());
+        klasaAutomobila.setObrisan(klasaRequest.isObrisan());
+        klasaAutomobila = this.klasaAutoRepository.save(klasaAutomobila);
+
+        PostKlasaAutomobilaResponse response = new PostKlasaAutomobilaResponse();
+        response.setKlasaResponse(klasaAutomobila.getId());
+        return response;
+    }
 }

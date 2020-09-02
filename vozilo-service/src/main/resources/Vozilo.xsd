@@ -47,7 +47,8 @@
             <xs:element name="od" type="xs:dateTime"/>
             <xs:element name="doo" type="xs:dateTime"/>
             <xs:element name="mestoPreuzimanja" type="xs:string"/>
-            <xs:element name="vozilo" type="car:TVozilo"/>
+            <xs:element name="user" type="car:TUser"/>
+            <xs:element name="cjenovnikID" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="TVozilo">
@@ -113,5 +114,97 @@
             <xs:element name="obrisan" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:element name="PostKlasaAutomobilaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="klasaRequest" type="car:TKlasaAutomobila"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostKlasaAutomobilaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="klasaResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PostMarkaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="markaRequest" type="car:TMarkaAutomobila"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostMarkaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="markaResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PostGorivoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gorivoRequest" type="car:TTipGoriva"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostGorivoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gorivoResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PostMjenjacRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mjenjacRequest" type="car:TTipMjenjaca"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostMjenjacResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mjenjacResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PostVoziloRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="voziloRequest" type="car:TVozilo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostVoziloResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="voziloResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetKlasaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="klasaRequest" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetKlasaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="klasa" type="car:TKlasaAutomobila"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
 
 </xs:schema>

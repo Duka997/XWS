@@ -8,6 +8,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.client.PretragaClient;
 import xml.team7.voziloservice.dto.TipGorivaDTO;
+import xml.team7.voziloservice.generated.PostGorivoResponse;
+import xml.team7.voziloservice.generated.TTipGoriva;
 import xml.team7.voziloservice.model.TipGoriva;
 import xml.team7.voziloservice.repository.TipGorivaRepository;
 
@@ -77,5 +79,17 @@ public class TipGorivaService {
         }
 
         return new ResponseEntity<>(vrstaGorivaDTOS, HttpStatus.OK);
+    }
+
+    public PostGorivoResponse postGorivoSoap(TTipGoriva gorivoRequest) {
+        TipGoriva m = new TipGoriva();
+        m.setId(gorivoRequest.getId());
+        m.setNaziv(gorivoRequest.getNaziv());
+        m.setObrisan(gorivoRequest.isObrisan());
+        m = this.vrstaGorivaRepository.save(m);
+
+        PostGorivoResponse response = new PostGorivoResponse();
+        response.setGorivoResponse(m.getId());
+        return response;
     }
 }

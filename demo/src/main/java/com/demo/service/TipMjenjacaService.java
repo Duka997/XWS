@@ -1,6 +1,9 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.TipMjenjacaDTO;
+import com.demo.generated.PostMjenjacResponse;
+import com.demo.generated.TTipMjenjaca;
 import com.demo.model.TipMjenjaca;
 import com.demo.repository.TipMjenjacaRepository;
 import org.modelmapper.ModelMapper;
@@ -22,6 +25,9 @@ public class TipMjenjacaService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VoziloClient voziloClient;
+
     public TipMjenjaca findById(Long id) throws AccessDeniedException {
         TipMjenjaca u = tipMjenjacaRepository.findById(id).orElseGet(null);
         return u;
@@ -33,6 +39,18 @@ public class TipMjenjacaService {
         m.setObrisan(false);
 
         m = this.tipMjenjacaRepository.save(m);
+
+        TTipMjenjaca tComment = new TTipMjenjaca();
+        tComment.setNaziv(mDTO.getNaziv());
+        tComment.setObrisan(mDTO.isObrisan());
+
+        try {
+            PostMjenjacResponse response = this.voziloClient.postNewMjenjac(tComment);
+            //komentar.setRefId(response.getCommentResponse());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return m;
     }
     public List<TipMjenjacaDTO> findAll() throws AccessDeniedException {

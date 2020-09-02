@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.client.PretragaClient;
 import xml.team7.voziloservice.dto.MarkaAutomobilaDTO;
+import xml.team7.voziloservice.generated.PostMarkaResponse;
+import xml.team7.voziloservice.generated.TMarkaAutomobila;
 import xml.team7.voziloservice.model.MarkaAutomobila;
 import xml.team7.voziloservice.repository.MarkaAutomobilaRepository;
 
@@ -81,5 +83,17 @@ public class MarkaAutomobilaService {
         MarkaAutomobila markaAutomobila = this.findById(id);
         markaAutomobila.setObrisan(true);
         this.markaAutomobilaRepository.save(markaAutomobila);
+    }
+
+    public PostMarkaResponse postMarkaSoap(TMarkaAutomobila markaRequest) {
+        MarkaAutomobila m = new MarkaAutomobila();
+        m.setId(markaRequest.getId());
+        m.setNazivMarke(markaRequest.getNazivMarke());
+        m.setModel(markaRequest.getModel());
+        m.setObrisan(markaRequest.isObrisan());
+        m=this.markaAutomobilaRepository.save(m);
+        PostMarkaResponse response = new PostMarkaResponse();
+        response.setMarkaResponse(m.getId());
+        return response;
     }
 }

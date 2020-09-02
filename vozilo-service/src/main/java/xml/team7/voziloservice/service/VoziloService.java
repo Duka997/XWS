@@ -1,8 +1,8 @@
 package xml.team7.voziloservice.service;
 
 
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+
+import org.bouncycastle.util.encoders.Base64;
 import javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,9 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.dto.MarkaAutomobilaDTO;
 import xml.team7.voziloservice.dto.VoziloDTO;
+import xml.team7.voziloservice.generated.PostVoziloResponse;
+import xml.team7.voziloservice.generated.TMarkaAutomobila;
+import xml.team7.voziloservice.generated.TVozilo;
 import xml.team7.voziloservice.model.*;
 import xml.team7.voziloservice.repository.UserRepository;
 import xml.team7.voziloservice.repository.VoziloRepository;
@@ -74,7 +77,7 @@ public class VoziloService {
         return u;
     }
 
-    public Vozilo dodajNovoVozilo(VoziloDTO carDTO, Long agentId) throws SQLException, Base64DecodingException, java.nio.file.AccessDeniedException, NotFoundException {
+    public Vozilo dodajNovoVozilo(VoziloDTO carDTO, Long agentId) throws SQLException, java.nio.file.AccessDeniedException, NotFoundException {
 
         System.out.println("marka "+carDTO.getMarkaAutomobila().getId());
         MarkaAutomobila markaAutomobilak = this.markaAutomobilaService.findById(carDTO.getMarkaAutomobila().getId());
@@ -115,7 +118,7 @@ public class VoziloService {
         vozilo = this.voziloRepository.save(vozilo);
         return vozilo;
     }
-    public Slika extractImage(String string) throws SQLException, Base64DecodingException {
+    public Slika extractImage(String string) throws SQLException {
         String[] parts = string.split(",");
         byte[] decodedByte = Base64.decode(parts[1]);
         String[] info = parts[0].split("/");
@@ -154,7 +157,6 @@ public class VoziloService {
 
         return vozilo;
     }
-
 
 
 

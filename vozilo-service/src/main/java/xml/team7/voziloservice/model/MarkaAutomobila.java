@@ -64,4 +64,5 @@ public class MarkaAutomobila {
     public void setObrisan(boolean obrisan) {
         this.obrisan = obrisan;
     }
+   
 }

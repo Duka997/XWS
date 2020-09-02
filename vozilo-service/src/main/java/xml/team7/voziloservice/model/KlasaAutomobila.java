@@ -47,4 +47,5 @@ public class KlasaAutomobila {
     public void setObrisan(boolean obrisan) {
         this.obrisan = obrisan;
     }
+    private Boolean obrisan;
 }

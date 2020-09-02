@@ -20,4 +20,7 @@ public class KlasaAutomobila {
 
     @Column
     private String naziv;
+
+    @Column
+    private Boolean obrisan;
 }

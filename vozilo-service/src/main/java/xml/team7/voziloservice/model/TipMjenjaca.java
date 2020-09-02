@@ -23,4 +23,7 @@ public class TipMjenjaca {
 
         @Column
         private String naziv;
+
+        @Column
+        private Boolean obrisan;
 }

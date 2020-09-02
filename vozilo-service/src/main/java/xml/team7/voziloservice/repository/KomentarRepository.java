@@ -11,4 +11,11 @@ import java.util.List;
 public interface KomentarRepository extends JpaRepository<Komentar,Long> {
 
     List<Komentar> findByVoziloIdAndOdobren(Long id, boolean b);
+
+    Komentar findByUserIdAndOglasId(Long id, Long id1);
+
+    List<Komentar> findAllByVoziloIdAndOdobren(Long id, boolean b);
+
+    List<Komentar> findAllByOdobren(boolean b);
+
 }

@@ -39,4 +39,79 @@
             <xs:element name="adId" type="xs:long"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:complexType name="TOglas">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="dostupan" type="xs:boolean"/>
+            <xs:element name="od" type="xs:dateTime"/>
+            <xs:element name="doo" type="xs:dateTime"/>
+            <xs:element name="mestoPreuzimanja" type="xs:string"/>
+            <xs:element name="vozilo" type="car:TVozilo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TVozilo">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="markaAutomobila" type="car:TMarkaAutomobila"/>
+            <xs:element name="tipGoriva" type="car:TTipGoriva"/>
+            <xs:element name="tipMjenjaca" type="car:TTipMjenjaca"/>
+            <xs:element name="klasaAutomobila" type="car:TKlasaAutomobila"/>
+            <xs:element name="userId" type="xs:long"/>
+            <xs:element name="kilometraza" type="xs:double"/>
+            <xs:element name="cijena" type="xs:double"/>
+            <xs:element name="mozePreciKM" type="xs:double"/>
+            <xs:element name="brSjedistaZaDjecu" type="xs:int"/>
+            <xs:element name="ocjena" type="xs:double"/>
+            <xs:element name="imaAndroid" type="xs:boolean"/>
+            <xs:element name="coliisionDamageWavier" type="xs:boolean"/>
+            <xs:element name="bundle" type="xs:boolean"/>
+            <xs:element name="agent" type="car:TUser"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TUser">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TKlasaAutomobila">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="obrisan" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TMarkaAutomobila">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nazivMarke" type="xs:string"/>
+            <xs:element name="model" type="xs:string"/>
+            <xs:element name="obrisan" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TTipMjenjaca">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="obrisan" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TTipGoriva">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="obrisan" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>

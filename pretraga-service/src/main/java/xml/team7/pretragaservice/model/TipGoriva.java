@@ -21,4 +21,7 @@ public class TipGoriva {
 
     @Column
     private String naziv;
+
+    @Column
+    private Boolean obrisan;
 }

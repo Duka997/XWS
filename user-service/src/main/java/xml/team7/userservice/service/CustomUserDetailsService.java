@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import xml.team7.userservice.client.VoziloClient;
 import xml.team7.userservice.dto.RoleDTO;
 import xml.team7.userservice.dto.UserDTO;
 import xml.team7.userservice.exception.NotFoundException;
@@ -50,6 +51,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     private RoleRepository roleRepository;
     private ModelMapper modelMapper;
     private PrivilegeRepository privilegeRepository;
+
+    @Autowired
+    private VoziloClient voziloClient;
 
     @Autowired
     public CustomUserDetailsService(TokenUtils tokenUtils, AuthenticationManager authenticationManager,
@@ -140,7 +144,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         Role role = this.roleRepository.findByName(userDTO.getRoles().get(0));
         user.setRoles(new ArrayList<Role>());
         user.getRoles().add(role);
-        userRepository.save(user);
+        user = userRepository.save(user);
+        userDTO.setId(user.getId());
+        this.voziloClient.add(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -331,6 +337,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         user.setName(userDTO.getName());
 
         this.userRepository.save(user);
+        this.voziloClient.edit(userDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

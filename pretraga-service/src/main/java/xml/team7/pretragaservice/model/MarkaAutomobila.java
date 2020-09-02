@@ -25,4 +25,7 @@ public class MarkaAutomobila {
 
     @Column
     private String model;
+
+    @Column
+    private Boolean obrisan;
 }

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="commentRequest" type="{https://ftn.uns.ac.rs/vozilo}TComment"/&gt;
+ *         &lt;element name="occupiedRequest" type="{https://ftn.uns.ac.rs/vozilo}TOccupied"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "commentRequest"
+    "occupiedRequest"
 })
-@XmlRootElement(name = "PostCommentRequest")
-public class PostCommentRequest {
+@XmlRootElement(name = "PostOccupiedRequest")
+public class PostOccupiedRequest {
 
     @XmlElement(required = true)
-    protected TComment commentRequest;
+    protected TOccupied occupiedRequest;
 
     /**
-     * Gets the value of the commentRequest property.
+     * Gets the value of the occupiedRequest property.
      * 
      * @return
      *     possible object is
-     *     {@link TComment }
+     *     {@link TOccupied }
      *     
      */
-    public TComment getCommentRequest() {
-        return commentRequest;
+    public TOccupied getOccupiedRequest() {
+        return occupiedRequest;
     }
 
     /**
-     * Sets the value of the commentRequest property.
+     * Sets the value of the occupiedRequest property.
      * 
      * @param value
      *     allowed object is
-     *     {@link TComment }
+     *     {@link TOccupied }
      *     
      */
-    public void setCommentRequest(TComment value) {
-        this.commentRequest = value;
+    public void setOccupiedRequest(TOccupied value) {
+        this.occupiedRequest = value;
     }
 
 }

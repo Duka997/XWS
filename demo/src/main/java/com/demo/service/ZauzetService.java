@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.VoziloDTO;
 import com.demo.dto.ZauzetDTO;
 import com.demo.model.*;
@@ -33,6 +34,9 @@ public class ZauzetService {
 
     @Autowired
     private ZahtjevZaBundleService zahtjevZaBundleService;
+
+    @Autowired
+    private VoziloClient voziloClient;
 
     public void saveRequestAsOccupied(ZahtjevZaIznajmljivanje request) {
         Zauzet occupied = new Zauzet();

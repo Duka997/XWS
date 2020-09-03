@@ -1,5 +1,6 @@
 package xml.team7.voziloservice.controller;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class OccupiedController {
     private ZauzetService zauzetService;
 
     @PostMapping
-    public ResponseEntity<?> addNew(@RequestBody ZauzetDTO occupiedDTO) {
+    public ResponseEntity<?> addNew(@RequestBody ZauzetDTO occupiedDTO) throws NotFoundException {
         return this.zauzetService.newOccupied(occupiedDTO);
     }
 

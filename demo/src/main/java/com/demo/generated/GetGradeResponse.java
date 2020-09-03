@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="gorivoResponse" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="grades" type="{https://ftn.uns.ac.rs/vozilo}TGrade" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,27 +37,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "gorivoResponse"
+    "grades"
 })
-@XmlRootElement(name = "PostGorivoResponse")
-public class PostGorivoResponse {
+@XmlRootElement(name = "GetGradeResponse")
+public class GetGradeResponse {
 
-    protected long gorivoResponse;
-
-    /**
-     * Gets the value of the gorivoResponse property.
-     * 
-     */
-    public long getGorivoResponse() {
-        return gorivoResponse;
-    }
+    protected List<TGrade> grades;
 
     /**
-     * Sets the value of the gorivoResponse property.
+     * Gets the value of the grades property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the grades property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getGrades().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TGrade }
+     * 
      * 
      */
-    public void setGorivoResponse(long value) {
-        this.gorivoResponse = value;
+    public List<TGrade> getGrades() {
+        if (grades == null) {
+            grades = new ArrayList<TGrade>();
+        }
+        return this.grades;
     }
 
 }

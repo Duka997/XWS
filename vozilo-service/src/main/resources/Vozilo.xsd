@@ -204,7 +204,99 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:complexType name="TCarStatistics">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="comments" type="car:TComment"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="grades" type="car:TGrade"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="reports" type="car:TReport"/>
+            <xs:element name="id" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TOccupied">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="dateTo" type="xs:long"/>
+            <xs:element name="dateFrom" type="xs:long"/>
+            <xs:element name="carId" type="xs:long"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="adsId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PostOccupiedRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="occupiedRequest" type="car:TOccupied"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostOccupiedResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="occupiedResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
+    <xs:element name="GetGradeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gradeRequest" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetGradeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="grades" type="car:TGrade"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TReport">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="kilometrage" type="xs:double"/>
+            <xs:element name="comment" type="xs:string"/>
+            <xs:element name="carId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TGrade">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="grade" type="xs:int"/>
+            <xs:element name="userId" type="xs:long"/>
+            <xs:element name="userUsername" type="xs:string"/>
+            <xs:element name="adId" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetStatisticsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetStatisticsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="cars"
+                            type="car:TCarStatistics"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostReportRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reportRequest" type="car:TReport"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PostReportResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reportResponse" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 
 </xs:schema>

@@ -30,6 +30,9 @@ public class VoziloEndpoint {
     @Autowired
     private VoziloService voziloService;
 
+    @Autowired
+    private OcjenaService ocjenaService;
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostCommentRequest")
     @ResponsePayload
     public PostCommentResponse postComment(@RequestPayload PostCommentRequest request) {
@@ -48,7 +51,7 @@ public class VoziloEndpoint {
         return this.klasaAutomobilaService.postKlasaSoap(request.getKlasaRequest());
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostMarkaAutomobilaRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostMarkaRequest")
     @ResponsePayload
     public PostMarkaResponse postMarkaAutomobila(@RequestPayload PostMarkaRequest request) {
         return this.markaAutomobilaService.postMarkaSoap(request.getMarkaRequest());
@@ -78,4 +81,9 @@ public class VoziloEndpoint {
         return this.voziloService.postVoziloSoap(request.getVoziloRequest());
     }*/
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetGradeRequest")
+    @ResponsePayload
+    public GetGradeResponse getGrades(@RequestPayload GetGradeRequest request) {
+        return this.ocjenaService.getOcjeneSoap(request.getGradeRequest());
+    }
 }

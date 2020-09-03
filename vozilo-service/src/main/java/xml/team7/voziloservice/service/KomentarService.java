@@ -17,6 +17,7 @@ import xml.team7.voziloservice.model.Vozilo;
 import xml.team7.voziloservice.repository.KomentarRepository;
 import xml.team7.voziloservice.repository.OglasRepository;
 import xml.team7.voziloservice.repository.UserRepository;
+import xml.team7.voziloservice.repository.VoziloRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,18 +37,23 @@ public class KomentarService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VoziloRepository voziloRepository;
+
     public PostCommentResponse postCommentSoap(TComment commentRequest) {
         log.info("Comment service - creating comment");
         Komentar komentar = Komentar.builder()
                 .odobren(false)
                 .tekst(commentRequest.getText())
                 .build();
-        User user = this.userRepository.findByUsername(commentRequest.getUserUsername());
-        Oglas oglas = this.oglasRepository.getOne(commentRequest.getAdId());
-        Vozilo vozilo = oglas.getVozilo();
 
-        komentar.setVozilo(vozilo);
+        User user = this.userRepository.findByUsername(commentRequest.getUserUsername());
+        Oglas oglas = this.oglasRepository.findByIdUser(commentRequest.getAdId());
+        Vozilo vozilo = this.voziloRepository.getOne(oglas.getVozilo().getId());
+
+
         komentar.setOglas(oglas);
+        komentar.setVozilo(vozilo);
         komentar.setUser(user);
 
         komentar = this.komentarRepository.save(komentar);

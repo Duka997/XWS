@@ -63,6 +63,7 @@ public class KomentarService {
             }
         }
 
+        //za soap
         if(komentarDTO.getRole().equals("ROLE_AGENT")) {
             TComment tComment = new TComment();
             tComment.setApproved(false);
@@ -123,6 +124,7 @@ public class KomentarService {
         return  new ResponseEntity<>(komentariDTO, HttpStatus.OK);
     }
 
+    //za admina
     public ResponseEntity<?> pokupiSveKomentare() {
         List<Komentar> komentari = this.komentarRepository.findAllByOdobren(false);
         List<KomentarDTO> komentariDTO = new ArrayList<>();

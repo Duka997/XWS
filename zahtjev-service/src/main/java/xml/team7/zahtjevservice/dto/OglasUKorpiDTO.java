@@ -14,12 +14,6 @@ import xml.team7.zahtjevservice.model.OglasUKorpi;
 public class OglasUKorpiDTO {
 
     private Long id;
-    private boolean dostupan;
-    private String mjestoPreuzimanja;
-    private double dozvoljenaKilometraza;
-    private DateTime od;
-    private DateTime doo;
-    private Long vozilo;
     private Long userId;
     private Long userCartId;    //id usera kod kog se nalazi oglas
     private Long adId;

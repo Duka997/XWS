@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.dto.OcjenaDTO;
+import xml.team7.voziloservice.generated.GetGradeResponse;
+import xml.team7.voziloservice.generated.TGrade;
 import xml.team7.voziloservice.model.Ocjena;
 import xml.team7.voziloservice.model.Oglas;
 import xml.team7.voziloservice.model.User;
@@ -89,5 +91,22 @@ public class OcjenaService {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
         return new ResponseEntity<>(false, HttpStatus.OK);
+    }
+
+    public GetGradeResponse getOcjeneSoap(long gradeRequest) {
+        Oglas oglas = oglasRepository.getOne(gradeRequest);
+        Vozilo vozilo = oglas.getVozilo();
+        List<Ocjena> ocjene = this.ocjenaRepository.findAllByVoziloId(vozilo.getId());
+
+        GetGradeResponse response = new GetGradeResponse();
+        for(Ocjena o: ocjene){
+            TGrade tGrade = new TGrade();
+            tGrade.setGrade((int)o.getOcjena());
+            tGrade.setId(o.getId());
+            tGrade.setUserUsername(o.getUser().getUsername());
+            tGrade.setAdId(o.getVozilo().getId());
+            response.getGrades().add(tGrade);
+        }
+        return response;
     }
 }

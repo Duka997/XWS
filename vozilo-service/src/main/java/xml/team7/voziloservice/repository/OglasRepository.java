@@ -16,4 +16,7 @@ import java.util.List;
 public interface OglasRepository extends JpaRepository<Oglas, Long> {
 
     List<Oglas> findAllByVoziloId(Long id);
+
+    @Query("select o from Oglas o join o.vozilo where o.id = (?1)")
+    Oglas findByIdUser(Long id);
 }

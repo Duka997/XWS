@@ -45,16 +45,11 @@ public class OglasService {
     @Autowired
     private CustomUserDetailsService userService;
 
-
     @Autowired
     private CjenovnikRepository cjenovnikRepository;
 
-      @Autowired
+    @Autowired
     private OglasUKorpiRepository oglasUKorpiRepository;
-
-
-
-
 
     public Oglas findById(Long id) {
         return this.oglasRepository.getOne(id);

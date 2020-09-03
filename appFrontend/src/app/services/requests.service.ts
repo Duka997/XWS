@@ -10,15 +10,15 @@ import { IReport } from '../model/Report';
     constructor(private http: HttpClient) { }
   
     getRequests(userId: any) {
-        return this.http.get<any>('http://localhost:8099/api/request/getRequests/'+userId);
+        return this.http.get<any>('http://localhost:8081/api/request/getRequests/'+userId);
     }
 
     getRequestsHistory(userId: any) {
-        return this.http.get<any>('http://localhost:8099/api/request/getRequestsHistory/'+userId);
+        return this.http.get<any>('http://localhost:8081/api/request/getRequestsHistory/'+userId);
     }
 
     acceptRequest(reqId: any) {
-        return this.http.post<any>('http://localhost:8099/api/request/accept/'+reqId, {});
+        return this.http.post<any>('http://localhost:8081/api/request/accept/'+reqId, {});
     }
 
     cancelRequest(reqId: any) {

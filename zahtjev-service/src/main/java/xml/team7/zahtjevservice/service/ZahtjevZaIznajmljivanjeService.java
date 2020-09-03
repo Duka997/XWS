@@ -145,7 +145,8 @@ public class ZahtjevZaIznajmljivanjeService {
 
         this.zahtjevZaIznajmljivanjeRepository.save(request);
 
-
+        //HttpHeaders headers = new HttpHeaders();
+        //headers.setAccessControlAllowOrigin("*");
 
         try {
             ZauzetDTO occupiedDTO = new ZauzetDTO();
@@ -157,7 +158,7 @@ public class ZahtjevZaIznajmljivanjeService {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(/*headers,*/ HttpStatus.OK);
     }
 
     public void acceptRequest2(ZahtjevZaIznajmljivanje request) {

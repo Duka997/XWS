@@ -346,4 +346,33 @@ public class VoziloService {
         return carWithMostKilometers;
     }
 
+    public PostVoziloResponse postVoziloSoap(TVozilo voziloRequest) throws java.nio.file.AccessDeniedException {
+        Vozilo vozilo = new Vozilo();
+        vozilo.setId(voziloRequest.getId());
+        vozilo.setCijena(voziloRequest.getCijena());
+        vozilo.setKilometraza(voziloRequest.getKilometraza());
+        vozilo.setMozePreciKM(voziloRequest.getMozePreciKM());
+        vozilo.setBrSjedistaZaDjecu(voziloRequest.getBrSjedistaZaDjecu());
+        vozilo.setOcjena(voziloRequest.getOcjena());
+        vozilo.setImaAndroid(voziloRequest.isImaAndroid());
+        vozilo.setColiisionDamageWavier(voziloRequest.isColiisionDamageWavier());
+
+        MarkaAutomobila markaAutomobila = markaAutomobilaService.findById(voziloRequest.getMarkaAutomobilaID());
+        TipMjenjaca tipMjenjaca = tipMjenjacaService.findById(voziloRequest.getTipMjenjacaID());
+        KlasaAutomobila klasaAutomobila = klasaAutomobilaService.findById(voziloRequest.getKlasaAutomobilaID());
+        TipGoriva tipGoriva= vrstaGorivaService.findById(voziloRequest.getTipGorivaID());
+        User user = userRepository.findById(voziloRequest.getUserId()).get();
+
+        vozilo.setMarkaAutomobila(markaAutomobila);
+        vozilo.setTipMjenjaca(tipMjenjaca);
+        vozilo.setKlasaAutomobila(klasaAutomobila);
+        vozilo.setTipGoriva(tipGoriva);
+        vozilo.setUser(user);
+
+        vozilo = this.voziloRepository.save(vozilo);
+
+        PostVoziloResponse response = new PostVoziloResponse();
+        response.setVoziloResponse(vozilo.getId());
+        return response;
+    }
 }

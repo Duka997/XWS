@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="commentRequest" type="{https://ftn.uns.ac.rs/vozilo}TComment"/&gt;
+ *         &lt;element name="reportRequest" type="{https://ftn.uns.ac.rs/vozilo}TReport"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "commentRequest"
+    "reportRequest"
 })
-@XmlRootElement(name = "PostCommentRequest")
-public class PostCommentRequest {
+@XmlRootElement(name = "PostReportRequest")
+public class PostReportRequest {
 
     @XmlElement(required = true)
-    protected TComment commentRequest;
+    protected TReport reportRequest;
 
     /**
-     * Gets the value of the commentRequest property.
+     * Gets the value of the reportRequest property.
      * 
      * @return
      *     possible object is
-     *     {@link TComment }
+     *     {@link TReport }
      *     
      */
-    public TComment getCommentRequest() {
-        return commentRequest;
+    public TReport getReportRequest() {
+        return reportRequest;
     }
 
     /**
-     * Sets the value of the commentRequest property.
+     * Sets the value of the reportRequest property.
      * 
      * @param value
      *     allowed object is
-     *     {@link TComment }
+     *     {@link TReport }
      *     
      */
-    public void setCommentRequest(TComment value) {
-        this.commentRequest = value;
+    public void setReportRequest(TReport value) {
+        this.reportRequest = value;
     }
 
 }

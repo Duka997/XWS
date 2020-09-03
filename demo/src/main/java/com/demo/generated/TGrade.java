@@ -15,19 +15,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TMarkaAutomobila complex type.
+ * <p>Java class for TGrade complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TMarkaAutomobila"&gt;
+ * &lt;complexType name="TGrade"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="nazivMarke" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="model" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="obrisan" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="grade" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="userUsername" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="adId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,20 +38,21 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TMarkaAutomobila", propOrder = {
+@XmlType(name = "TGrade", propOrder = {
     "id",
-    "nazivMarke",
-    "model",
-    "obrisan"
+    "grade",
+    "userId",
+    "userUsername",
+    "adId"
 })
-public class TMarkaAutomobila {
+public class TGrade {
 
     protected long id;
+    protected int grade;
+    protected long userId;
     @XmlElement(required = true)
-    protected String nazivMarke;
-    @XmlElement(required = true)
-    protected String model;
-    protected boolean obrisan;
+    protected String userUsername;
+    protected long adId;
 
     /**
      * Gets the value of the id property.
@@ -69,67 +71,75 @@ public class TMarkaAutomobila {
     }
 
     /**
-     * Gets the value of the nazivMarke property.
+     * Gets the value of the grade property.
+     * 
+     */
+    public int getGrade() {
+        return grade;
+    }
+
+    /**
+     * Sets the value of the grade property.
+     * 
+     */
+    public void setGrade(int value) {
+        this.grade = value;
+    }
+
+    /**
+     * Gets the value of the userId property.
+     * 
+     */
+    public long getUserId() {
+        return userId;
+    }
+
+    /**
+     * Sets the value of the userId property.
+     * 
+     */
+    public void setUserId(long value) {
+        this.userId = value;
+    }
+
+    /**
+     * Gets the value of the userUsername property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNazivMarke() {
-        return nazivMarke;
+    public String getUserUsername() {
+        return userUsername;
     }
 
     /**
-     * Sets the value of the nazivMarke property.
+     * Sets the value of the userUsername property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNazivMarke(String value) {
-        this.nazivMarke = value;
+    public void setUserUsername(String value) {
+        this.userUsername = value;
     }
 
     /**
-     * Gets the value of the model property.
+     * Gets the value of the adId property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getModel() {
-        return model;
+    public long getAdId() {
+        return adId;
     }
 
     /**
-     * Sets the value of the model property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setModel(String value) {
-        this.model = value;
-    }
-
-    /**
-     * Gets the value of the obrisan property.
+     * Sets the value of the adId property.
      * 
      */
-    public boolean isObrisan() {
-        return obrisan;
-    }
-
-    /**
-     * Sets the value of the obrisan property.
-     * 
-     */
-    public void setObrisan(boolean value) {
-        this.obrisan = value;
+    public void setAdId(long value) {
+        this.adId = value;
     }
 
 }

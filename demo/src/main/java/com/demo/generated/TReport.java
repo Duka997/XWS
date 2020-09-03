@@ -15,19 +15,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TMarkaAutomobila complex type.
+ * <p>Java class for TReport complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TMarkaAutomobila"&gt;
+ * &lt;complexType name="TReport"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="nazivMarke" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="model" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="obrisan" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="kilometrage" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
+ *         &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="carId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,20 +37,19 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TMarkaAutomobila", propOrder = {
+@XmlType(name = "TReport", propOrder = {
     "id",
-    "nazivMarke",
-    "model",
-    "obrisan"
+    "kilometrage",
+    "comment",
+    "carId"
 })
-public class TMarkaAutomobila {
+public class TReport {
 
     protected long id;
+    protected double kilometrage;
     @XmlElement(required = true)
-    protected String nazivMarke;
-    @XmlElement(required = true)
-    protected String model;
-    protected boolean obrisan;
+    protected String comment;
+    protected long carId;
 
     /**
      * Gets the value of the id property.
@@ -69,67 +68,59 @@ public class TMarkaAutomobila {
     }
 
     /**
-     * Gets the value of the nazivMarke property.
+     * Gets the value of the kilometrage property.
+     * 
+     */
+    public double getKilometrage() {
+        return kilometrage;
+    }
+
+    /**
+     * Sets the value of the kilometrage property.
+     * 
+     */
+    public void setKilometrage(double value) {
+        this.kilometrage = value;
+    }
+
+    /**
+     * Gets the value of the comment property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNazivMarke() {
-        return nazivMarke;
+    public String getComment() {
+        return comment;
     }
 
     /**
-     * Sets the value of the nazivMarke property.
+     * Sets the value of the comment property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNazivMarke(String value) {
-        this.nazivMarke = value;
+    public void setComment(String value) {
+        this.comment = value;
     }
 
     /**
-     * Gets the value of the model property.
+     * Gets the value of the carId property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getModel() {
-        return model;
+    public long getCarId() {
+        return carId;
     }
 
     /**
-     * Sets the value of the model property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setModel(String value) {
-        this.model = value;
-    }
-
-    /**
-     * Gets the value of the obrisan property.
+     * Sets the value of the carId property.
      * 
      */
-    public boolean isObrisan() {
-        return obrisan;
-    }
-
-    /**
-     * Sets the value of the obrisan property.
-     * 
-     */
-    public void setObrisan(boolean value) {
-        this.obrisan = value;
+    public void setCarId(long value) {
+        this.carId = value;
     }
 
 }

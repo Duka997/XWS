@@ -8,7 +8,10 @@
 
 package com.demo.generated;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -21,7 +24,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="commentRequest" type="{https://ftn.uns.ac.rs/vozilo}TComment"/&gt;
+ *         &lt;element name="occupiedResponse" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,36 +35,27 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "commentRequest"
+    "occupiedResponse"
 })
-@XmlRootElement(name = "PostCommentRequest")
-public class PostCommentRequest {
+@XmlRootElement(name = "PostOccupiedResponse")
+public class PostOccupiedResponse {
 
-    @XmlElement(required = true)
-    protected TComment commentRequest;
+    protected long occupiedResponse;
 
     /**
-     * Gets the value of the commentRequest property.
+     * Gets the value of the occupiedResponse property.
      * 
-     * @return
-     *     possible object is
-     *     {@link TComment }
-     *     
      */
-    public TComment getCommentRequest() {
-        return commentRequest;
+    public long getOccupiedResponse() {
+        return occupiedResponse;
     }
 
     /**
-     * Sets the value of the commentRequest property.
+     * Sets the value of the occupiedResponse property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TComment }
-     *     
      */
-    public void setCommentRequest(TComment value) {
-        this.commentRequest = value;
+    public void setOccupiedResponse(long value) {
+        this.occupiedResponse = value;
     }
 
 }

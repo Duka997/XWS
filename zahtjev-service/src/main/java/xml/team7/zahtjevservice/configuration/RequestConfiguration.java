@@ -17,7 +17,8 @@ import xml.team7.zahtjevservice.security.AuthenticationTokenFilter;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
-public class VoziloConfiguration extends WebSecurityConfigurerAdapter {
+public class RequestConfiguration extends WebSecurityConfigurerAdapter {
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -54,12 +55,12 @@ public class VoziloConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterAfter(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
 
-    // Generalna bezbednost aplikacije
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.GET, "/**");
-        web.ignoring().antMatchers(HttpMethod.POST, "/**");
-        web.ignoring().antMatchers(HttpMethod.PUT, "/**");
-        web.ignoring().antMatchers(HttpMethod.DELETE, "/**");
+        web.ignoring().antMatchers(HttpMethod.GET).antMatchers("/**");
+        web.ignoring().antMatchers(HttpMethod.POST).antMatchers("/**");
+        web.ignoring().antMatchers(HttpMethod.PUT).antMatchers("/**");
+        web.ignoring().antMatchers(HttpMethod.PATCH).antMatchers("/**");
+        web.ignoring().antMatchers(HttpMethod.DELETE).antMatchers("/**");
     }
 }

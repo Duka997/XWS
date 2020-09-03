@@ -15,4 +15,3 @@ insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzi
 values (2, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-09-20 21:58:58', false, 'PENDING', null, 2, 2);
 insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)
 values (3, '2020-08-12 21:58:58', '2020-09-29 21:58:58', 'Novi Sad', '2020-08-20 21:58:58', false, 'PAID', null, 2, 2);
-insert into `zahtjev_za_iznajmljivanje` (id, datum_kreiranja, doo, mjesto_preuzimanja, od, potvrdjen, status, bundle_id, oglas_id, user_id)

@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import xml.team7.userservice.client.PorukaClient;
 import xml.team7.userservice.client.VoziloClient;
 import xml.team7.userservice.dto.RoleDTO;
 import xml.team7.userservice.dto.UserDTO;
@@ -54,6 +55,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private VoziloClient voziloClient;
+
+    @Autowired
+    private PorukaClient porukaClient;
 
     @Autowired
     public CustomUserDetailsService(TokenUtils tokenUtils, AuthenticationManager authenticationManager,
@@ -147,6 +151,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         user = userRepository.save(user);
         userDTO.setId(user.getId());
         this.voziloClient.add(userDTO);
+        this.porukaClient.add(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -338,6 +343,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         this.userRepository.save(user);
         this.voziloClient.edit(userDTO);
+        this.porukaClient.edit(userDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

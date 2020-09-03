@@ -28,4 +28,9 @@ public class OccupiedController {
     public ResponseEntity<?> getOccupationUser(@PathVariable Long userId ) {
         return this.zauzetService.getOccupiedByUser(userId);
     }
+
+    @PostMapping(value = "/rent")
+    public ResponseEntity<?> addNewRequestOccupation(@RequestBody ZauzetDTO zauzetDTO) throws NotFoundException {
+        return this.zauzetService.newOccupiedRequest(zauzetDTO);
+    }
 }

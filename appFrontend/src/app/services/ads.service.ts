@@ -16,11 +16,11 @@ import { ICart } from '../components/userCart/ICart';
     }
 
     addAdToCart(oglas: Oglas, userId: any): Observable<any> {
-        return this.http.post('http://localhost:8099/api/oglas/dodajUKorpu/'+userId, oglas);
+        return this.http.post('http://localhost:8081/api/oglas/dodajUKorpu/'+userId, oglas);
     }
 
     getAllAdsForCart(id: any): Observable<any> {
-        return this.http.get<any>('http://localhost:8099/api/oglas/getCartAds/'+id);
+        return this.http.get<any>('http://localhost:8081/api/oglas/getCartAds/'+id);
     }
 
     removeAdFromCart(id: number) {
@@ -28,7 +28,7 @@ import { ICart } from '../components/userCart/ICart';
     }
 
     rentACarRequest(cart: ICart, userId: any): Observable<any> {
-        return this.http.post('http://localhost:8099/api/oglas/request/'+userId, cart);
+        return this.http.post('http://localhost:8081/api/oglas/request/'+userId, cart);
     }
 
   }

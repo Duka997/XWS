@@ -39,33 +39,5 @@ public class User {
     private String email;
 
     @Column
-    private String phone;
-
-    @Column
-    private String ucidn;
-
-    @Column
     private String address;
-
-    @Column
-    private String city;
-
-    @Column
-    private String country;
-
-    @Column
-    private  String role;
-
-    @Column
-    private boolean isEnabled;
-
-    @Column
-    private boolean isAdmin;
-
-    @Column
-    private String imeKompanije;
-
-    @Column
-    private String poslovniID;
-
 }

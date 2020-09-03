@@ -1,6 +1,9 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.TipGorivaDTO;
+import com.demo.generated.PostGorivoResponse;
+import com.demo.generated.TTipGoriva;
 import com.demo.model.TipGoriva;
 import com.demo.repository.TipGorivaRepository;
 import org.modelmapper.ModelMapper;
@@ -21,6 +24,9 @@ public class TipGorivaService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VoziloClient voziloClient;
+
     public TipGoriva findById(Long id) throws AccessDeniedException {
         TipGoriva u = vrstaGorivaRepository.findById(id).orElseGet(null);
         return u;
@@ -33,6 +39,17 @@ public class TipGorivaService {
         m.setObrisan(false);
 
         m = this.vrstaGorivaRepository.save(m);
+
+        TTipGoriva tComment = new TTipGoriva();
+        tComment.setNaziv(mDTO.getNaziv());
+        tComment.setObrisan(mDTO.isObrisan());
+
+        try {
+            PostGorivoResponse response = this.voziloClient.postNewGorivo(tComment);
+            //komentar.setRefId(response.getCommentResponse());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return m;
     }
 

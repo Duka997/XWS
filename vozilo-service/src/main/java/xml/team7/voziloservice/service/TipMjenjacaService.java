@@ -9,6 +9,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import xml.team7.voziloservice.client.PretragaClient;
 import xml.team7.voziloservice.dto.TipMjenjacaDTO;
+import xml.team7.voziloservice.generated.PostMjenjacResponse;
+import xml.team7.voziloservice.generated.TTipMjenjaca;
 import xml.team7.voziloservice.model.TipMjenjaca;
 import xml.team7.voziloservice.repository.TipMjenjacaRepository;
 
@@ -75,5 +77,17 @@ public class TipMjenjacaService {
         }
 
         return new ResponseEntity<>(tipMjenjacaDTOS, HttpStatus.OK);
+    }
+
+    public PostMjenjacResponse postMjenjacSoap(TTipMjenjaca mjenjacRequest) {
+        TipMjenjaca m = new TipMjenjaca();
+        m.setId(mjenjacRequest.getId());
+        m.setNaziv(mjenjacRequest.getNaziv());
+        m.setObrisan(mjenjacRequest.isObrisan());
+        m = this.tipMjenjacaRepository.save(m);
+
+        PostMjenjacResponse response = new PostMjenjacResponse();
+        response.setMjenjacResponse(m.getId());
+        return response;
     }
 }

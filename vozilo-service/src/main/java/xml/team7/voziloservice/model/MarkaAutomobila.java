@@ -34,6 +34,10 @@ public class MarkaAutomobila {
         this.model = mDTO.getModel();
     }
 
+    public MarkaAutomobila() {
+
+    }
+
     public Long getId() {
         return id;
     }

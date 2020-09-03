@@ -1,6 +1,9 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.KlasaAutomobilaDTO;
+import com.demo.generated.PostKlasaAutomobilaResponse;
+import com.demo.generated.TKlasaAutomobila;
 import com.demo.model.KlasaAutomobila;
 import com.demo.repository.KlasaAutomobilaRepository;
 import org.modelmapper.ModelMapper;
@@ -22,6 +25,9 @@ public class KlasaAutomobilaService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VoziloClient voziloClient;
+
     public KlasaAutomobila findById(Long id) throws AccessDeniedException {
         KlasaAutomobila u = klasaAutoRepository.findById(id).orElseGet(null);
         return u;
@@ -33,6 +39,19 @@ public class KlasaAutomobilaService {
         m.setNaziv(mDTO.getNaziv());
         m.setObrisan(false);
         m = this.klasaAutoRepository.save(m);
+
+        TKlasaAutomobila tComment = new TKlasaAutomobila();
+        tComment.setNaziv(mDTO.getNaziv());
+        tComment.setObrisan(mDTO.isObrisan());
+
+        try {
+            PostKlasaAutomobilaResponse response = this.voziloClient.postNewKlasa(tComment);
+            //komentar.setRefId(response.getCommentResponse());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //penaci u tklasa i pozovi u try //cjenovnik primjer
         return m;
     }
 

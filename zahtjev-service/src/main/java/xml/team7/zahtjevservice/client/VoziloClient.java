@@ -9,7 +9,7 @@ import xml.team7.zahtjevservice.dto.ZauzetDTO;
 @FeignClient(name = "vozilo")
 public interface VoziloClient {
 
-    @PostMapping("/occupied/rent")
+    @PostMapping(value = "/occupied/rent", consumes = "application/json")
     ResponseEntity<?> addNewRequestOccupation(@RequestBody ZauzetDTO occupiedDTO);
 
 }

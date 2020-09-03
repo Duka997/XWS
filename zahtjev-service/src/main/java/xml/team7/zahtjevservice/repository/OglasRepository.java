@@ -1,4 +1,5 @@
-package xml.team7.voziloservice.repository;
+package xml.team7.zahtjevservice.repository;
+
 
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
@@ -7,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
-import xml.team7.voziloservice.model.Oglas;
+import xml.team7.zahtjevservice.model.Oglas;
 
 import java.util.List;
 
@@ -15,5 +16,4 @@ import java.util.List;
 @EnableJpaRepositories
 public interface OglasRepository extends JpaRepository<Oglas, Long> {
 
-    List<Oglas> findAllByVoziloId(Long id);
 }

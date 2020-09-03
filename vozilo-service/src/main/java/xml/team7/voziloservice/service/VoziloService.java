@@ -211,6 +211,11 @@ public class VoziloService {
         return vozilo;
     }
 
+    public List<Vozilo> getVoziloByUserId(Long id) {
+        User user = this.userService.getUserById(id);
+        List<Vozilo> vozila = this.voziloRepository.findAllByUserId(user.getId());
+        return vozila;
+    }
 
     public ResponseEntity<?> getCarStatistics(Long ownersID) {
         Set<Vozilo> cars = this.voziloRepository.findAllByUser_Id(ownersID);

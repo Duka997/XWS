@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "zahtjev")
+@Table(name = "zahtjev_za_iznajmljivanje")
 public class ZahtjevZaIznajmljivanje {
 
     @Id

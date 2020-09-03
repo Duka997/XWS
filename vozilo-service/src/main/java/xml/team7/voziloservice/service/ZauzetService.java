@@ -2,6 +2,7 @@ package xml.team7.voziloservice.service;
 
 import feign.FeignException;
 import javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ZauzetService {
 
     @Autowired

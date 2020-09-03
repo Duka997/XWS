@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import xml.team7.voziloservice.dto.CjenovnikDTO;
 import xml.team7.voziloservice.dto.ZauzetDTO;
 
-@FeignClient(name = "request")
+@FeignClient(name = "zahtjev")
 public interface RequestClient {
 
     @PostMapping(value = "/occupied", consumes = "application/json")

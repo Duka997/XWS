@@ -1,9 +1,12 @@
 package com.demo.service;
 
+import com.demo.client.VoziloClient;
 import com.demo.dto.MarkaAutomobilaDTO;
 import com.demo.dto.VoziloDTO;
 import com.demo.dto.*;
 import com.demo.exception.NotFoundException;
+import com.demo.generated.PostVoziloResponse;
+import com.demo.generated.TVozilo;
 import com.demo.model.*;
 import com.demo.repository.UserRepository;
 import com.demo.repository.VoziloRepository;
@@ -48,6 +51,9 @@ public class VoziloService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private VoziloClient voziloClient;
 
 
     public List<Vozilo> findAll() {
@@ -113,6 +119,26 @@ public class VoziloService {
         vozilo.setSlike(slike);
         vozilo.setUser(user);
         vozilo = this.voziloRepository.save(vozilo);
+
+        TVozilo tVozilo = new TVozilo();
+        tVozilo.setCijena(carDTO.getCijena());
+        tVozilo.setKilometraza(carDTO.getKilometraza());
+        tVozilo.setMozePreciKM(carDTO.getMozePreciKM());
+        tVozilo.setBrSjedistaZaDjecu(carDTO.getBrSjedistaZaDjecu());
+        tVozilo.setOcjena(carDTO.getOcjena());
+        tVozilo.setMarkaAutomobilaID(markaAutomobilak.getId());
+        tVozilo.setTipGorivaID(gorivo.getId());
+        tVozilo.setKlasaAutomobilaID(klasaAutomobila.getId());
+        tVozilo.setTipMjenjacaID(tipMjenjaca.getId());
+        tVozilo.setImaAndroid(carDTO.getImaAndroid());
+        tVozilo.setColiisionDamageWavier(carDTO.isColiisionDamageWavier());
+        tVozilo.setUserId(user.getId());
+
+        try {
+            PostVoziloResponse response = this.voziloClient.postNewVozilo(tVozilo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return vozilo;
     }
     public Slika extractImage(String string) throws SQLException, Base64DecodingException {

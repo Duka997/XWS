@@ -11,6 +11,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @Table(name = "oglasi")
 public class Oglas {

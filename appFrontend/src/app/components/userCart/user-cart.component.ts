@@ -20,6 +20,8 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     requests: IRentRequest[] = [];
     bundles: IBundle[] = [];
     bundles2: IRentRequest[] = [];
+    agentId: number = 0;
+    brojac: number = 0;
 
     modal: NgbModalRef;
     mode: string = 'ADD';
@@ -84,8 +86,25 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
         mjestoPreuzimanja: oglas.mjestoPreuzimanja,
         bundleId: oglas.bundleId
       };
-      this.bundles2.push(rentRequest);
-      console.log("Svi bundle zahtevi: ", this.bundles2);
+      
+      if(this.brojac == 0) {
+        this.agentId = oglas.userId;
+
+        this.bundles2.push(rentRequest);
+        console.log("Svi bundle zahtevi: ", this.bundles2);
+        this.brojac++;
+      } else {
+        if(this.agentId != oglas.userId){
+          alert("Error! You added ad from diffrent agent!");
+          this.brojac = 0;
+          this.bundles2 = [];
+        } else {
+          this.bundles2.push(rentRequest);
+          console.log("Svi bundle zahtevi: ", this.bundles2);
+          this.brojac++;
+        }
+      }
+    
     }
 
     submitBunddle() {
@@ -131,6 +150,7 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
         alert("success");
         this.bundles = [];
         this.requests = [];
+        this.brojac = 0;
         cart.bundles = [];
         cart.requests = [];
       })

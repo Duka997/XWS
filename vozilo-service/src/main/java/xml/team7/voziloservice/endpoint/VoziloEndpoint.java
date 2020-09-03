@@ -66,6 +66,12 @@ public class VoziloEndpoint {
         return this.tipMjenjacaService.postMjenjacSoap(request.getMjenjacRequest());
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetStatisticsRequest")
+    @ResponsePayload
+    public GetStatisticsResponse getStatisticsInfo(@RequestPayload GetStatisticsRequest request) {
+        return this.voziloService.getUserCars(request.getUserId());
+    }
+
   /*  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostVoziloRequest")
     @ResponsePayload
     public PostVoziloResponse postVozilo(@RequestPayload PostVoziloRequest request) {

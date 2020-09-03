@@ -11,7 +11,6 @@ import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name="markaautomobila")
 public class MarkaAutomobila {
 

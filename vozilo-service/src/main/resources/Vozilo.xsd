@@ -54,10 +54,10 @@
     <xs:complexType name="TVozilo">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
-            <xs:element name="markaAutomobila" type="car:TMarkaAutomobila"/>
-            <xs:element name="tipGoriva" type="car:TTipGoriva"/>
-            <xs:element name="tipMjenjaca" type="car:TTipMjenjaca"/>
-            <xs:element name="klasaAutomobila" type="car:TKlasaAutomobila"/>
+            <xs:element name="markaAutomobilaID" type="xs:long"/>
+            <xs:element name="tipGorivaID" type="xs:long"/>
+            <xs:element name="tipMjenjacaID" type="xs:long"/>
+            <xs:element name="klasaAutomobilaID" type="xs:long"/>
             <xs:element name="userId" type="xs:long"/>
             <xs:element name="kilometraza" type="xs:double"/>
             <xs:element name="cijena" type="xs:double"/>
@@ -67,7 +67,6 @@
             <xs:element name="imaAndroid" type="xs:boolean"/>
             <xs:element name="coliisionDamageWavier" type="xs:boolean"/>
             <xs:element name="bundle" type="xs:boolean"/>
-            <xs:element name="agent" type="car:TUser"/>
         </xs:sequence>
     </xs:complexType>
 

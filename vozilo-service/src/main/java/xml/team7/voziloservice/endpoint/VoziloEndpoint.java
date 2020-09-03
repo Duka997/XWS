@@ -8,6 +8,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import xml.team7.voziloservice.generated.*;
 import xml.team7.voziloservice.service.*;
 
+import java.nio.file.AccessDeniedException;
+
 @Endpoint
 public class VoziloEndpoint {
     private static final String NAMESPACE_URI = "https://ftn.uns.ac.rs/vozilo";
@@ -75,11 +77,11 @@ public class VoziloEndpoint {
         return this.voziloService.getUserCars(request.getUserId());
     }
 
-  /*  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostVoziloRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "PostVoziloRequest")
     @ResponsePayload
-    public PostVoziloResponse postVozilo(@RequestPayload PostVoziloRequest request) {
+    public PostVoziloResponse postVozilo(@RequestPayload PostVoziloRequest request) throws AccessDeniedException {
         return this.voziloService.postVoziloSoap(request.getVoziloRequest());
-    }*/
+    }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetGradeRequest")
     @ResponsePayload

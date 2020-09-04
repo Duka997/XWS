@@ -24,8 +24,7 @@ import xml.team7.voziloservice.repository.ZauzetRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@Slf4j
+@Service @Slf4j
 public class ZauzetService {
 
     @Autowired
@@ -75,7 +74,7 @@ public class ZauzetService {
         occupiedDTO.setOglasId(adsId);
 
         try {
-            this.requestClient.getRequestsHistory(occupiedDTO);
+            this.requestClient.cancelRequests(occupiedDTO);
         } catch (FeignException.NotFound e) {
         }
 
@@ -105,7 +104,7 @@ public class ZauzetService {
         occupiedDTO.setOd(occupied.getOd());
 
         try {
-            this.requestClient.getRequestsHistory(occupiedDTO);
+            this.requestClient.cancelRequests(occupiedDTO);
         } catch (FeignException.NotFound e) {
         }
         occupied = this.zauzetRepository.save(occupied);
@@ -179,5 +178,17 @@ public class ZauzetService {
         }
 
         return new ResponseEntity<>(occupiedDTOS, HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> newOccupiedRequest(ZauzetDTO zauzetDTO)  {
+
+        Oglas oglas = this.oglasRepository.findByIdUser(zauzetDTO.getVoziloId());
+        Zauzet zauzet = new Zauzet();
+        zauzet.setVozilo(oglas.getVozilo());
+        zauzet.setOd(zauzetDTO.getOd());
+        zauzet.setDoo(zauzetDTO.getDoo());
+        this.zauzetRepository.save(zauzet);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

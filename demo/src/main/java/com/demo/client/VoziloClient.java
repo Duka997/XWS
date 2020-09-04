@@ -73,4 +73,27 @@ public class VoziloClient extends WebServiceGatewaySupport {
 
         return response;
     }
+
+    public GetGradeResponse getGrades(Long id) {
+        GetGradeRequest request = new GetGradeRequest();
+        request.setGradeRequest(id);
+
+
+        GetGradeResponse response = (GetGradeResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8082/vozilo-soap/vozilo", request,
+                        new SoapActionCallback("https://ftn.uns.ac.rs/vozilo/GetGradeRequest"));
+
+        return response;
+    }
+    public PostVoziloResponse postNewVozilo(TVozilo tVozilo) {
+        PostVoziloRequest request = new PostVoziloRequest();
+        request.setVoziloRequest(tVozilo);
+
+        PostVoziloResponse response = (PostVoziloResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8082/vozilo-soap/vozilo", request,
+                        new SoapActionCallback("https://ftn.uns.ac.rs/vozilo/PostVoziloRequest"));
+
+        return response;
+    }
+
 }

@@ -1,8 +1,13 @@
 package xml.team7.porukaservice.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+import xml.team7.porukaservice.dto.UserDTO;
 import xml.team7.porukaservice.exception.NotFoundException;
 import xml.team7.porukaservice.model.User;
 import xml.team7.porukaservice.repository.UserRepository;
@@ -13,6 +18,9 @@ import xml.team7.porukaservice.repository.UserRepository;
 public class UserService {
 
     private UserRepository userRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -44,4 +52,25 @@ public class UserService {
         User u = userRepository.findByUsername(userUsername);
         return u;
     }
+
+    public ResponseEntity<?> add(UserDTO userDTO) {
+        User user = modelMapper.map(userDTO, User.class);
+        this.userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<?> edit(UserDTO userDTO) {
+        User user = this.userRepository.getOne(userDTO.getId());
+        user.setName(userDTO.getName());
+        user.setSurname(userDTO.getSurname());
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+
+        this.userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
+
 }

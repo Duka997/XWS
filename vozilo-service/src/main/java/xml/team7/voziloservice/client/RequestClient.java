@@ -13,13 +13,13 @@ import xml.team7.voziloservice.dto.ZauzetDTO;
 @FeignClient(name = "zahtjev")
 public interface RequestClient {
 
-    @PostMapping(value = "/occupied", consumes = "application/json")
-    Void getRequestsHistory(@RequestBody ZauzetDTO occupiedDTO);
+    @PostMapping(value = "/api/request/occupied", consumes = "application/json")
+    Void cancelRequests(@RequestBody ZauzetDTO occupiedDTO);
 
     @PostMapping(value = "/bill/{kilometrage}/{user_id}")
     Void createBill(@PathVariable double kilometrage, @PathVariable Long user_id, @RequestBody CjenovnikDTO priceList);
 
-    @GetMapping(value = "/cancel/{id}", consumes = "application/json")
+    @GetMapping(value = "/api/request/cancel/{id}", consumes = "application/json")
     Void cancelRequest(@PathVariable Long id);
 
     //@PostMapping(value = "/ad")

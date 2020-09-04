@@ -7,7 +7,7 @@ import java.sql.Blob;
 
 @Entity
 @AllArgsConstructor
-@Table(name = "vozilo")
+@Table(name = "slika")
 public class Slika {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

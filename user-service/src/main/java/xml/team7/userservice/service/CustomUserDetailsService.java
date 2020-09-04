@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import xml.team7.userservice.client.PorukaClient;
 import xml.team7.userservice.client.VoziloClient;
+import xml.team7.userservice.client.ZahtjevClient;
 import xml.team7.userservice.dto.RoleDTO;
 import xml.team7.userservice.dto.UserDTO;
 import xml.team7.userservice.exception.NotFoundException;
@@ -58,6 +59,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private PorukaClient porukaClient;
+
+    @Autowired
+    private ZahtjevClient zahtjevClient;
 
     @Autowired
     public CustomUserDetailsService(TokenUtils tokenUtils, AuthenticationManager authenticationManager,
@@ -152,6 +156,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         userDTO.setId(user.getId());
         this.voziloClient.add(userDTO);
         this.porukaClient.add(userDTO);
+        this.zahtjevClient.add(userDTO);
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -344,6 +350,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository.save(user);
         this.voziloClient.edit(userDTO);
         this.porukaClient.edit(userDTO);
+        this.zahtjevClient.edit(userDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

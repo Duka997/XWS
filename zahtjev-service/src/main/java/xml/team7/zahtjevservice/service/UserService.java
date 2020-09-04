@@ -2,7 +2,10 @@ package xml.team7.zahtjevservice.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import xml.team7.zahtjevservice.dto.UserDTO;
 import xml.team7.zahtjevservice.exception.NotFoundException;
 import xml.team7.zahtjevservice.model.User;
 import xml.team7.zahtjevservice.repository.UserRepository;
@@ -41,5 +44,21 @@ public class UserService {
     public User findByUsername(String userUsername) {
         User u = userRepository.findByUsername(userUsername);
         return u;
+    }
+
+    public ResponseEntity<?> add(UserDTO userDTO) {
+        User user = new User();
+        user.setId(userDTO.getId());
+        user.setUsername(userDTO.getUsername());
+        this.userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<?> edit(UserDTO userDTO) {
+        User user = this.userRepository.getOne(userDTO.getId());
+        user.setUsername(userDTO.getUsername());
+
+        this.userRepository.save(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

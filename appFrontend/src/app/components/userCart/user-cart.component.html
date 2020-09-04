@@ -4,8 +4,6 @@
         <thead>
           <th>Ad ID</th>
           <th>Vehicle</th>
-          <th>Open</th>
-          <th>Owner</th>
           <th>From Date</th>
           <th>To Date</th>
           <th>Single request</th>
@@ -22,14 +20,6 @@
               <td>
                 {{ oglas.vozilo.markaAutomobila.nazivMarke }} {{ oglas.vozilo.markaAutomobila.model }} - {{ oglas.vozilo.klasaAutomobila.naziv }}
               </td>
-
-            <td>
-              <button type="button" class="btn btn-outline-dark" (click)="seeVehicle(modal, oglas.vozilo)">See Vehicle</button>
-            </td>
-
-            <td>
-              {{ oglas.vozilo.agent.name }} {{ oglas.vozilo.agent.surname }}
-            </td>
 
             <td>
               {{ oglas.od | date: 'mediumDate' }}

@@ -11,34 +11,34 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   getMarke() {
-    return this.http.get<any>('http://localhost:8099/api/marka/get');
+    return this.http.get<any>('http://localhost:8086/pretraga/api/marka/get');
   }
 
   getMjenjaci() {
-    return this.http.get<any>('http://localhost:8099/api/tipmjenjaca/get');
+    return this.http.get<any>('http://localhost:8086/pretraga/api/tipmjenjaca/get');
   }
 
   getGoriva() {
-    return this.http.get<any>('http://localhost:8099/api/tipgoriva/get');
+    return this.http.get<any>('http://localhost:8086/pretraga/api/tipgoriva/get');
   }
 
   getKlase() {
-    return this.http.get<any>('http://localhost:8099/api/klasa/get');
+    return this.http.get<any>('http://localhost:8086/pretraga/api/klasa/get');
   }
 
   getMjestaPruzimanja() {
-    return this.http.get<any>('http://localhost:8099/api/oglas/mjesta');
+    return this.http.get<any>('http://localhost:8086/pretraga/api/oglas/mjesta');
   }
 
   getModeli(id: number) {
-    return this.http.get<any>('http://localhost:8099/api/marka/models/'+ id);
+    return this.http.get<any>('http://localhost:8086/pretraga/api/marka/models/'+ id);
   }
 
   pretraziOglase(pretraga: Pretraga, page: number, sort: string): Observable<any>  {
-    return this.http.post(`http://localhost:8099/api/oglas/pretraga/`+page+'/'+sort, pretraga);
+    return this.http.post(`http://localhost:8086/pretraga/api/oglas/pretraga/`+page+'/'+sort, pretraga);
   }
 
   getOneOglas(id: number) {
-    return this.http.get<any>('http://localhost:8099/api/oglas/'+ id);
+    return this.http.get<any>('http://localhost:8086/pretraga/api/oglas/'+ id);
   }
 }

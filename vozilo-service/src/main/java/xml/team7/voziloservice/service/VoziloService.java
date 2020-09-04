@@ -375,4 +375,9 @@ public class VoziloService {
         response.setVoziloResponse(vozilo.getId());
         return response;
     }
+
+    public Vozilo updateCarsKilometrage(Vozilo car, double newKilometers){
+        car.setKilometraza(car.getKilometraza() + newKilometers);
+        return car;
+    }
 }

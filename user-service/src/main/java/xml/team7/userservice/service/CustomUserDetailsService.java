@@ -347,6 +347,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         user.setSurname(userDTO.getSurname());
         user.setName(userDTO.getName());
 
+	userDTO.setUsername(user.getUsername());
         this.userRepository.save(user);
         this.voziloClient.edit(userDTO);
         this.porukaClient.edit(userDTO);

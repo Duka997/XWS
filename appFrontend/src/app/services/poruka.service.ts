@@ -7,8 +7,8 @@ import {Poruka} from '../model/poruka';
     providedIn: 'root'
 })
 export class PorukaService{
-    _url = 'http://localhost:8086/poruka/api/poruka'; 
-    _url1 = 'http://localhost:8086/poruka/api/poruka/primljene'; 
+    _url = 'http://localhost:8099/api/poruka'; 
+    _url1 = 'http://localhost:8099/api/poruka/primljene'; 
     
     constructor(private _http: HttpClient) { }
 

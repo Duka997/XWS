@@ -8,10 +8,10 @@ import { TipGoriva } from 'src/app/model/fuelType';
     providedIn: 'root'
 })
 export class TipGorivaService{
-    _url = 'http://localhost:8086/vozilo/api/tipgoriva/dodaj';
-    _url2 = 'http://localhost:8086/vozilo/api/tipgoriva/get';
-    _url3 = 'http://localhost:8086/vozilo/api/tipgoriva/edit';
-    _url4 = 'http://localhost:8086/vozilo/api/tipgoriva/delete';
+    _url = 'http://localhost:8099/api/tipgoriva/dodaj';
+    _url2 = 'http://localhost:8099/api/tipgoriva/get';
+    _url3 = 'http://localhost:8099/api/tipgoriva/edit';
+    _url4 = 'http://localhost:8099/api/tipgoriva/delete';
    
 
     constructor(private _http: HttpClient) { }

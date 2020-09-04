@@ -10,31 +10,31 @@ import { IReport } from '../model/Report';
     constructor(private http: HttpClient) { }
   
     getRequests(userId: any) {
-        return this.http.get<any>('http://localhost:8086/zahtjev/api/request/getRequests/'+userId);
+        return this.http.get<any>('http://localhost:8099/api/request/getRequests/'+userId);
     }
 
     getRequestsHistory(userId: any) {
-        return this.http.get<any>('http://localhost:8086/zahtjev/api/request/getRequestsHistory/'+userId);
+        return this.http.get<any>('http://localhost:8099/api/request/getRequestsHistory/'+userId);
     }
 
     acceptRequest(reqId: any) {
-        return this.http.post<any>('http://localhost:8086/zahtjev/api/request/accept/'+reqId, {});
+        return this.http.post<any>('http://localhost:8099/api/request/accept/'+reqId, {});
     }
 
     cancelRequest(reqId: any) {
-        return this.http.post<any>('http://localhost:8086/zahtjev/api/request/cancel/'+reqId, {});
+        return this.http.post<any>('http://localhost:8099/api/request/cancel/'+reqId, {});
     }
 
     acceptBundle(bundleId: any) {
-        return this.http.post<any>('http://localhost:8086/zahtjev/api/bundle/accept/'+bundleId, {});
+        return this.http.post<any>('http://localhost:8099/api/bundle/accept/'+bundleId, {});
     }
 
     cancelBundle(bundleId: any) {
-        return this.http.post<any>('http://localhost:8086/zahtjev/api/bundle/cancel/'+bundleId, {});
+        return this.http.post<any>('http://localhost:8099/api/bundle/cancel/'+bundleId, {});
     }
 
     createReport(report: IReport) {
-        return this.http.post<any>("http://localhost:8086/vozilo/api/report/add", report);
+        return this.http.post<any>("http://localhost:8099/api/report/add", report);
       }
 
 }

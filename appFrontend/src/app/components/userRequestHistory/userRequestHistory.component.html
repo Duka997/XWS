@@ -15,10 +15,9 @@
         >
           <div class="card-body">
             <h4 class="card-title">Ad ID: {{p.oglasId}}</h4>
-            <p class="card-title">Date free: {{p.oglas.od | date: 'mediumDate'}} - {{p.oglas.doo | date: 'mediumDate'}}</p>
-            <p class="card-title">Vehicle: {{p.oglas.vozilo.markaAutomobila.nazivMarke}} {{p.oglas.vozilo.klasaAutomobila.naziv}}</p>
+            <p class="card-title">Date free: {{p.od | date: 'mediumDate'}} - {{p.doo | date: 'mediumDate'}}</p>
             <p class="card-title">Status: {{p.status}}</p>
-            <p class="card-title">Agent: {{p.oglas.vozilo.agent.name}} {{p.oglas.vozilo.agent.surname}}</p>
+            <p class="card-title">Agent: {{p.user.username}}</p>
             <p class="card-title">Bundle ID: {{p.bundleId}}</p>
             <button type="button" class="btn btn-primary" (click)="cancelRequest(p.id)">Cancel Request</button>
           </div>
@@ -35,10 +34,9 @@
         >
           <div class="card-body">
             <h4 class="card-title">Ad ID: {{pa.oglasId}}</h4>
-            <p class="card-title">Date occupied: {{pa.oglas.od | date: 'mediumDate'}} - {{pa.oglas.doo | date: 'mediumDate'}}</p>
-            <p class="card-title">Vehicle: {{pa.oglas.vozilo.markaAutomobila.nazivMarke}} {{pa.oglas.vozilo.klasaAutomobila.naziv}}</p>
+            <p class="card-title">Date occupied: {{pa.od | date: 'mediumDate'}} - {{pa.doo | date: 'mediumDate'}}</p>
             <p class="card-title">Status: {{pa.status}}</p>
-            <p class="card-title">Agent: {{pa.oglas.vozilo.agent.name}} {{pa.oglas.vozilo.agent.surname}}</p>
+            <p class="card-title">Agent: {{pa.user.username}}</p>
             <p class="card-title">Bundle ID: {{pa.bundleId}}</p>
             <button type="button" class="btn btn-primary" (click)="posaljiPor(pa.oglas.userId)">Send message</button>
           </div>
@@ -57,9 +55,8 @@
           <div class="card-body">
             <h4 class="card-title">Ad ID: {{f.oglasId}}</h4>
             <p class="card-title">Date was occupied: {{f.od | date: 'mediumDate'}} - {{f.doo | date: 'mediumDate'}}</p>
-            <p class="card-title">Vehicle: {{f.oglas.vozilo.markaAutomobila.nazivMarke}} {{f.oglas.vozilo.klasaAutomobila.naziv}}</p>
             <p class="card-title">Status: {{f.status}}</p>
-            <p class="card-title">Agent: {{f.oglas.vozilo.agent.name}} {{f.oglas.vozilo.agent.surname}}</p>
+            <p class="card-title">Agent: {{f.user.username}}</p>
             <p class="card-title">Bundle ID: {{f.bundleId}}</p>
             <button type="button" class="btn btn-primary" (click)="open(mymodal, f)">Comment</button>
             <button type="button" class="btn btn-primary" (click)="posaljiPor(f.oglas.userId)">Send message</button>

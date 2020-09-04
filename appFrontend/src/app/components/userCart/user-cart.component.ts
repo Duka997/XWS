@@ -7,6 +7,7 @@ import { Vozilo } from 'src/app/model/car';
 import { IRentRequest } from './IRequestRent';
 import { IBundle } from './IBundle';
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
     selector: 'app-user-cart',
@@ -28,6 +29,7 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
     constructor(private adsService: AdsService,
         private toastr: ToastrService,
+        private searchService: SearchService,
         private router: Router,
         private ngbModal: NgbModal) { }
 
@@ -50,6 +52,14 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
         this.adsService.getAllAdsForCart(userId).subscribe(data => {
           this.ads = data;
           console.log("Svi oglasi u korpi: ", this.ads);
+          for(let o of this.ads){
+            this.searchService.getOneOglas(o.adId).subscribe(
+            data=>{
+                o.vozilo = data.vozilo;
+                o.od = data.od;
+                o.doo = data.doo;
+            });
+          }
         }, error => {
           this.toastr.error('There was an error while getting all vehicles');
         });

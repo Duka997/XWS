@@ -7,17 +7,16 @@ import {Poruka} from '../model/poruka';
     providedIn: 'root'
 })
 export class PorukaService{
-    _url = 'http://localhost:8099/api/poruka'; 
-    _url1 = 'http://localhost:8099/api/poruka/primljene'; 
+    _url = 'http://localhost:8086/poruka/api/poruka'; 
+    _url1 = 'http://localhost:8086/poruka/api/poruka/primljene'; 
     
     constructor(private _http: HttpClient) { }
 
     getMojePoruke(Id:number):Observable<any>{
-        console.log('juhuu'+Id)
         return this._http.get<Poruka[]>(`${this._url1}/${Id}`);
     }
 
     posaljiPoruku(poruka: Poruka) {
-        return  this._http.post<any>(this._url, poruka);
+        return this._http.post<any>(this._url, poruka);
      }
 }

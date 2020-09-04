@@ -8,11 +8,11 @@ import { KlasaAutomobila } from 'src/app/model/carClass';
     providedIn: 'root'
 })
 export class DodajKlasuAutomobilaService{
-    _url = 'http://localhost:8099/api/klasa/dodaj';
+    _url = 'http://localhost:8086/vozilo/api/klasa/dodaj';
    
-    _url2 = 'http://localhost:8099/api/klasa/get';
-    _url3 = 'http://localhost:8099/api/klasa/edit';
-    _url4 = 'http://localhost:8099/api/klasa/delete';
+    _url2 = 'http://localhost:8086/vozilo/api/klasa/get';
+    _url3 = 'http://localhost:8086/vozilo/api/klasa/edit';
+    _url4 = 'http://localhost:8086/vozilo/api/klasa/delete';
 
     constructor(private _http: HttpClient) { }
 

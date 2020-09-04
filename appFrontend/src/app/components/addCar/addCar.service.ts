@@ -10,9 +10,9 @@ import { Vozilo } from 'src/app/model/car';
     providedIn: 'root'
 })
 export class DodajVoziloService{
-    _url = 'http://localhost:8099/api/vozilo/dodaj';
-    _url2 = 'http://localhost:8099/api/vozilo/get';
-    _url3 = 'http://localhost:8099/api/oglasi/allAds';
+    _url = 'http://localhost:8086/vozilo/api/vozilo/dodaj';
+    _url2 = 'http://localhost:8086/vozilo/api/vozilo/get';
+    _url3 = 'http://localhost:8086/vozilo/api/oglasi/allAds';
    
 
     constructor(private _http: HttpClient) { }

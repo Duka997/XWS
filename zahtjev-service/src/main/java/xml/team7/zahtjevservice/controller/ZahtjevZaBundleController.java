@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import xml.team7.zahtjevservice.service.ZahtjevZaBundleService;
 
-@CrossOrigin("*")
+@CrossOrigin(value = "*")
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/bundle")

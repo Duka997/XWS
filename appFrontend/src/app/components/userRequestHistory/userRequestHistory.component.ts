@@ -108,7 +108,7 @@ import { GradeService } from 'src/app/services/grade.service';
             tekst: this.tekst,
             odobren: false,
             oglasId: this.request.oglas.id,
-            voziloId: this.request.oglas.vozilo.id,
+            //voziloId: this.request.oglas.vozilo.id,
             userId: localStorage.getItem('id'),
             role: localStorage.getItem('user-role'),
             userUsername: localStorage.getItem('username')
@@ -131,7 +131,7 @@ import { GradeService } from 'src/app/services/grade.service';
             id: null,
             ocjena: this.ocjena,
             oglasId: this.request.oglas.id,
-            voziloId: this.request.oglas.vozilo.id,
+            //voziloId: this.request.oglas.vozilo.id,
             userId: localStorage.getItem('id'),
             userUsername: localStorage.getItem('username')
           };

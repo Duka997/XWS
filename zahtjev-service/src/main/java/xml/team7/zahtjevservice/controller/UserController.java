@@ -1,16 +1,12 @@
-package xml.team7.voziloservice.controller;
+package xml.team7.zahtjevservice.controller;
 
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import xml.team7.voziloservice.dto.UserDTO;
-import xml.team7.voziloservice.repository.UserRepository;
-import xml.team7.voziloservice.service.UserService;
+import xml.team7.zahtjevservice.dto.UserDTO;
+import xml.team7.zahtjevservice.service.UserService;
 
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin(value = "*")

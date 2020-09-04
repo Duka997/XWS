@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.voziloservice.dto.KomentarDTO;
 import xml.team7.voziloservice.service.KomentarService;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/komentar")
 public class KomentarController {

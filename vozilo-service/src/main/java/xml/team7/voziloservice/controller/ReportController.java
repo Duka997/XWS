@@ -1,10 +1,12 @@
-package com.demo.controller;
+package xml.team7.voziloservice.controller;
 
-import com.demo.dto.IzvjestajDTO;
-import com.demo.service.ReportService;
+
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xml.team7.voziloservice.dto.IzvjestajDTO;
+import xml.team7.voziloservice.service.ReportService;
 
 @CrossOrigin(value = "*")
 @RestController
@@ -19,7 +21,7 @@ public class ReportController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<?> newReport (@RequestBody IzvjestajDTO reportDTO){
+    public ResponseEntity<?> newReport (@RequestBody IzvjestajDTO reportDTO) throws NotFoundException {
         return reportService.newReport_ResponseEntity(reportDTO);
     }
 }

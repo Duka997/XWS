@@ -11,7 +11,7 @@ import xml.team7.voziloservice.service.TipMjenjacaService;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/tipmjenjaca", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TipMjenjacaContreoller {

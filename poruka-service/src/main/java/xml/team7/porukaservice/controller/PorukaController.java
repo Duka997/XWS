@@ -7,7 +7,7 @@ import xml.team7.porukaservice.service.PorukaService;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/poruka")
 public class PorukaController {

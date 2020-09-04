@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/bundle")
 public class ZahtjevZaBundleController {

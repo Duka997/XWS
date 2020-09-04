@@ -74,20 +74,28 @@ const routes: Routes = [
       { path: 'inbox/reply', component: MessageComponent},
       { path: 'report', component: ReportComponent  },
       { path: 'profile', component: ProfileComponent },
+      { path: 'userCart', component: UserCartComponent  }, 
+      { path: 'userRequests', component: UserRequstHistoryComponent  }
     ]
   },
 
   { path: 'homepageUser', component: HomepageUserComponent ,
     children: [
       //{ path: 'addAdd', component: DodajOglasComponent },
-      { path: 'userAd', component: DodajOglasComponent  },
+      { path: 'requests', component: RentRequestsComponent },
       { path: 'inbox', component: Inbox  },
+      { path: 'commentsAndGrades', component: CommentAndGradesComponent},
+      { path: 'carOccupation', component: OccupationComponent },
+      { path: 'pricelist', component: PriceListComponent },
       { path: 'adsList', component: AdsListComponent  },
       { path: 'reply', component:  MessageComponent},
+      { path: 'addCar', component: AddCarComponent },
       { path: 'addAdd', component:  DodajOglasComponent},
       { path: 'userCart', component: UserCartComponent  }, 
       { path: 'userRequests', component: UserRequstHistoryComponent  },
       { path: 'search', component: SearchComponent },
+      { path: 'profile', component: ProfileComponent },
+
   ]
   },
   

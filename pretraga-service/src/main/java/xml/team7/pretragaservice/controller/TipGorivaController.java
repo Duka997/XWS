@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.pretragaservice.dto.TipGorivaDTO;
 import xml.team7.pretragaservice.service.TipGorivaService;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/tipgoriva")
 public class TipGorivaController {

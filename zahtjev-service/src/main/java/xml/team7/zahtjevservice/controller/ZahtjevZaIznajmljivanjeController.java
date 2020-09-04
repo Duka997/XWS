@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.zahtjevservice.dto.ZauzetDTO;
 import xml.team7.zahtjevservice.service.ZahtjevZaIznajmljivanjeService;
 
-@CrossOrigin("*")
+@CrossOrigin(value = "*")
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/request")

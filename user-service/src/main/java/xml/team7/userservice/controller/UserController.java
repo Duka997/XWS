@@ -12,8 +12,8 @@ import xml.team7.userservice.service.CustomUserDetailsService;
 
 import javax.servlet.http.HttpServletResponse;
 
+@CrossOrigin(value = "*")
 @RestController
-@CrossOrigin
 @Slf4j
 @RequestMapping(produces = "application/json")
 public class UserController {

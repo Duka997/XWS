@@ -9,7 +9,7 @@ import xml.team7.voziloservice.dto.TipGorivaDTO;
 import xml.team7.voziloservice.model.TipGoriva;
 import xml.team7.voziloservice.service.TipGorivaService;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/tipgoriva")
 public class TipGorivaController {

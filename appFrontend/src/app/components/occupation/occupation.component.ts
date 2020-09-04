@@ -84,8 +84,8 @@ export class OccupationComponent implements OnInit {
   }
 
   getData(){
-    var userId = parseInt(localStorage.getItem('id'));
-    this.carService.getCarsByUser(userId).subscribe(
+    var username = localStorage.getItem('username');
+    this.carService.getCarsByUser(username).subscribe(
       (data: Vozilo[]) => { 
         this.cars = data;
         console.log("Cars: ", this.cars)

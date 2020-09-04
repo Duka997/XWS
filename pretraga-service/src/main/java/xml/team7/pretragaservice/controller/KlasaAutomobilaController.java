@@ -9,7 +9,7 @@ import xml.team7.pretragaservice.service.KlasaAutomobilaService;
 
 import java.nio.file.AccessDeniedException;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/klasa")
 public class KlasaAutomobilaController {

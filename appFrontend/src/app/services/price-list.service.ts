@@ -10,14 +10,14 @@ export class PriceListService {
   constructor(private http: HttpClient) { }
 
   getCjenovnik(username: any) {
-    return this.http.get<any>('http://localhost:8099/api/cjenovnik/getCjenovnikUsername/' + username);
+    return this.http.get<any>('http://localhost:8086/vozilo/api/cjenovnik/getCjenovnikUsername/' + username);
   }
 
   dodajCjenovnik(cjenovnik: any){
-    return this.http.post<any>('http://localhost:8099/api/cjenovnik/dodaj', cjenovnik);
+    return this.http.post<any>('http://localhost:8086/vozilo/api/cjenovnik/dodaj', cjenovnik);
   }
 
   izmjeniCjenovnik(cjenovnik: Cjenovnik){
-    return this.http.post('http://localhost:8099/api/cjenovnik/izmjeni', cjenovnik);
+    return this.http.post('http://localhost:8086/vozilo/api/cjenovnik/izmjeni', cjenovnik);
   }
 }

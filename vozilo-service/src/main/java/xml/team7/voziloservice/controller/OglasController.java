@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.voziloservice.dto.OglasDTO;
 import xml.team7.voziloservice.service.OglasService;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/oglas")
 public class OglasController {

@@ -9,7 +9,7 @@ import xml.team7.zahtjevservice.service.UserService;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(value = "*")
 @Slf4j
 @RequestMapping(produces = "application/json")
 public class UserController {

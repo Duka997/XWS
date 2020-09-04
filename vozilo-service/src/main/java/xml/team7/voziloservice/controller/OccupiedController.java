@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.voziloservice.dto.ZauzetDTO;
 import xml.team7.voziloservice.service.ZauzetService;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/occupied")
 public class OccupiedController {

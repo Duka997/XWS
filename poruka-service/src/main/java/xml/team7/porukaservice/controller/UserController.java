@@ -8,7 +8,7 @@ import xml.team7.porukaservice.dto.UserDTO;
 import xml.team7.porukaservice.service.UserService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(value = "*")
 @Slf4j
 @RequestMapping(produces = "application/json")
 public class UserController {

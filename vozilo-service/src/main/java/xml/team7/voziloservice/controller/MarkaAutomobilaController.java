@@ -11,7 +11,7 @@ import xml.team7.voziloservice.service.MarkaAutomobilaService;
 
 import java.nio.file.AccessDeniedException;
 
-@CrossOrigin
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/marka")
 public class MarkaAutomobilaController {

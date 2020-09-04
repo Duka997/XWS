@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import xml.team7.pretragaservice.dto.CjenovnikDTO;
 import xml.team7.pretragaservice.service.CjenovnikService;
 
-@CrossOrigin("*")
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping(value = "/api/cjenovnik")
 public class CjenovnikController {

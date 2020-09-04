@@ -13,7 +13,7 @@ import xml.team7.voziloservice.service.UserService;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(value = "*")
 @Slf4j
 @RequestMapping(produces = "application/json")
 public class UserController {
